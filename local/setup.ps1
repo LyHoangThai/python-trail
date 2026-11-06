@@ -22,42 +22,38 @@ function Install-PackageIfMissing([string]$Command,[string]$Id,[switch]$UserScop
     Refresh-Tools
 }
 
+function Get-DockerServerType {
+    # Windows PowerShell 5.1 turns native stderr into NativeCommandError with
+    # ErrorActionPreference=Stop. An unavailable engine is an expected probe result.
+    $savedPreference = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'Continue'
+        $serverType = (& docker info --format '{{.OSType}}' 2>$null | Out-String).Trim()
+        $probeExit = $LASTEXITCODE
+    } finally { $ErrorActionPreference = $savedPreference }
+    if ($probeExit -eq 0 -and $serverType -in @('linux','windows')) { return $serverType }
+    return $null
+}
+
 Write-Host 'Python Trail local setup: Docker Desktop + VS Code + containerized Python, worker and database.'
 Write-Host 'Internet is required for the first setup. Existing student files and database volumes are preserved.'
 Refresh-Tools
-$wslVersionText = (& wsl.exe --version 2>$null | Out-String) -replace "`0",''
-if ($LASTEXITCODE -ne 0) {
-    if ($SkipInstall) { throw 'A current WSL 2 is required. Run setup without -SkipInstall.' }
-    Write-Host 'WSL needs installation or updating. Windows may show an administrator prompt.'
-    $wslInstall = Start-Process -FilePath 'wsl.exe' -ArgumentList @('--install','--no-distribution') -Verb RunAs -WindowStyle Hidden -PassThru -Wait
-    Write-Host 'WSL setup was attempted. Restart Windows if prompted, then rerun setup.ps1. Firmware virtualization must be enabled.'
-    exit 1
-}
-if ($wslVersionText -match '(\d+\.\d+\.\d+)') {
-    if ([version]$Matches[1] -lt [version]'2.1.5') {
-        if ($SkipInstall) { throw 'Update WSL to 2.1.5 or later, then rerun setup.' }
-        & wsl.exe --update
-        if ($LASTEXITCODE -ne 0) { throw 'WSL update failed. Update WSL as administrator, then rerun setup.' }
-        Write-Host 'WSL updated. Restart Windows if prompted, then rerun setup.ps1.'
-        exit 1
-    }
-}
 Install-PackageIfMissing 'docker' 'Docker.DockerDesktop'
 Install-PackageIfMissing 'code' 'Microsoft.VisualStudioCode' -UserScope
 if (-not (Get-Command docker -ErrorAction SilentlyContinue)) { throw 'Docker installed. Restart Windows or open a new PowerShell window, then rerun setup.ps1.' }
-& docker info *> $null
-if ($LASTEXITCODE -ne 0) {
+$engine = Get-DockerServerType
+if (-not $engine) {
     $desktop = @("$env:LOCALAPPDATA\Programs\DockerDesktop\Docker Desktop.exe", "$env:ProgramFiles\Docker\Docker\Docker Desktop.exe") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
     if ($desktop) { Start-Process -FilePath $desktop -WindowStyle Hidden }
-    Write-Host 'Waiting for Docker Desktop. On first launch, open Docker Desktop and finish its terms/setup screens. Use Linux containers.'
-    $ready = $false
+    Write-Host 'Waiting for Docker Desktop. Open Docker Desktop and finish its first-launch setup. Select Linux containers.'
     for ($n=0; $n -lt 24; $n++) {
-        & docker info *> $null
-        if ($LASTEXITCODE -eq 0) { $ready=$true; break }
+        $engine = Get-DockerServerType
+        if ($engine) { break }
         Start-Sleep -Seconds 5
     }
-    if (-not $ready) { throw 'Docker is not ready. Finish Docker Desktop setup or restart Windows, then rerun setup.ps1.' }
+    if (-not $engine) { throw 'Docker Desktop is not ready. Open it, finish its backend/setup prompts, then rerun setup.ps1. This script does not install or configure WSL.' }
 }
+if ($engine -ne 'linux') { throw 'Docker Desktop is using Windows containers. Switch to Linux containers in Docker Desktop, then rerun setup.ps1.' }
 & docker compose version
 if ($LASTEXITCODE -ne 0) { throw 'Docker Compose is missing. Update Docker Desktop and retry.' }
 if (-not (Test-Path -LiteralPath '.env')) {

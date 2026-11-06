@@ -13,10 +13,10 @@ A local Python learning lab for one child and parent on one Windows computer. Th
 
    This bypass applies only to this process. It does not change your machine's execution policy. Read the script before running it.
 
-3. Setup checks WSL, installs Docker Desktop and VS Code through WinGet if missing, installs the Dev Containers extension, generates a local database password, downloads/builds the containers and opens the learning dashboard. It preserves existing code and progress on reruns. Prerequisite package agreements are accepted by the script; Docker Desktop may still require first-launch terms and Windows may request administrator permission. Virtualization must be enabled. A WSL installation, update or restart can interrupt setup: finish it, restart if required, then run setup again.
+3. Setup installs Docker Desktop and VS Code through WinGet if missing, installs the Dev Containers extension, generates a local database password, downloads/builds the containers and opens the learning dashboard. It preserves existing code and progress on reruns. Prerequisite package agreements are accepted by the script; Docker Desktop may still require first-launch terms and Windows may request administrator permission. The script checks Docker Desktop’s Linux engine; it does not call WSL or configure a backend. Finish Docker Desktop’s own prerequisite/backend prompts and restart if requested, then run setup again.
 4. In VS Code, open the Command Palette (`Ctrl+Shift+P`) and choose **Dev Containers: Reopen in Container**. Accept the workspace trust prompt only for your extracted copy. Allow the Python extension/server download to finish.
 
-Internet is needed for the initial packages, images and VS Code extension downloads. The lessons, grading and dashboard need no external service once installed. No host Python, Node.js, Git or separate PostgreSQL installation is necessary. Docker Desktop's supported Windows/WSL requirements still apply; see [Docker's Windows installation guide](https://docs.docker.com/desktop/setup/install/windows-install/). This package targets Windows, not macOS/Linux installation.
+Internet is needed for the initial packages, images and VS Code extension downloads. The lessons, grading and dashboard need no external service once installed. No host Python, Node.js, Git or separate PostgreSQL installation is necessary. Docker Desktop's Windows and selected-backend requirements still apply; see [Docker's Windows installation guide](https://docs.docker.com/desktop/setup/install/windows-install/). This package targets Windows, not macOS/Linux installation.
 
 If Docker/VS Code are already installed, use `setup.ps1 -SkipInstall`. It still installs the Dev Containers extension and builds containers. `-NoOpen` suppresses opening the browser/editor.
 
@@ -65,8 +65,8 @@ docker compose logs --tail 60 app worker db
 docker compose up -d --build --wait
 ```
 
-- Docker not ready: finish Docker Desktop setup, ensure Linux containers/WSL 2 are enabled, then rerun setup.
-- Old WSL: install/update WSL using Microsoft's instructions, restart if requested, then rerun setup.
+- Docker not ready: open Docker Desktop, finish its setup and select Linux containers, then rerun setup. The app works with any Docker Desktop backend capable of running these Linux containers.
+- Docker requests WSL: this is a Docker Desktop backend prerequisite, not an application installer step. Docker Desktop can use Hyper-V on supported Windows editions with the all-users installation. Windows Home does not provide the full Hyper-V feature; follow Docker Desktop’s supported options for your machine. The script does not select or change your backend.
 - Port 8765 in use: stop the other local app or edit Compose's host port and dashboard/API references consistently.
 - Dev container Python extension download fails: check the network and rerun **Dev Containers: Rebuild Container**.
 - A check remains queued: confirm the worker is running and inspect its logs. Restart the worker if needed; interrupted work is retried. Restart the app to recover any DB-persisted submissions missing a queue file.
