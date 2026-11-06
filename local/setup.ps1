@@ -46,6 +46,7 @@ if (-not $engine) {
     $desktop = @("$env:LOCALAPPDATA\Programs\DockerDesktop\Docker Desktop.exe", "$env:ProgramFiles\Docker\Docker\Docker Desktop.exe") | Where-Object { Test-Path -LiteralPath $_ } | Select-Object -First 1
     if ($desktop) { Start-Process -FilePath $desktop -WindowStyle Hidden }
     Write-Host 'Waiting for Docker Desktop. Open Docker Desktop and finish its first-launch setup. Select Linux containers.'
+    Write-Host 'To avoid WSL: select Docker VMM in Docker Desktop Settings > General > Virtual Machine Manager, if available. See README.md for requirements.'
     for ($n=0; $n -lt 24; $n++) {
         $engine = Get-DockerServerType
         if ($engine) { break }

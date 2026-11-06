@@ -20,6 +20,20 @@ Internet is needed for the initial packages, images and VS Code extension downlo
 
 If Docker/VS Code are already installed, use `setup.ps1 -SkipInstall`. It still installs the Dev Containers extension and builds containers. `-NoOpen` suppresses opening the browser/editor.
 
+## Run Docker Desktop without WSL
+
+Use **Docker VMM**, Docker Desktop's own Windows VM backend. Docker currently marks it **Beta** and documents support starting with Docker Desktop 4.86. Availability depends on the installed version and supported hardware; this project has not tested that backend yet.
+
+1. Install/update Docker Desktop to a version that offers Docker VMM for your Windows hardware. If the installer offers a backend selection, select Docker VMM.
+2. In Docker Desktop, open **Settings > General > Virtual Machine Manager**.
+3. Select **Docker VMM**, then **Apply & restart**. It requires at least 4 GB allocated to the Docker VM, and Docker may prompt to raise that allocation.
+4. If Docker reports that a host directory is not shared, add this installation's `local/` directory under **Settings > Resources > File sharing**. VS Code may also request sharing of its extension/server directories; approve only the directories it needs.
+5. Once Docker Desktop's Linux engine is running, rerun `setup.ps1`, then `smoke-test.ps1`.
+
+The setup script does not invoke WSL. The existing Compose services, PostgreSQL volume, offline worker and VS Code dev container can use any supported Docker Desktop Linux engine. The native Docker VMM backend still runs a Linux VM; it does not require converting the app into Windows containers. If Docker VMM is not offered, check your Docker Desktop version and hardware support rather than installing WSL automatically.
+
+See [Docker's VMM guide](https://docs.docker.com/desktop/features/vmm/) for current availability and requirements. Hyper-V is another no-WSL backend on supported Windows editions with an all-users Docker Desktop installation.
+
 ## Daily use
 
 Start Docker Desktop, then run `start.ps1`. Visit **http://localhost:8765**.
@@ -66,7 +80,7 @@ docker compose up -d --build --wait
 ```
 
 - Docker not ready: open Docker Desktop, finish its setup and select Linux containers, then rerun setup. The app works with any Docker Desktop backend capable of running these Linux containers.
-- Docker requests WSL: this is a Docker Desktop backend prerequisite, not an application installer step. Docker Desktop can use Hyper-V on supported Windows editions with the all-users installation. Windows Home does not provide the full Hyper-V feature; follow Docker Desktop’s supported options for your machine. The script does not select or change your backend.
+- Docker requests WSL: select Docker VMM if supported by your Docker Desktop version/hardware, using the no-WSL instructions above. Hyper-V is another option on supported Windows editions with an all-users installation. The script does not select or change your backend.
 - Port 8765 in use: stop the other local app or edit Compose's host port and dashboard/API references consistently.
 - Dev container Python extension download fails: check the network and rerun **Dev Containers: Rebuild Container**.
 - A check remains queued: confirm the worker is running and inspect its logs. Restart the worker if needed; interrupted work is retried. Restart the app to recover any DB-persisted submissions missing a queue file.
