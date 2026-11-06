@@ -41,4 +41,4 @@ Browser drafts and optional assignment.py files are separate workspaces. Both su
 
 ## Hint
 
-Add a path and one SW1 contact. Leave its type as normally open.
+Drag a normally open SW1 contact to a new path, then drag the LAMP coil to the output box.

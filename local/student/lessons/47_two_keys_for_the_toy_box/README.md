@@ -40,4 +40,4 @@ Browser drafts and optional assignment.py files are separate workspaces. Both su
 
 ## Hint
 
-Add a second contact to the same path, then select SW2.
+Choose SW2 in the toolbox. Drag its contact to the gap after SW1. Connect the LAMP coil.

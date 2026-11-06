@@ -1,19 +1,22 @@
 # Interactive PLC learning lab
 
-Open http://localhost:8765/learn?track=plc. The PLC path has eight introductory lessons, with separate Ladder Logic and Structured Text chapters. It uses virtual switches and a lamp; no PLC, wiring, industrial software license or connection to equipment is needed.
+Open http://localhost:8765/learn and choose **PLC** in the subject dropdown. Its eight introductory lessons have separate **Ladder Logic** and **Structured Text** tabs. Python has its own five learning paths and separate progress counts. It uses virtual switches and a lamp; no PLC, wiring, industrial software license or connection to equipment is needed.
 
 ## Ladder Logic (lessons 46–49)
 
 Build one lamp rung with up to four parallel paths and four series contacts per path:
 
-- Add/remove paths and contacts.
-- Choose SW1 or SW2 for each contact.
+- Choose SW1 or SW2 in the toolbox, then drag a contact to the new parallel path box.
+- Drop another contact on a + gap to make a series path. Drag existing contacts to reorder them or move between paths.
+- Drag the LAMP coil to the output box. An unconnected coil stays OFF and cannot pass a turn-in.
+- Drag existing components to the bin to remove them. Undo/Redo restores diagram edits.
+- For touch or keyboard, select a toolbox item or existing component, then tap a drop zone or press Enter.
 - Choose normally open (NO, passes when its bit is true) or normally closed (NC, passes when its bit is false).
 - Toggle the switches and watch contacts/path highlights and the lamp update immediately.
 - Click a row in the switch-combination table to set that input combination.
 - Use Run scan to check the current diagram through the worker, or Turn in assignment to check all four combinations and save a graded version.
 
-Contacts on one path combine with AND. Parallel paths combine with OR and join before the one LAMP coil. A bare-wire path has no conditions and always passes; no paths means the output is OFF. Contact symbols describe tests of BOOL bits, not the physical wiring of a switch.
+Contacts on one path combine with AND. Parallel paths combine with OR and join before the one LAMP coil. A bare-wire path has no conditions and always passes; no paths or an unconnected coil means the output is OFF. Removing a path’s last contact removes that path. Contact symbols describe tests of BOOL bits, not the physical wiring of a switch.
 
 ## Structured Text (lessons 50–53)
 

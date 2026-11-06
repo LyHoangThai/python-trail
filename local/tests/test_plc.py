@@ -21,6 +21,14 @@ class PLCTests(unittest.TestCase):
                 source=diagram([[]] if value else []) if lesson['engine']=='plc-ladder' else 'LAMP := '+str(value).upper()+';'
                 with self.subTest(lesson=lesson['id'],value=value):self.assertFalse(grade({'quest':lesson['id'],'source':source})['passed'])
 
+    def test_unconnected_coil_and_malformed_diagrams(self):
+        source=json.dumps({'branches':[[NO('SW1')]],'coil':None})
+        self.assertFalse(ladder(source,{'SW1':True,'SW2':False}))
+        result=grade({'quest':46,'source':source})
+        self.assertFalse(result['passed']);self.assertIn('coil',result['feedback'])
+        for source in ['[]','null','not JSON']:
+            self.assertFalse(grade({'quest':46,'source':source})['passed'])
+
     def test_series_parallel_and_closed_contacts(self):
         inputs={'SW1':True,'SW2':False}
         self.assertFalse(ladder(diagram([[NO('SW1'),NO('SW2')]]),inputs))

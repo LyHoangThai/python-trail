@@ -25,7 +25,7 @@ Follow [the local setup guide](local/README.md) for prerequisites, the VS Code w
 ## Development and status
 
 - The local edition is the main direction: a browser editor, containerized worker, persistent PostgreSQL drafts/progress, separate student/parent routes, and full submission history. VS Code is optional.
-- The curriculum has 53 lessons across Beginner, Intermediate, Advanced, Algorithms, Data Structures and PLC. Lessons include Description/History tabs, and the editor includes Output/Helper tabs. See [the grading checklist](GRADING.md).
+- The curriculum has 45 Python lessons across five learning paths and eight PLC lessons across Ladder Logic and Structured Text. Choose Python or PLC from the home subject dropdown. Ladder uses a drag-and-drop toolbox with live switches and Undo/Redo. Lessons include Description/History tabs, and the editor includes Output/Helper tabs. See [the grading checklist](GRADING.md).
 - Current checks cover all 53 reference solutions, incorrect/shortcut answers, helper examples, source preservation, queue recovery, progress refresh and submission banners. See TESTING.md for the dated record.
 - Live Docker checks passed on 2026-11-06: container builds/startup, PostgreSQL persistence, production-worker grading for all 53 solutions, worker uid/queue isolation, infinite-loop termination, the playground submission CLI and browser dashboard. Interactive VS Code attachment is the remaining manual check. See [testing results](TESTING.md).
 - The hosted website is [Python Trail](https://python-trail-lab.roantortoise1.chatgpt.site). Its browser-local progress is separate from the local edition. Organizing files does not redeploy it.
@@ -43,3 +43,7 @@ Generated caches, local database credentials (`.env`), and backups are excluded 
 The latest grading audit, completion-refresh fix, method Helper and submission banners are recorded in TESTING.md. Run `node local/tests/ui.test.cjs` for frontend regression checks.
 
 The interactive PLC lab adds visual Ladder Logic and a Boolean Structured Text interpreter. See [PLC.md](PLC.md) for usage and supported features.
+
+## Adding future subjects
+
+`local/app/subjects.json` defines the home dropdown and each subject’s learning paths. Lessons carry a stable `subject` ID. To add C++, register its subject/paths, add curriculum and matching lesson folders, and implement a bounded execution/grading engine in the worker. C++ lessons and execution are not implemented yet. See [PLC learning](PLC.md) for the current visual lab.

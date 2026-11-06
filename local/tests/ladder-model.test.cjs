@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict'),{edit}=require('../app/static/ladder-model.js');
+const contact=(input='SW1')=>({type:'contact',input,contact:'NO'});let p={branches:[],coil:null};
+p=edit(p,contact(),{type:'parallel'});p=edit(p,contact('SW2'),{type:'slot',path:0,index:1});assert.equal(p.branches[0].length,2);
+p=edit(p,{type:'coil'},{type:'coil'});assert.equal(p.coil,'LAMP');
+p=edit(p,{type:'move',path:0,index:1},{type:'slot',path:0,index:0});assert.equal(p.branches[0][0].input,'SW2');
+p=edit(p,{type:'move',path:0,index:0},{type:'parallel'});assert.equal(p.branches.length,2);
+p=edit(p,{type:'move',path:0,index:0},{type:'trash'});assert.equal(p.branches.length,1);assert.equal(p.branches[0][0].input,'SW2');
+p=edit(p,{type:'move-coil'},{type:'trash'});assert.equal(p.coil,null);
+const before=JSON.stringify(p);assert.throws(()=>edit(p,contact(),{type:'coil'}));assert.equal(JSON.stringify(p),before);
+assert.throws(()=>edit(p,{type:'contact',input:'BAD',contact:'NO'},{type:'parallel'}));
+const full={branches:[Array(4).fill({input:'SW1',contact:'NO'})],coil:'LAMP'};assert.throws(()=>edit(full,contact(),{type:'slot',path:0,index:4}));assert.equal(full.branches[0].length,4);
+console.log('PASS: insert, reorder, move between paths, delete, coil connection, limits and atomic invalid drops');

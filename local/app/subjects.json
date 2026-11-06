@@ -1,0 +1,19 @@
+[
+  {
+    "id":"python","label":"Python","icon":"🐍","example":"print(\"I made this!\")",
+    "tracks":[
+      {"id":"beginner","label":"Beginner","field":"track","value":"beginner","description":"Start here. Learn to talk to Python, store little facts, make choices, and repeat useful steps."},
+      {"id":"intermediate","label":"Intermediate","field":"track","value":"intermediate","description":"Build a bigger toolkit: little number machines, countdowns, tidy text, backpacks and treasure grids. Try Beginner first."},
+      {"id":"advanced","label":"Advanced","field":"track","value":"advanced","description":"Ready for a stretch? Build tiny factories, safety nets and pet blueprints. These lessons combine smaller ideas."},
+      {"id":"algorithms","label":"Algorithms","field":"track","value":"algorithms","description":"An algorithm is a recipe for solving a puzzle. Find a toy, sort marbles and plan a short route. Try Intermediate and Data Structures first."},
+      {"id":"data-structures","label":"Data Structures","field":"track","value":"data-structures","description":"Organize things with plate stacks, waiting lines, unique stickers, branching trees and friendship maps. Try Beginner first."}
+    ]
+  },
+  {
+    "id":"plc","label":"PLC","icon":"💡","example":"LAMP := SW1;",
+    "tracks":[
+      {"id":"ladder","label":"Ladder Logic","field":"engine","value":"plc-ladder","description":"Drag contacts from the toolbox onto a rung. Connect the lamp coil, toggle virtual switches and watch your rule come to life."},
+      {"id":"structured-text","label":"Structured Text","field":"engine","value":"plc-st","description":"Write Boolean rules for a pretend control panel. Toggle switches, run a scan and watch the lamp respond. No equipment needed."}
+    ]
+  }
+]

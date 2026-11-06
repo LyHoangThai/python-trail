@@ -56,3 +56,11 @@ The setup encountered a transient container-name conflict while another startup 
 - All 53 reference solutions passed again inside the production Docker worker, including all 32 PLC truth-table checks.
 - Browser checks verified the PLC path and both chapters; created two contacts in series; toggled inputs and observed the lamp; changed a contact to NC and observed inverse behavior; ran a Ladder scan; edited ST, ran it with SW1 ON, and verified the output/lamp; clicked an ST test-case button and saw its table result; verified the PLC-specific Helper.
 - Restored the initially empty ladder draft and the original ST starter draft after testing. No PLC completions were awarded by the scan tests. Saved plc-ladder-simulator.png as visual proof.
+
+## 2026-11-06 — subject selection and drag-and-drop Ladder
+
+- 35 Python test methods passed, including all 53 reference answers and missing-coil/malformed-diagram cases.
+- Frontend checks passed for separate Python/PLC lesson lists, completion refresh, banners and history. Diagram model checks passed for insertion, reordering, moves between paths, deletion, coil connection, edit limits and atomic invalid drops.
+- Docker app/worker rebuilt and became healthy with the existing database volume. Browser verification used native drag from the toolbox to a new path, keyboard placement of a second series contact, live AND truth table, coil removal/reconnection, Run scan through the worker, and Undo/Redo.
+- Restored the exact original lesson 47 diagram after testing. No graded PLC turn-ins or completions were created. All lessons navigation retained PLC/ladder context; switching to Structured Text displayed only its four lessons.
+- Subject registry supports additional subjects; C++ curriculum and engine are future work.

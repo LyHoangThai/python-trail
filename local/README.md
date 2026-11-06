@@ -106,3 +106,7 @@ For Docker without WSL, select Docker VMM under Docker Desktop Settings > Genera
 Functional tests: `python -m unittest discover -s tests -v` on a host with Python. Frontend regression checks: `node tests/ui.test.cjs` on a development machine with Node.js. Setup regression checks: `powershell -NoProfile -ExecutionPolicy Bypass -File tests/setup.tests.ps1`. The live smoke test, `smoke-test.ps1`, records lesson 1 as completed.
 
 See [the project testing record](../TESTING.md) for live Docker, browser, grading and history verification. Desktop VS Code attachment remains optional and has not been fully verified through its UI.
+
+### Choosing a subject
+
+The home dropdown separates Python and PLC. Python has five learning paths; PLC has Ladder Logic and Structured Text tabs. In Ladder, drag contacts from the toolbox to the dashed path/gap targets, connect the LAMP coil, then try the switches. Existing components can be moved or removed with the bin. Undo/Redo and select-then-tap/Enter placement are available. See [the PLC guide](../PLC.md).

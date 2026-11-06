@@ -11,6 +11,7 @@
     "solution": "print(\"Hello, explorer!\")",
     "expected": "Hello, explorer!",
     "filename": "01_hello_explorer.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Display the required message with print()."
@@ -30,6 +31,7 @@
     "solution": "print(\"My name is Python\")\nprint(\"Let's explore!\")",
     "expected": "My name is Python\nLet's explore!",
     "filename": "02_a_tiny_postcard.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Display both lines in the required order."
@@ -49,6 +51,7 @@
     "solution": "print(7 * 8)",
     "expected": "56",
     "filename": "03_pocket_calculator.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Calculate the answer with multiplication, rather than printing 56 directly."
@@ -68,6 +71,7 @@
     "solution": "# My adventure starts here\nprint(\"Ready for adventure!\")",
     "expected": "Ready for adventure!",
     "filename": "04_secret_notes.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Include a real Python comment and print the message."
@@ -87,6 +91,7 @@
     "solution": "print(3)\nprint(2)\nprint(1)\nprint(\"Liftoff!\")",
     "expected": "3\n2\n1\nLiftoff!",
     "filename": "05_launch_countdown.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Print the launch sequence in order."
@@ -106,6 +111,7 @@
     "solution": "name = \"Pip\"\nprint(name)",
     "expected": "Pip",
     "filename": "06_name_your_explorer.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Store Pip in name and print the variable.",
@@ -126,6 +132,7 @@
     "solution": "coins = 10\ncoins = coins + 5\nprint(coins)",
     "expected": "15",
     "filename": "07_treasure_pouch.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Start coins at 10, add 5, and print the updated variable."
@@ -145,6 +152,7 @@
     "solution": "name = \"Pip\"\nprint(f\"Hello, {name}!\")",
     "expected": "Hello, Pip!",
     "filename": "08_say_it_your_way.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Print an f-string that inserts the name variable with {name}.",
@@ -165,6 +173,7 @@
     "solution": "snacks = 17\nfriends = 4\nprint(snacks // friends)\nprint(snacks % friends)",
     "expected": "4\n1",
     "filename": "09_sharing_snacks.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Calculate shares with // and leftovers with %.",
@@ -185,6 +194,7 @@
     "solution": "name = \"Pip\"\nlevel = 1\nprint(f\"Explorer: {name}\")\nprint(f\"Level: {level}\")",
     "expected": "Explorer: Pip\nLevel: 1",
     "filename": "10_explorer_id.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Use name and level in the printed character card.",
@@ -205,6 +215,7 @@
     "solution": "coins = 12\nif coins >= 10:\n    print(\"Gate open!\")",
     "expected": "Gate open!",
     "filename": "11_the_forest_gate.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Use an if condition based on coins.",
@@ -225,6 +236,7 @@
     "solution": "raining = False\nif raining:\n    print(\"Bring a coat\")\nelse:\n    print(\"Bring a hat\")",
     "expected": "Bring a hat",
     "filename": "12_rain_or_shine.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Use if / else based on raining.",
@@ -245,6 +257,7 @@
     "solution": "door = 2\nif door == 1:\n    print(\"A sleepy dragon\")\nelif door == 2:\n    print(\"A treasure chest\")\nelse:\n    print(\"A friendly frog\")",
     "expected": "A treasure chest",
     "filename": "13_three_secret_doors.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Use if / elif with the door variable.",
@@ -265,6 +278,7 @@
     "solution": "has_map = True\nhas_key = True\nif has_map and has_key:\n    print(\"Adventure unlocked!\")",
     "expected": "Adventure unlocked!",
     "filename": "14_both_keys.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Use and to require both has_map and has_key."
@@ -284,6 +298,7 @@
     "solution": "score = 85\nif score >= 80:\n    print(\"Gold\")\nelif score >= 50:\n    print(\"Silver\")\nelse:\n    print(\"Bronze\")",
     "expected": "Gold",
     "filename": "15_treasure_judge.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Use if / elif / else for Gold, Silver and Bronze.",
@@ -304,6 +319,7 @@
     "solution": "for turn in range(3):\n    print(\"Hello!\")",
     "expected": "Hello!\nHello!\nHello!",
     "filename": "16_echo_meadow.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Print the greeting inside a for loop."
@@ -323,6 +339,7 @@
     "solution": "for step in range(1, 6):\n    print(step)",
     "expected": "1\n2\n3\n4\n5",
     "filename": "17_stepping_stones.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Print each number from a for loop."
@@ -342,6 +359,7 @@
     "solution": "backpack = [\"map\", \"snack\", \"torch\"]\nfor item in backpack:\n    print(item)",
     "expected": "map\nsnack\ntorch",
     "filename": "18_backpack_inventory.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Loop through the backpack list and print its actual items."
@@ -361,6 +379,7 @@
     "solution": "def cheer():\n    print(\"You can do this!\")\n\ncheer()\ncheer()",
     "expected": "You can do this!\nYou can do this!",
     "filename": "19_a_reusable_spell.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Define cheer() with its print instruction, then call it twice."
@@ -380,6 +399,7 @@
     "solution": "explorers = [\"Pip\", \"Nova\", \"Ash\"]\n\ndef welcome(name):\n    print(f\"Welcome, {name}!\")\n\nfor explorer in explorers:\n    welcome(explorer)",
     "expected": "Welcome, Pip!\nWelcome, Nova!\nWelcome, Ash!",
     "filename": "20_the_final_campfire.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Define welcome(name) and use its parameter in the greeting.",
@@ -400,6 +420,7 @@
     "solution": "hero = {\"name\": \"Pip\", \"level\": 1}\nprint(hero[\"name\"])\nprint(hero[\"level\"])",
     "expected": "Pip\n1",
     "filename": "21_a_character_dictionary.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Create the hero dictionary and read its name and level keys."
@@ -419,6 +440,7 @@
     "solution": "hero = {\"name\": \"Pip\", \"level\": 1}\nhero[\"level\"] += 1\nprint(hero[\"level\"])",
     "expected": "2",
     "filename": "22_level_up.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Start hero with level 1, update its level entry, and print that entry."
@@ -438,6 +460,7 @@
     "solution": "hero = {\"name\": \"Pip\"}\nprint(hero.get(\"pet\", \"No pet yet\"))",
     "expected": "No pet yet",
     "filename": "23_a_missing_key.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Use hero.get(\"pet\", \"No pet yet\") in the output.",
@@ -458,6 +481,7 @@
     "solution": "bag = {\"map\": 1, \"snack\": 3}\nfor item, count in bag.items():\n    print(f\"{item}: {count}\")",
     "expected": "map: 1\nsnack: 3",
     "filename": "24_inventory_report.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Loop through bag.items() and print each key and value."
@@ -477,6 +501,7 @@
     "solution": "heroes = [{\"name\": \"Pip\", \"level\": 1}, {\"name\": \"Nova\", \"level\": 2}]\n\ndef introduce(hero):\n    print(f\"{hero['name']} is level {hero['level']}\")\n\nfor hero in heroes:\n    introduce(hero)",
     "expected": "Pip is level 1\nNova is level 2",
     "filename": "25_your_explorer_registry.py",
+    "subject": "python",
     "track": "beginner",
     "checks": [
       "Define introduce(hero), read its dictionary values, and call it from a loop over heroes."
@@ -500,6 +525,7 @@
       "Define and call double(number).",
       "Return a calculated value; it must work for other numbers too."
     ],
+    "subject": "python",
     "filename": "26_the_doubling_machine.py",
     "directory": "lessons/26_the_doubling_machine",
     "assignment_path": "lessons/26_the_doubling_machine/assignment.py"
@@ -520,6 +546,7 @@
       "Use a while loop with a changing count.",
       "Start at the given count and stop at zero."
     ],
+    "subject": "python",
     "filename": "27_rocket_keep_counting.py",
     "directory": "lessons/27_rocket_keep_counting",
     "assignment_path": "lessons/27_rocket_keep_counting/assignment.py"
@@ -540,6 +567,7 @@
       "Use both strip() and title() in the text you print.",
       "Work with the label variable."
     ],
+    "subject": "python",
     "filename": "28_tidy_the_name_tag.py",
     "directory": "lessons/28_tidy_the_name_tag",
     "assignment_path": "lessons/28_tidy_the_name_tag/assignment.py"
@@ -560,6 +588,7 @@
       "Use append() to add snack to backpack.",
       "Loop over the updated backpack."
     ],
+    "subject": "python",
     "filename": "29_pack_one_more_snack.py",
     "directory": "lessons/29_pack_one_more_snack",
     "assignment_path": "lessons/29_pack_one_more_snack/assignment.py"
@@ -579,6 +608,7 @@
     "checks": [
       "Use nested list indexing with row and column."
     ],
+    "subject": "python",
     "filename": "30_a_tiny_treasure_grid.py",
     "directory": "lessons/30_a_tiny_treasure_grid",
     "assignment_path": "lessons/30_a_tiny_treasure_grid/assignment.py"
@@ -599,6 +629,7 @@
       "Build the printed list with a list comprehension.",
       "Square the actual input values."
     ],
+    "subject": "python",
     "filename": "31_the_square_factory.py",
     "directory": "lessons/31_the_square_factory",
     "assignment_path": "lessons/31_the_square_factory/assignment.py"
@@ -619,6 +650,7 @@
       "Use try / except for the conversion.",
       "Handle both numeric text and invalid text."
     ],
+    "subject": "python",
     "filename": "32_a_friendly_safety_net.py",
     "directory": "lessons/32_a_friendly_safety_net",
     "assignment_path": "lessons/32_a_friendly_safety_net/assignment.py"
@@ -639,6 +671,7 @@
       "Define class Pet and its speak method.",
       "Create a Pet object and call its speak method."
     ],
+    "subject": "python",
     "filename": "33_meet_your_pet_blueprint.py",
     "directory": "lessons/33_meet_your_pet_blueprint",
     "assignment_path": "lessons/33_meet_your_pet_blueprint/assignment.py"
@@ -659,6 +692,7 @@
       "Use a countdown function that calls itself.",
       "Stop at zero and handle other starting values."
     ],
+    "subject": "python",
     "filename": "34_the_echo_staircase.py",
     "directory": "lessons/34_the_echo_staircase",
     "assignment_path": "lessons/34_the_echo_staircase/assignment.py"
@@ -679,6 +713,7 @@
       "Define and call the snacks generator.",
       "Use yield and a for loop."
     ],
+    "subject": "python",
     "filename": "35_one_snack_at_a_time.py",
     "directory": "lessons/35_one_snack_at_a_time",
     "assignment_path": "lessons/35_one_snack_at_a_time/assignment.py"
@@ -699,6 +734,7 @@
       "Search with a loop and comparison inside find_toy.",
       "Handle a missing toy and an empty shelf."
     ],
+    "subject": "python",
     "filename": "36_find_the_missing_toy.py",
     "directory": "lessons/36_find_the_missing_toy",
     "assignment_path": "lessons/36_find_the_missing_toy/assignment.py"
@@ -719,6 +755,7 @@
       "Use a while loop and a middle index calculated with // inside binary_find.",
       "Handle targets at both ends and a missing target."
     ],
+    "subject": "python",
     "filename": "37_guess_the_secret_shelf.py",
     "directory": "lessons/37_guess_the_secret_shelf",
     "assignment_path": "lessons/37_guess_the_secret_shelf/assignment.py"
@@ -739,6 +776,7 @@
       "Use nested loops, compare neighbors and update marbles.",
       "Practice the algorithm without sort() or sorted()."
     ],
+    "subject": "python",
     "filename": "38_bubble_the_marbles.py",
     "directory": "lessons/38_bubble_the_marbles",
     "assignment_path": "lessons/38_bubble_the_marbles/assignment.py"
@@ -759,6 +797,7 @@
       "Loop over votes and maintain dictionary counts.",
       "Use get() for a missing count."
     ],
+    "subject": "python",
     "filename": "39_count_the_color_votes.py",
     "directory": "lessons/39_count_the_color_votes",
     "assignment_path": "lessons/39_count_the_color_votes/assignment.py"
@@ -779,6 +818,7 @@
       "Explore a graph using a queue, popleft() and a visited set.",
       "Return the shortest number of steps or -1 when unreachable."
     ],
+    "subject": "python",
     "filename": "40_shortest_path_to_the_park.py",
     "directory": "lessons/40_shortest_path_to_the_park",
     "assignment_path": "lessons/40_shortest_path_to_the_park/assignment.py"
@@ -798,6 +838,7 @@
     "checks": [
       "Use append() and pop() for last-in, first-out behavior."
     ],
+    "subject": "python",
     "filename": "41_stack_the_plates.py",
     "directory": "lessons/41_stack_the_plates",
     "assignment_path": "lessons/41_stack_the_plates/assignment.py"
@@ -818,6 +859,7 @@
       "Build a deque and use append() and popleft().",
       "Serve people in first-in, first-out order."
     ],
+    "subject": "python",
     "filename": "42_wait_your_turn.py",
     "directory": "lessons/42_wait_your_turn",
     "assignment_path": "lessons/42_wait_your_turn/assignment.py"
@@ -838,6 +880,7 @@
       "Use set() to collect unique values.",
       "Count and display the actual unique items."
     ],
+    "subject": "python",
     "filename": "43_collect_unique_colors.py",
     "directory": "lessons/43_collect_unique_colors",
     "assignment_path": "lessons/43_collect_unique_colors/assignment.py"
@@ -858,6 +901,7 @@
       "Read a root node and visit its immediate children.",
       "Use dictionary keys and a loop."
     ],
+    "subject": "python",
     "filename": "44_a_branching_family_tree.py",
     "directory": "lessons/44_a_branching_family_tree",
     "assignment_path": "lessons/44_a_branching_family_tree/assignment.py"
@@ -877,6 +921,7 @@
     "checks": [
       "Read the selected person’s neighbor list and loop through it."
     ],
+    "subject": "python",
     "filename": "45_a_map_of_friendships.py",
     "directory": "lessons/45_a_map_of_friendships",
     "assignment_path": "lessons/45_a_map_of_friendships/assignment.py"
@@ -892,14 +937,15 @@
     "plc_requires": [],
     "explain": "A PLC reads inputs, follows a program, and updates outputs over and over. In this toy lab, SW1 is an input and LAMP is an output. A normally open contact —| |— passes a true path when its switch is ON. A coil —( )— uses the result.",
     "mission": "Build one path with a normally open SW1 contact driving the LAMP coil. Toggle SW1 and watch the lamp.",
-    "hint": "Add a path and one SW1 contact. Leave its type as normally open.",
-    "starter": "{\n  \"branches\": [],\n  \"coil\": \"LAMP\"\n}\n",
+    "hint": "Drag a normally open SW1 contact to a new path, then drag the LAMP coil to the output box.",
+    "starter": "{\n  \"branches\": [],\n  \"coil\": null\n}\n",
     "solution": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}\n",
     "expected": "SW1 OFF → LAMP OFF\nSW1 ON → LAMP ON",
     "checks": [
       "Test all four combinations of SW1 and SW2.",
       "Use the contact or Structured Text idea described in the assignment."
     ],
+    "subject": "plc",
     "filename": "46_a_switch_and_a_lamp.py",
     "directory": "lessons/46_a_switch_and_a_lamp",
     "assignment_path": "lessons/46_a_switch_and_a_lamp/assignment.ladder.json"
@@ -915,14 +961,15 @@
     "plc_requires": [],
     "explain": "Two contacts in series are like two keys in a row. The path is true only when both contacts pass. This is AND logic.",
     "mission": "Put normally open SW1 and SW2 contacts on the same path so the lamp turns on only when both switches are ON.",
-    "hint": "Add a second contact to the same path, then select SW2.",
-    "starter": "{\n  \"branches\": [],\n  \"coil\": \"LAMP\"\n}\n",
+    "hint": "Choose SW2 in the toolbox. Drag its contact to the gap after SW1. Connect the LAMP coil.",
+    "starter": "{\n  \"branches\": [],\n  \"coil\": null\n}\n",
     "solution": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      },\n      {\n        \"input\": \"SW2\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}\n",
     "expected": "Only both switches ON → LAMP ON",
     "checks": [
       "Test all four combinations of SW1 and SW2.",
       "Use the contact or Structured Text idea described in the assignment."
     ],
+    "subject": "plc",
     "filename": "47_two_keys_for_the_toy_box.py",
     "directory": "lessons/47_two_keys_for_the_toy_box",
     "assignment_path": "lessons/47_two_keys_for_the_toy_box/assignment.ladder.json"
@@ -938,14 +985,15 @@
     "plc_requires": [],
     "explain": "Parallel paths are like two doors into the same room: either path can let the signal through. This is OR logic.",
     "mission": "Build two parallel paths: SW1 on one, SW2 on the other. Either switch should turn on the lamp.",
-    "hint": "Add a new path instead of adding another contact to the first path.",
-    "starter": "{\n  \"branches\": [],\n  \"coil\": \"LAMP\"\n}\n",
+    "hint": "Drag the contacts to separate new parallel paths. Connect the LAMP coil.",
+    "starter": "{\n  \"branches\": [],\n  \"coil\": null\n}\n",
     "solution": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      }\n    ],\n    [\n      {\n        \"input\": \"SW2\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}\n",
     "expected": "Either switch ON → LAMP ON",
     "checks": [
       "Test all four combinations of SW1 and SW2.",
       "Use the contact or Structured Text idea described in the assignment."
     ],
+    "subject": "plc",
     "filename": "48_either_doorbell_works.py",
     "directory": "lessons/48_either_doorbell_works",
     "assignment_path": "lessons/48_either_doorbell_works/assignment.ladder.json"
@@ -962,13 +1010,14 @@
     "explain": "A normally closed contact —|/|— checks for FALSE. It passes when its switch is OFF. This is a program instruction checking a bit; it is not a claim about a physical switch’s wiring.",
     "mission": "Use a normally closed SW1 contact so the lamp is ON when SW1 is OFF, and OFF when SW1 is ON.",
     "hint": "Select SW1, then change the contact type from normally open to normally closed.",
-    "starter": "{\n  \"branches\": [],\n  \"coil\": \"LAMP\"\n}\n",
+    "starter": "{\n  \"branches\": [],\n  \"coil\": null\n}\n",
     "solution": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NC\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}\n",
     "expected": "SW1 OFF → LAMP ON\nSW1 ON → LAMP OFF",
     "checks": [
       "Test all four combinations of SW1 and SW2.",
       "Use the contact or Structured Text idea described in the assignment."
     ],
+    "subject": "plc",
     "filename": "49_the_opposite_day_contact.py",
     "directory": "lessons/49_the_opposite_day_contact",
     "assignment_path": "lessons/49_the_opposite_day_contact/assignment.ladder.json"
@@ -992,6 +1041,7 @@
       "Test all four combinations of SW1 and SW2.",
       "Use the contact or Structured Text idea described in the assignment."
     ],
+    "subject": "plc",
     "filename": "50_write_a_lamp_rule.py",
     "directory": "lessons/50_write_a_lamp_rule",
     "assignment_path": "lessons/50_write_a_lamp_rule/assignment.st"
@@ -1017,6 +1067,7 @@
       "Test all four combinations of SW1 and SW2.",
       "Use the contact or Structured Text idea described in the assignment."
     ],
+    "subject": "plc",
     "filename": "51_both_switches_in_words.py",
     "directory": "lessons/51_both_switches_in_words",
     "assignment_path": "lessons/51_both_switches_in_words/assignment.st"
@@ -1042,6 +1093,7 @@
       "Test all four combinations of SW1 and SW2.",
       "Use the contact or Structured Text idea described in the assignment."
     ],
+    "subject": "plc",
     "filename": "52_either_switch_in_words.py",
     "directory": "lessons/52_either_switch_in_words",
     "assignment_path": "lessons/52_either_switch_in_words/assignment.st"
@@ -1068,6 +1120,7 @@
       "Test all four combinations of SW1 and SW2.",
       "Use the contact or Structured Text idea described in the assignment."
     ],
+    "subject": "plc",
     "filename": "53_an_opposite_day_decision.py",
     "directory": "lessons/53_an_opposite_day_decision",
     "assignment_path": "lessons/53_an_opposite_day_decision/assignment.st"

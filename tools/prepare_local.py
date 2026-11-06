@@ -27,6 +27,7 @@ for i,e in enumerate(extras,21):
  filename=f'{i:02d}_'+re.sub('[^a-z0-9]+','_',title.lower()).strip('_')+'.py'
  lessons.append(dict(id=i,title=title,topic='Dictionaries',chapter=5,explain=explain,mission=mission,hint=hint,starter=starter,solution=solution,expected=expected,filename=filename))
 for lesson in lessons:
+ lesson['subject']='python'
  lesson['track']='beginner'
  lesson['checks']=CHECKS[lesson['id']]
  if lesson['id']==15: lesson['mission']=lesson['mission'].replace('We check three scores.', 'We also check scores at the 50 and 80 boundaries.')
@@ -34,6 +35,7 @@ for lesson in lessons:
  create_lesson(lesson,root/'student')
 for extra in EXTRA_LESSONS+PLC_LESSONS:
  lesson=dict(extra)
+ lesson['subject']='plc' if lesson.get('engine','').startswith('plc-') else 'python'
  slug=re.sub(r'[^a-z0-9]+','_',lesson['title'].lower()).strip('_')
  lesson['filename']=f"{lesson['id']:02d}_{slug}.py"
  create_lesson(lesson,root/'student')

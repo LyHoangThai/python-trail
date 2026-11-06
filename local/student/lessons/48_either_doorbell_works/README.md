@@ -40,4 +40,4 @@ Browser drafts and optional assignment.py files are separate workspaces. Both su
 
 ## Hint
 
-Add a new path instead of adding another contact to the first path.
+Drag the contacts to separate new parallel paths. Connect the LAMP coil.

@@ -13,6 +13,7 @@ ROOT=Path(__file__).parent
 QUEUE=Path(os.environ.get('TRAIL_QUEUE','/queue'))
 LESSONS=json.loads((ROOT/'lessons.json').read_text(encoding='utf-8'))
 BY_ID={q['id']:q for q in LESSONS}
+SUBJECTS=json.loads((ROOT/'subjects.json').read_text(encoding='utf-8'))
 
 class Store:
     def connect(self):
@@ -174,6 +175,7 @@ def make_handler(service):
                     with service.store.connect() as db: db.execute('SELECT 1')
                     return self.response(200,{'ok':True})
                 service.sync()
+                if route=='/api/subjects': return self.response(200,{'subjects':SUBJECTS})
                 if route=='/api/lessons':
                     host_dir=os.environ.get('HOST_STUDENT_DIR','')
                     return self.response(200,{'lessons':[{k:v for k,v in q.items() if k!='solution'} for q in LESSONS], 'student_dir':host_dir})
@@ -205,7 +207,7 @@ def make_handler(service):
                 pages={'/learn':'learn.html','/parent':'parent.html','/playground':'lesson.html'}
                 if re.fullmatch(r'/lessons/\d+',route) and int(route.rsplit('/',1)[1]) in BY_ID: pages[route]='lesson.html'
                 if re.fullmatch(r'/parent/submissions/[0-9a-f]{32}',route): pages[route]='submission.html'
-                assets=('/style.css','/app.css','/parent.js','/student.js','/learn.js','/review.js','/helper.js','/helper.json','/plc.js','/plc-helper.json')
+                assets=('/style.css','/app.css','/parent.js','/student.js','/learn.js','/review.js','/helper.js','/helper.json','/plc.js','/plc-helper.json','/ladder-model.js')
                 if route in pages or route in assets:
                     name=pages.get(route,route.lstrip('/'))
                     types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8'}
