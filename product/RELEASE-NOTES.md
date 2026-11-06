@@ -1,4 +1,4 @@
-# Release notes — 0.1.1 sample
+# Release notes — 0.1.2 sample
 
 - 45 Python lessons, 8 introductory PLC lessons, and an extensible subject registry.
 - Separate lesson, free playground and parent review routes.
@@ -11,4 +11,4 @@ Validation inherited from this build: 35 Python test methods plus frontend/model
 
 The first installation downloads prerequisites/base images. No offline Docker image bundle is included. Later use requires Docker Desktop; image rebuilds may still need registry access. Docker, PostgreSQL and optional VS Code retain their own licenses. Commercial licensing for this application's source has not been selected as part of this sample packaging.
 
-Version 0.1.1 adds a double-click Windows launcher and setup window with a single setup/start button, live progress, retry feedback and automatic browser opening. Installer approvals, first-launch Docker prompts and restarts remain interactive. Setup logs stay in the used installation; share the clean ZIP.
+Version 0.1.2 adds a double-click Windows launcher and setup window with a single setup/start button, live progress, retry feedback and automatic browser opening. Installer approvals, first-launch Docker prompts and restarts remain interactive. Setup logs stay in the used installation; share the clean ZIP.

@@ -1,5 +1,11 @@
 # Python Trail
 
+## Install with one file
+
+Download [Install-Python-Trail.cmd](https://github.com/LyHoangThai/python-trail/raw/refs/heads/main/Install-Python-Trail.cmd) and double-click it. No Git checkout, ZIP extraction or typed commands are needed. The launcher downloads the verified sample, starts its setup window automatically, and creates a Python Trail desktop shortcut. Windows may still request installer approval, Docker initialization or a restart. After a restart, run the launcher again.
+
+The initial download requires internet and a public GitHub repository. App files are installed under `%LOCALAPPDATA%\PythonTrail`. The lab runs locally on port 8766; the original development app on 8765 is unaffected. Source remains open on GitHub and is downloaded automatically as part of the application package. See [installer details](distribution/README.md).
+
 This folder is the main project location for future work. It brings together the original hosted website, the local Docker/VS Code edition, lesson source material, and existing release archives. Earlier copies outside this folder are retained so previous download links keep working; make future changes here.
 
 ## Project layout

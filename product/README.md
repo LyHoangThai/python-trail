@@ -1,6 +1,6 @@
 # Python Trail — Python & PLC Sample
 
-**Version 0.1.1 · Local learning lab · Windows + Docker Desktop**
+**Version 0.1.2 · Local learning lab · Windows + Docker Desktop**
 
 A working sample product for families: kids learn Python and PLC logic, submit assignments, and let parents review their progress and every revision. All 53 lessons are included. No paid learning subscription or API key is required.
 

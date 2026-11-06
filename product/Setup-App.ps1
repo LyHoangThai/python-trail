@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([switch]$CheckOnly)
+param([switch]$CheckOnly,[switch]$AutoStart)
 $ErrorActionPreference='Stop'
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
@@ -69,4 +69,5 @@ $button.add_Click({
 $form.add_FormClosing({param($sender,$eventArgs)
     if($script:setupProcess -and -not $script:setupProcess.HasExited){$eventArgs.Cancel=$true;[void][System.Windows.Forms.MessageBox]::Show('Setup is still running. Please wait for it to finish before closing this window.','Setup in progress')}
 })
+if($AutoStart){$form.add_Shown({$button.PerformClick()})}
 try{[void]$form.ShowDialog()}finally{$timer.Stop();$timer.Dispose();$form.Dispose()}
