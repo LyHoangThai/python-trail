@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([switch]$SkipInstall, [switch]$NoOpen)
+param([switch]$SkipInstall, [switch]$NoOpen, [switch]$WithVSCode)
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $PSScriptRoot
 
@@ -35,11 +35,11 @@ function Get-DockerServerType {
     return $null
 }
 
-Write-Host 'Python Trail local setup: Docker Desktop + VS Code + containerized Python, worker and database.'
+Write-Host 'Python Trail local setup: browser lessons + containerized Python worker and database.'
 Write-Host 'Internet is required for the first setup. Existing student files and database volumes are preserved.'
 Refresh-Tools
 Install-PackageIfMissing 'docker' 'Docker.DockerDesktop'
-Install-PackageIfMissing 'code' 'Microsoft.VisualStudioCode' -UserScope
+if ($WithVSCode) { Install-PackageIfMissing 'code' 'Microsoft.VisualStudioCode' -UserScope }
 if (-not (Get-Command docker -ErrorAction SilentlyContinue)) { throw 'Docker installed. Restart Windows or open a new PowerShell window, then rerun setup.ps1.' }
 $engine = Get-DockerServerType
 if (-not $engine) {
@@ -72,14 +72,19 @@ if (-not (Test-Path -LiteralPath '.env')) {
     $lines += "HOST_STUDENT_DIR='$studentPath'"
     [System.IO.File]::WriteAllLines($envPath, $lines, (New-Object System.Text.UTF8Encoding $false))
 }
-& code --install-extension ms-vscode-remote.remote-containers
-if ($LASTEXITCODE -ne 0) { throw 'Could not install the VS Code Dev Containers extension. Check your connection and rerun.' }
-& docker compose up -d --build --wait
+if ($WithVSCode) {
+    & code --install-extension ms-vscode-remote.remote-containers
+    if ($LASTEXITCODE -ne 0) { throw 'Could not install the VS Code Dev Containers extension. Check your connection and rerun.' }
+}
+$composeArgs=@('compose')
+if ($WithVSCode) { $composeArgs+=@('--profile','vscode') }
+$composeArgs+=@('up','-d','--build','--wait')
+& docker @composeArgs
 if ($LASTEXITCODE -ne 0) { throw 'Containers did not start. Run docker compose logs app worker db for details.' }
-Write-Host 'Ready: http://localhost:8765'
-Write-Host 'In VS Code: Ctrl+Shift+P -> Dev Containers: Reopen in Container.'
-Write-Host 'Save a quest file; Ctrl+Shift+P -> Tasks: Run Test Task -> Trail: Check current quest.'
+Write-Host 'Student lessons: http://localhost:8765/learn'
+Write-Host 'Parent dashboard: http://localhost:8765/parent'
+if ($WithVSCode) { Write-Host 'Optional VS Code: Dev Containers: Reopen in Container, then Trail: Turn in assignment.' }
 if (-not $NoOpen) {
-    & code --new-window (Join-Path $PSScriptRoot 'student')
-    Start-Process 'http://localhost:8765'
+    if ($WithVSCode) { & code --new-window (Join-Path $PSScriptRoot 'student') }
+    Start-Process 'http://localhost:8765/learn'
 }

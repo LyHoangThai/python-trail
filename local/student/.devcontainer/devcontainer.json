@@ -2,6 +2,7 @@
   "name": "Python Trail playground",
   "dockerComposeFile": "../../compose.yml",
   "service": "playground",
+  "runServices": ["db", "app", "worker", "playground"],
   "workspaceFolder": "/workspace",
   "shutdownAction": "none",
   "overrideCommand": false,

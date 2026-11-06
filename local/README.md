@@ -1,77 +1,77 @@
 # Python Trail — local edition
 
-A local Python learning lab for one child and parent on one Windows computer. The browser teaches and shows progress; **VS Code is the playground**. All 25 quests are unlocked, including variables, lists and dictionaries. No paid API, subscription or cloud database is used.
+A free local Python learning lab with 25 lessons. The main experience runs in one browser window: lesson instructions, Python editor, output and assignment turn-in. Docker Desktop runs the worker and PostgreSQL in the background. VS Code is optional.
 
-## First setup (Windows)
+## Setup on Windows
 
-1. Extract the entire download to a permanent folder you own, for example `Documents\PythonTrail`. Avoid moving it after starting the containers.
-2. Open PowerShell in that folder and run:
+Open PowerShell in this folder and run:
 
-   ```powershell
-   powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1
-   ```
-
-   This bypass applies only to this process. It does not change your machine's execution policy. Read the script before running it.
-
-3. Setup installs Docker Desktop and VS Code through WinGet if missing, installs the Dev Containers extension, generates a local database password, downloads/builds the containers and opens the learning dashboard. It preserves existing code and progress on reruns. Prerequisite package agreements are accepted by the script; Docker Desktop may still require first-launch terms and Windows may request administrator permission. The script checks Docker Desktop’s Linux engine; it does not call WSL or configure a backend. Finish Docker Desktop’s own prerequisite/backend prompts and restart if requested, then run setup again.
-4. In VS Code, open the Command Palette (`Ctrl+Shift+P`) and choose **Dev Containers: Reopen in Container**. Accept the workspace trust prompt only for your extracted copy. Allow the Python extension/server download to finish.
-
-Internet is needed for the initial packages, images and VS Code extension downloads. The lessons, grading and dashboard need no external service once installed. No host Python, Node.js, Git or separate PostgreSQL installation is necessary. Docker Desktop's Windows and selected-backend requirements still apply; see [Docker's Windows installation guide](https://docs.docker.com/desktop/setup/install/windows-install/). This package targets Windows, not macOS/Linux installation.
-
-If Docker/VS Code are already installed, use `setup.ps1 -SkipInstall`. It still installs the Dev Containers extension and builds containers. `-NoOpen` suppresses opening the browser/editor.
-
-## Run Docker Desktop without WSL
-
-Use **Docker VMM**, Docker Desktop's own Windows VM backend. Docker currently marks it **Beta** and documents support starting with Docker Desktop 4.86. Availability depends on the installed version and supported hardware; this project has not tested that backend yet.
-
-1. Install/update Docker Desktop to a version that offers Docker VMM for your Windows hardware. If the installer offers a backend selection, select Docker VMM.
-2. In Docker Desktop, open **Settings > General > Virtual Machine Manager**.
-3. Select **Docker VMM**, then **Apply & restart**. It requires at least 4 GB allocated to the Docker VM, and Docker may prompt to raise that allocation.
-4. If Docker reports that a host directory is not shared, add this installation's `local/` directory under **Settings > Resources > File sharing**. VS Code may also request sharing of its extension/server directories; approve only the directories it needs.
-5. Once Docker Desktop's Linux engine is running, rerun `setup.ps1`, then `smoke-test.ps1`.
-
-The setup script does not invoke WSL. The existing Compose services, PostgreSQL volume, offline worker and VS Code dev container can use any supported Docker Desktop Linux engine. The native Docker VMM backend still runs a Linux VM; it does not require converting the app into Windows containers. If Docker VMM is not offered, check your Docker Desktop version and hardware support rather than installing WSL automatically.
-
-See [Docker's VMM guide](https://docs.docker.com/desktop/features/vmm/) for current availability and requirements. Hyper-V is another no-WSL backend on supported Windows editions with an all-users Docker Desktop installation.
-
-## Daily use
-
-Start Docker Desktop, then run `start.ps1`. Visit **http://localhost:8765**.
-
-1. Choose a quest in the learning website. It labels the topic (for example Variables, Lists or Dictionaries) and marks it as the current quest.
-2. Click **Open quest in VS Code** or find the matching file inside the container's `quests/` folder. Desktop links can open a local VS Code window; if that happens, reopen `student/` in the dev container and use its Explorer.
-3. Read the commented mission, edit the starter code, then **save** the file.
-4. In the Command Palette choose **Tasks: Run Test Task → Trail: Check current quest**. The terminal shows worker output and feedback. The parent dashboard refreshes every 3 seconds.
-5. Use **Trail: Start current quest** to update the current topic before submitting if you opened a file directly in VS Code.
-
-For free play, open `playground.py`. **Ctrl+Shift+B** runs the current Python file; interactive `input()` works in the terminal. The normal Python Run button also runs files, but does **not** submit or award completion. Use the Check task for that. Do not run the task from the local Windows window: `/tools/trail.py` and Python are provided inside the container.
-
-Quest grading is noninteractive and checks defined expected output and basic language techniques. Use the input-enabled playground for interactive experiments. Hints and worked solutions are available in the website. Checkers guide practice; they are not exams or proof of mastery.
-
-## What parents see
-
-- Last quest explicitly started or submitted and its topic.
-- Per-topic completed counts, including Variables, Lists and Dictionaries.
-- Attempts per quest and recent checks with timestamps/results.
-
-The dashboard does not watch your child's keystrokes or automatically detect an edited file. Opening a quest marks it current; the Start task or Check task updates it from VS Code. Free play does not mark curriculum completion. This is a single-learner installation, with no separate parent password or remote-device sync. Anyone using the same computer can view progress. The previous hosted site's browser-local progress is separate and is not migrated automatically.
-
-## Containers and data
-
-```text
-Browser at localhost:8765 ── app ── PostgreSQL (progress volume)
-                               └─ jobs in queue volume
-VS Code ── playground ── app         │
-                               offline worker
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1
 ```
 
-The web app is bound to `127.0.0.1`; PostgreSQL has no published port. The worker has **no network**, no Docker socket, no student-folder mount, and no database credentials. Each submitted program runs as an unprivileged subprocess with a timeout and process/memory/output limits inside a read-only-root container. The playground mounts only student code and read-only submission tools; it can access the app but not the database network. Container limits are intended for family practice, not hostile multi-tenant code hosting. Do not expose this app publicly.
+Setup installs Docker Desktop if missing, generates an ignored local database password, builds the containers, and opens the student page. Finish Docker Desktop's first-launch setup and restart Windows if requested before rerunning the script. The script does not invoke or install WSL; Docker Desktop manages its selected Linux backend. Initial software/images require internet. Host Python, Node.js and PostgreSQL are not required.
 
-PostgreSQL stores starts, submitted source, results and completed quests in a persistent Docker volume. Student `.py` files live in `student/` on your computer. `stop.ps1` preserves both. Never run `docker compose down -v` unless you intend to erase the database and queue. Preserve `.env` with your installation; rotating its password alone will not update an existing database's password.
+On later visits, start Docker Desktop and run `start.ps1`. Use `stop.ps1` to stop the application without deleting saved work.
 
-Run `backup.ps1` while containers are running to save a PostgreSQL custom-format dump and a ZIP of student files under `backups/`. Backups contain submitted source and learning history. To restore a dump into a fresh installation: stop submissions, copy the dump into the database container with `docker compose cp`, then run `pg_restore --username=trail --dbname=trail --clean --if-exists` against it using `docker compose exec -T db`. This replaces database contents; save a backup first. Student files are restored separately from their ZIP. Pending submissions are recovered from the DB on app restart.
+## Separate pages
 
-## Troubleshooting
+| Address | Purpose |
+| --- | --- |
+| http://localhost:8765/learn | Student's learning trail |
+| http://localhost:8765/lessons/1 | Lesson 1, editor, output and assignment turn-in; replace 1 with any lesson number up to 25 |
+| http://localhost:8765/playground | Free coding and input experiments |
+| http://localhost:8765/parent | Parent progress and submission history |
+| /parent/submissions/ID | A saved turn-in, full source, feedback, output and changes |
+
+The root URL redirects to /learn. These are separate screens within one local application. They are not separate authenticated accounts; anyone using this computer can access them.
+
+## Student workflow
+
+1. Choose a lesson in /learn.
+2. Read the short explanation and write code in its editor.
+3. Click **Run code** to see what it does. Run does not create a turn-in or mark completion.
+4. Click **Turn in assignment** to save a code snapshot and check the assignment. A submission ID confirms that it is saved.
+5. Read the result. If it needs revision, edit and turn it in again. All attempts are kept.
+
+Drafts autosave to the local database and are restored when reopening a lesson. Save draft and Ctrl+S also save explicitly. Ctrl+Enter runs the code. Reset to starter asks before replacing a draft and leaves submission history intact.
+
+In /playground, enter one answer per line under Program input when using input(). Playground runs do not complete lessons or enter parent submission history.
+
+## Parent review
+
+The dashboard shows the last lesson explicitly started or turned in, its topic, completion counts and every turn-in. Filter by lesson and paginate through older submissions. **Review code & changes** opens a dedicated page showing:
+
+- Exact source submitted, submission ID, attempt number and timestamp.
+- Grading result, feedback and program output.
+- Previous code and submitted code side by side.
+- Highlighted additions/removals against the previous attempt for that same lesson. The first attempt is compared with the lesson starter.
+
+Failed checks and unchanged resubmissions stay in history. Completion means checks passed, not proof of mastery. The app does not watch keystrokes. Progress from the original hosted website is separate.
+
+## Lesson folders and optional VS Code
+
+Each website lesson maps to one folder under `student/lessons/NN_name/` containing README.md, assignment.py and lesson.json. The old flat quests folder has been migrated, preserving saved student Python code. See [the lesson index](student/lessons/README.md).
+
+To install/start the optional VS Code environment:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1 -WithVSCode
+```
+
+Open student/ in VS Code, choose **Dev Containers: Reopen in Container**, and wait for initialization. Save assignment.py, then **Tasks: Run Test Task → Trail: Turn in assignment**. The terminal prints a saved submission ID and grading result. **Trail: Start lesson** updates the current topic. Ctrl+Shift+B only runs the file.
+
+Browser drafts and VS Code assignment files are separate workspaces; neither silently overwrites the other. Both turn in to the same parent history. The playground container has a Compose profile named vscode, so it is optional for the browser workflow. An already-running VS Code container may stay running until closed/stopped.
+
+## Containers and persistence
+
+The web app binds to 127.0.0.1:8765. PostgreSQL has no published port. Its persistent Docker volume stores drafts, submissions and progress. Submitted programs run in the offline worker: no network, Docker socket, student-folder mount or database credentials. Python runs as an unprivileged subprocess with time, memory, process and output limits. This is intended for family practice, not public multi-tenant code hosting.
+
+The optional VS Code container mounts student files and read-only submission tools, uses a non-root user, and cannot access the database network. It has a larger resource allowance for the editor; worker limits remain separate.
+
+Keep .env with this installation and do not share it. Rerunning setup preserves the database password. Never run docker compose down -v unless you intend to erase progress. Run backup.ps1 while services are running to save a PostgreSQL dump and a ZIP of student files. Browser drafts and submission history are included in the DB dump. Backups contain student code/history; keep them private.
+
+## Troubleshooting and verification
 
 ```powershell
 docker compose ps
@@ -79,18 +79,10 @@ docker compose logs --tail 60 app worker db
 docker compose up -d --build --wait
 ```
 
-- Docker not ready: open Docker Desktop, finish its setup and select Linux containers, then rerun setup. The app works with any Docker Desktop backend capable of running these Linux containers.
-- Docker requests WSL: select Docker VMM if supported by your Docker Desktop version/hardware, using the no-WSL instructions above. Hyper-V is another option on supported Windows editions with an all-users installation. The script does not select or change your backend.
-- Port 8765 in use: stop the other local app or edit Compose's host port and dashboard/API references consistently.
-- Dev container Python extension download fails: check the network and rerun **Dev Containers: Rebuild Container**.
-- A check remains queued: confirm the worker is running and inspect its logs. Restart the worker if needed; interrupted work is retried. Restart the app to recover any DB-persisted submissions missing a queue file.
-- A file changed during a failed check: the check uses the source saved at submission time. Save again and resubmit.
-- Moved folder: stop the old Compose stack, move files, rerun setup to update file links and bind mounts.
+If the browser cannot connect, check Docker Desktop's engine first. If work stays queued, check worker logs. Pending runs and submissions recover on app restart. A saved submission ID means it is in the database even if the browser stopped polling; review history before resubmitting.
 
-## Validation and limits
+For Docker without WSL, select Docker VMM under Docker Desktop Settings > General > Virtual Machine Manager if supported. Docker currently marks it Beta. See [Docker's backend guide](https://docs.docker.com/desktop/features/vmm/) and [Windows requirements](https://docs.docker.com/desktop/setup/install/windows-install/). The app needs a supported Linux container engine.
 
-Functional checks are in `tests/test_local.py`. Run `python -m unittest discover -s tests -v` on a host with Python. They cover all reference solutions, negative grading cases, queue-to-progress integration, API validation, and source persistence using an in-memory store. Windows tests run submitted Python without the Linux resource restrictions; the production worker always enables them.
+Functional tests: `python -m unittest discover -s tests -v` on a host with Python. Setup regression checks: `powershell -NoProfile -ExecutionPolicy Bypass -File tests/setup.tests.ps1`. The live smoke test, `smoke-test.ps1`, records lesson 1 as completed.
 
-Validated on 2026-11-06 with Docker Desktop 4.98.0 using the Linux engine: all four containers started; the app/database health checks passed; smoke-test.ps1 verified submission, grading and PostgreSQL completion; all 25 reference solutions passed inside the production worker; uid/queue permissions and infinite-loop termination were checked; the VS Code submission CLI passed inside the playground; the browser dashboard displayed the stored completion. Quest 1 has two test submissions and is completed. Interactive VS Code dev-container attachment and running the task from the editor remain to be checked. See ../TESTING.md. Rerun smoke-test.ps1 to check the live stack; it records quest 1 as completed.
-
-The implementation uses [VS Code Dev Containers](https://code.visualstudio.com/docs/devcontainers/create-dev-container) and [WinGet package installation](https://learn.microsoft.com/en-us/windows/package-manager/winget/install).
+See [the project testing record](../TESTING.md) for live Docker, browser, grading and history verification. Desktop VS Code attachment remains optional and has not been fully verified through its UI.

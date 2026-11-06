@@ -10,7 +10,9 @@
     "starter": "print(\"Hello, world!\")",
     "solution": "print(\"Hello, explorer!\")",
     "expected": "Hello, explorer!",
-    "filename": "01_hello_explorer.py"
+    "filename": "01_hello_explorer.py",
+    "directory": "lessons/01_hello_explorer",
+    "assignment_path": "lessons/01_hello_explorer/assignment.py"
   },
   {
     "id": 2,
@@ -23,7 +25,9 @@
     "starter": "# Write two print statements below\n",
     "solution": "print(\"My name is Python\")\nprint(\"Let's explore!\")",
     "expected": "My name is Python\nLet's explore!",
-    "filename": "02_a_tiny_postcard.py"
+    "filename": "02_a_tiny_postcard.py",
+    "directory": "lessons/02_a_tiny_postcard",
+    "assignment_path": "lessons/02_a_tiny_postcard/assignment.py"
   },
   {
     "id": 3,
@@ -36,7 +40,9 @@
     "starter": "print(2 + 3)",
     "solution": "print(7 * 8)",
     "expected": "56",
-    "filename": "03_pocket_calculator.py"
+    "filename": "03_pocket_calculator.py",
+    "directory": "lessons/03_pocket_calculator",
+    "assignment_path": "lessons/03_pocket_calculator/assignment.py"
   },
   {
     "id": 4,
@@ -49,7 +55,9 @@
     "starter": "# This is my secret note\n",
     "solution": "# My adventure starts here\nprint(\"Ready for adventure!\")",
     "expected": "Ready for adventure!",
-    "filename": "04_secret_notes.py"
+    "filename": "04_secret_notes.py",
+    "directory": "lessons/04_secret_notes",
+    "assignment_path": "lessons/04_secret_notes/assignment.py"
   },
   {
     "id": 5,
@@ -62,7 +70,9 @@
     "starter": "# Launch your rocket!\n",
     "solution": "print(3)\nprint(2)\nprint(1)\nprint(\"Liftoff!\")",
     "expected": "3\n2\n1\nLiftoff!",
-    "filename": "05_launch_countdown.py"
+    "filename": "05_launch_countdown.py",
+    "directory": "lessons/05_launch_countdown",
+    "assignment_path": "lessons/05_launch_countdown/assignment.py"
   },
   {
     "id": 6,
@@ -75,7 +85,9 @@
     "starter": "name = \"\"\nprint(name)",
     "solution": "name = \"Pip\"\nprint(name)",
     "expected": "Pip",
-    "filename": "06_name_your_explorer.py"
+    "filename": "06_name_your_explorer.py",
+    "directory": "lessons/06_name_your_explorer",
+    "assignment_path": "lessons/06_name_your_explorer/assignment.py"
   },
   {
     "id": 7,
@@ -88,7 +100,9 @@
     "starter": "coins = 10\n# Find 5 more coins\nprint(coins)",
     "solution": "coins = 10\ncoins = coins + 5\nprint(coins)",
     "expected": "15",
-    "filename": "07_treasure_pouch.py"
+    "filename": "07_treasure_pouch.py",
+    "directory": "lessons/07_treasure_pouch",
+    "assignment_path": "lessons/07_treasure_pouch/assignment.py"
   },
   {
     "id": 8,
@@ -101,7 +115,9 @@
     "starter": "name = \"Pip\"\n",
     "solution": "name = \"Pip\"\nprint(f\"Hello, {name}!\")",
     "expected": "Hello, Pip!",
-    "filename": "08_say_it_your_way.py"
+    "filename": "08_say_it_your_way.py",
+    "directory": "lessons/08_say_it_your_way",
+    "assignment_path": "lessons/08_say_it_your_way/assignment.py"
   },
   {
     "id": 9,
@@ -114,7 +130,9 @@
     "starter": "snacks = 17\nfriends = 4\n",
     "solution": "snacks = 17\nfriends = 4\nprint(snacks // friends)\nprint(snacks % friends)",
     "expected": "4\n1",
-    "filename": "09_sharing_snacks.py"
+    "filename": "09_sharing_snacks.py",
+    "directory": "lessons/09_sharing_snacks",
+    "assignment_path": "lessons/09_sharing_snacks/assignment.py"
   },
   {
     "id": 10,
@@ -127,7 +145,9 @@
     "starter": "name = \"Pip\"\nlevel = 1\n",
     "solution": "name = \"Pip\"\nlevel = 1\nprint(f\"Explorer: {name}\")\nprint(f\"Level: {level}\")",
     "expected": "Explorer: Pip\nLevel: 1",
-    "filename": "10_explorer_id.py"
+    "filename": "10_explorer_id.py",
+    "directory": "lessons/10_explorer_id",
+    "assignment_path": "lessons/10_explorer_id/assignment.py"
   },
   {
     "id": 11,
@@ -140,7 +160,9 @@
     "starter": "coins = 12\nif coins >= 10:\n    # Write your message here\n    pass",
     "solution": "coins = 12\nif coins >= 10:\n    print(\"Gate open!\")",
     "expected": "Gate open!",
-    "filename": "11_the_forest_gate.py"
+    "filename": "11_the_forest_gate.py",
+    "directory": "lessons/11_the_forest_gate",
+    "assignment_path": "lessons/11_the_forest_gate/assignment.py"
   },
   {
     "id": 12,
@@ -153,7 +175,9 @@
     "starter": "raining = False\nif raining:\n    print(\"Bring a coat\")\nelse:\n    pass",
     "solution": "raining = False\nif raining:\n    print(\"Bring a coat\")\nelse:\n    print(\"Bring a hat\")",
     "expected": "Bring a hat",
-    "filename": "12_rain_or_shine.py"
+    "filename": "12_rain_or_shine.py",
+    "directory": "lessons/12_rain_or_shine",
+    "assignment_path": "lessons/12_rain_or_shine/assignment.py"
   },
   {
     "id": 13,
@@ -166,7 +190,9 @@
     "starter": "door = 2\nif door == 1:\n    print(\"A sleepy dragon\")\n# Add an elif for door 2\n",
     "solution": "door = 2\nif door == 1:\n    print(\"A sleepy dragon\")\nelif door == 2:\n    print(\"A treasure chest\")\nelse:\n    print(\"A friendly frog\")",
     "expected": "A treasure chest",
-    "filename": "13_three_secret_doors.py"
+    "filename": "13_three_secret_doors.py",
+    "directory": "lessons/13_three_secret_doors",
+    "assignment_path": "lessons/13_three_secret_doors/assignment.py"
   },
   {
     "id": 14,
@@ -179,7 +205,9 @@
     "starter": "has_map = True\nhas_key = True\n",
     "solution": "has_map = True\nhas_key = True\nif has_map and has_key:\n    print(\"Adventure unlocked!\")",
     "expected": "Adventure unlocked!",
-    "filename": "14_both_keys.py"
+    "filename": "14_both_keys.py",
+    "directory": "lessons/14_both_keys",
+    "assignment_path": "lessons/14_both_keys/assignment.py"
   },
   {
     "id": 15,
@@ -192,7 +220,9 @@
     "starter": "score = 85\n# 80 or more: Gold\n# 50 or more: Silver\n# Otherwise: Bronze\n",
     "solution": "score = 85\nif score >= 80:\n    print(\"Gold\")\nelif score >= 50:\n    print(\"Silver\")\nelse:\n    print(\"Bronze\")",
     "expected": "Gold",
-    "filename": "15_treasure_judge.py"
+    "filename": "15_treasure_judge.py",
+    "directory": "lessons/15_treasure_judge",
+    "assignment_path": "lessons/15_treasure_judge/assignment.py"
   },
   {
     "id": 16,
@@ -205,7 +235,9 @@
     "starter": "for turn in range(3):\n    pass",
     "solution": "for turn in range(3):\n    print(\"Hello!\")",
     "expected": "Hello!\nHello!\nHello!",
-    "filename": "16_echo_meadow.py"
+    "filename": "16_echo_meadow.py",
+    "directory": "lessons/16_echo_meadow",
+    "assignment_path": "lessons/16_echo_meadow/assignment.py"
   },
   {
     "id": 17,
@@ -218,7 +250,9 @@
     "starter": "# Count your steps\n",
     "solution": "for step in range(1, 6):\n    print(step)",
     "expected": "1\n2\n3\n4\n5",
-    "filename": "17_stepping_stones.py"
+    "filename": "17_stepping_stones.py",
+    "directory": "lessons/17_stepping_stones",
+    "assignment_path": "lessons/17_stepping_stones/assignment.py"
   },
   {
     "id": 18,
@@ -231,7 +265,9 @@
     "starter": "backpack = [\"map\", \"snack\", \"torch\"]\n",
     "solution": "backpack = [\"map\", \"snack\", \"torch\"]\nfor item in backpack:\n    print(item)",
     "expected": "map\nsnack\ntorch",
-    "filename": "18_backpack_inventory.py"
+    "filename": "18_backpack_inventory.py",
+    "directory": "lessons/18_backpack_inventory",
+    "assignment_path": "lessons/18_backpack_inventory/assignment.py"
   },
   {
     "id": 19,
@@ -244,7 +280,9 @@
     "starter": "def cheer():\n    # Give your explorer a boost\n    pass\n\n# Call your function below\n",
     "solution": "def cheer():\n    print(\"You can do this!\")\n\ncheer()\ncheer()",
     "expected": "You can do this!\nYou can do this!",
-    "filename": "19_a_reusable_spell.py"
+    "filename": "19_a_reusable_spell.py",
+    "directory": "lessons/19_a_reusable_spell",
+    "assignment_path": "lessons/19_a_reusable_spell/assignment.py"
   },
   {
     "id": 20,
@@ -257,7 +295,9 @@
     "starter": "explorers = [\"Pip\", \"Nova\", \"Ash\"]\n\ndef welcome(name):\n    # Print a welcome using name\n    pass\n\n# Welcome each explorer with a loop\n",
     "solution": "explorers = [\"Pip\", \"Nova\", \"Ash\"]\n\ndef welcome(name):\n    print(f\"Welcome, {name}!\")\n\nfor explorer in explorers:\n    welcome(explorer)",
     "expected": "Welcome, Pip!\nWelcome, Nova!\nWelcome, Ash!",
-    "filename": "20_the_final_campfire.py"
+    "filename": "20_the_final_campfire.py",
+    "directory": "lessons/20_the_final_campfire",
+    "assignment_path": "lessons/20_the_final_campfire/assignment.py"
   },
   {
     "id": 21,
@@ -270,7 +310,9 @@
     "starter": "hero = {}\n# Read the name and level\n",
     "solution": "hero = {\"name\": \"Pip\", \"level\": 1}\nprint(hero[\"name\"])\nprint(hero[\"level\"])",
     "expected": "Pip\n1",
-    "filename": "21_a_character_dictionary.py"
+    "filename": "21_a_character_dictionary.py",
+    "directory": "lessons/21_a_character_dictionary",
+    "assignment_path": "lessons/21_a_character_dictionary/assignment.py"
   },
   {
     "id": 22,
@@ -283,7 +325,9 @@
     "starter": "hero = {\"name\": \"Pip\", \"level\": 1}\n",
     "solution": "hero = {\"name\": \"Pip\", \"level\": 1}\nhero[\"level\"] += 1\nprint(hero[\"level\"])",
     "expected": "2",
-    "filename": "22_level_up.py"
+    "filename": "22_level_up.py",
+    "directory": "lessons/22_level_up",
+    "assignment_path": "lessons/22_level_up/assignment.py"
   },
   {
     "id": 23,
@@ -296,7 +340,9 @@
     "starter": "hero = {\"name\": \"Pip\"}\n",
     "solution": "hero = {\"name\": \"Pip\"}\nprint(hero.get(\"pet\", \"No pet yet\"))",
     "expected": "No pet yet",
-    "filename": "23_a_missing_key.py"
+    "filename": "23_a_missing_key.py",
+    "directory": "lessons/23_a_missing_key",
+    "assignment_path": "lessons/23_a_missing_key/assignment.py"
   },
   {
     "id": 24,
@@ -309,7 +355,9 @@
     "starter": "bag = {\"map\": 1, \"snack\": 3}\n",
     "solution": "bag = {\"map\": 1, \"snack\": 3}\nfor item, count in bag.items():\n    print(f\"{item}: {count}\")",
     "expected": "map: 1\nsnack: 3",
-    "filename": "24_inventory_report.py"
+    "filename": "24_inventory_report.py",
+    "directory": "lessons/24_inventory_report",
+    "assignment_path": "lessons/24_inventory_report/assignment.py"
   },
   {
     "id": 25,
@@ -322,6 +370,8 @@
     "starter": "heroes = [{\"name\": \"Pip\", \"level\": 1}, {\"name\": \"Nova\", \"level\": 2}]\n\ndef introduce(hero):\n    pass\n\n# Introduce each hero\n",
     "solution": "heroes = [{\"name\": \"Pip\", \"level\": 1}, {\"name\": \"Nova\", \"level\": 2}]\n\ndef introduce(hero):\n    print(f\"{hero['name']} is level {hero['level']}\")\n\nfor hero in heroes:\n    introduce(hero)",
     "expected": "Pip is level 1\nNova is level 2",
-    "filename": "25_your_explorer_registry.py"
+    "filename": "25_your_explorer_registry.py",
+    "directory": "lessons/25_your_explorer_registry",
+    "assignment_path": "lessons/25_your_explorer_registry/assignment.py"
   }
 ]

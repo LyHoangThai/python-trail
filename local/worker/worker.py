@@ -23,18 +23,18 @@ def restrict():
     os.setgid(65534)
     os.setuid(65534)
 
-def execute(source, sandbox=True):
+def execute(source, sandbox=True, inputs=''):
     # sandbox=False exists for functional tests on Windows, never for the server.
     with tempfile.TemporaryDirectory() as tmp:
         if sandbox: os.chmod(tmp, 0o777)
         with tempfile.TemporaryFile() as output:
             process = subprocess.Popen([sys.executable, '-I', '-B', '-c', source],
-                cwd=tmp, stdin=subprocess.DEVNULL, stdout=output, stderr=output,
+                cwd=tmp, stdin=subprocess.PIPE, stdout=output, stderr=output,
                 env={'PATH':'/usr/local/bin:/usr/bin:/bin','HOME':tmp},
                 start_new_session=True if sandbox else False,
                 preexec_fn=restrict if sandbox else None)
             timed_out=False
-            try: process.wait(timeout=5)
+            try: process.communicate(input=inputs.encode('utf-8'),timeout=5)
             except subprocess.TimeoutExpired:
                 timed_out=True
                 if sandbox: os.killpg(process.pid, signal.SIGKILL)
@@ -68,7 +68,9 @@ def technique(source, quest):
 
 def grade(job, sandbox=True):
     source=job['source']
-    output,error=execute(source,sandbox)
+    output,error=execute(source,sandbox,job.get('inputs',''))
+    if job.get('mode')=='run':
+        return {'status':'done','output':output,'passed':not bool(error),'feedback':error or 'Code ran successfully. Turn in your assignment when you are ready.'}
     result={'status':'done','output':output,'passed':False,'feedback':error}
     if error: return result
     try: clue=technique(source,job['quest'])

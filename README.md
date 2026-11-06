@@ -20,11 +20,11 @@ Open PowerShell in `local/`, then run:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\setup.ps1
 ```
 
-Follow [the local setup guide](local/README.md) for prerequisites, the VS Code workflow, backups and troubleshooting. The website runs at http://localhost:8765. Choose **Dev Containers: Reopen in Container** in VS Code to use the Python playground and grading tasks.
+Follow [the local setup guide](local/README.md) for prerequisites, the VS Code workflow, backups and troubleshooting. The website runs at http://localhost:8765. Use /learn for lessons and /parent for progress/history. VS Code can be enabled with setup.ps1 -WithVSCode.
 
 ## Development and status
 
-- The local edition is the main direction: real VS Code files, containerized worker, persistent PostgreSQL progress, and a parent dashboard.
+- The local edition is the main direction: a browser editor, containerized worker, persistent PostgreSQL drafts/progress, separate student/parent routes, and full submission history. VS Code is optional.
 - Local curriculum includes variables, arithmetic, f-strings, conditions, boolean logic, loops, lists, functions and dictionaries.
 - Functional tests passed before consolidation, including all 25 reference solutions, failed checks, timeouts, queue recovery and progress updates. The source copies were verified byte-for-byte during consolidation.
 - Live Docker checks passed on 2026-11-06: container builds/startup, PostgreSQL persistence, production-worker grading for all 25 solutions, worker uid/queue isolation, infinite-loop termination, the playground submission CLI and browser dashboard. Interactive VS Code attachment is the remaining manual check. See [testing results](TESTING.md).
@@ -36,6 +36,6 @@ Run functional tests from `local/`:
 python -m unittest discover -s tests -v
 ```
 
-`tools/prepare_local.py` regenerates lesson metadata and creates missing starter files. It preserves existing student quest files. It also refreshes the local base stylesheet from the hosted version. Edit or run it deliberately; the local lesson JSON currently contains the complete 25-quest curriculum.
+`tools/prepare_local.py` regenerates lesson metadata and one folder per lesson under local/student/lessons/. It preserves saved assignment code when rerun. It also refreshes the local base stylesheet from the hosted version. Edit or run it deliberately; the local lesson JSON currently contains the complete 25-quest curriculum.
 
 Generated caches, local database credentials (`.env`), and backups are excluded from Git. PostgreSQL data remains in Docker's persistent volume, not in this source folder. Do not commit a student's personal data or local secrets.
