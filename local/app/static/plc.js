@@ -1,7 +1,7 @@
 (()=>{
  const get=id=>document.getElementById(id);let lesson=null,program=null,lastSource=null,scanned={};
  function inputs(){return {SW1:get('plcsw1').checked,SW2:get('plcsw2').checked}}
- function lamp(on){get('plclamp').classList.toggle('on',on);get('plclamp').textContent='● LAMP '+(on?'ON':'OFF')}
+ function lamp(on){get('plclamp').classList.toggle('on',on);get('plclamp').textContent='● LAMP '+(on?'ON':'OFF');window.PLCStudio?.update(on,inputs())}
  function syncInputs(){const states=inputs();get('inputs').value=JSON.stringify(states);get('plcsw1state').textContent=states.SW1?'ON':'OFF';get('plcsw2state').textContent=states.SW2?'ON':'OFF';if(lesson?.engine==='plc-ladder')draw();else{get('plcscanstatus').textContent='Inputs changed. Run scan to update the lamp.';truthTable()}}
  function changed(){get('editor').value=JSON.stringify(program,null,2)+'\n';get('editor').dispatchEvent(new Event('input'));draw()}
  function closed(contact,states){return contact.contact==='NC'?!states[contact.input]:states[contact.input]}
@@ -13,18 +13,19 @@
  function draw(){
   if(!program)return;const states=inputs();get('ladderpaths').replaceChildren();
   const energized=program.coil==='LAMP'&&program.branches.some(branch=>branch.every(c=>closed(c,states)));
+  const network=get('rungnetwork');if(network){network.classList.toggle('on',energized);const count=Math.max(1,...program.branches.map(branch=>branch.length));network.style.minWidth=Math.max(500,count*95+(count+1)*27+148)+'px'}
   program.branches.forEach((branch,index)=>{
-   const row=document.createElement('section');row.className='ladderpath';const heading=document.createElement('b');heading.textContent='Path '+(index+1);row.append(heading);
+   const row=document.createElement('section');row.className='ladderpath';const heading=document.createElement('b');heading.className='pathlabel';heading.textContent='Path '+(index+1);row.append(heading);
    const rail=document.createElement('div');rail.className='ladderrail '+(branch.every(c=>closed(c,states))?'energized':'');
    for(let position=0;position<=branch.length;position++){
     const gap=document.createElement('button');gap.className='ladderdrop contactgap';gap.textContent='+';gap.setAttribute('aria-label',`Path ${index+1} insert contact ${position+1}`);dropzone(gap,{type:'slot',path:index,index:position});rail.append(gap);
     if(position===branch.length)break;const c=branch[position],card=document.createElement('div');card.className='laddercontact '+(closed(c,states)?'closed':'');
-    const handle=document.createElement('button');handle.className='contacthandle';handle.textContent=(c.contact==='NC'?'—|/|—':'—| |—')+' '+c.input;handle.setAttribute('aria-label',`Move ${c.input} ${c.contact} contact on path ${index+1}`);draggable(handle,()=>({type:'move',path:index,index:position}));
+    const handle=document.createElement('button');handle.className='contacthandle';const tag=document.createElement('span');tag.className='contacttag';tag.textContent=c.input;handle.append(tag,window.PLCStudio.symbol(c.contact));handle.setAttribute('aria-label',`Move ${c.input} ${c.contact} contact on path ${index+1}`);draggable(handle,()=>({type:'move',path:index,index:position}));
     const label=document.createElement('small');label.textContent=c.contact==='NC'?'Normally closed':'Normally open';const remove=document.createElement('button');remove.className='darkbutton';remove.textContent='Remove';remove.setAttribute('aria-label',`Remove path ${index+1} contact ${position+1}`);remove.onclick=()=>apply({type:'move',path:index,index:position},{type:'trash'});card.append(handle,label,remove);rail.append(card);
    }row.append(rail);get('ladderpaths').append(row);
   });
-  const coil=get('laddercoilzone');coil.replaceChildren();coil.classList.toggle('on',energized);if(program.coil==='LAMP'){const handle=document.createElement('button');handle.className='contacthandle';handle.textContent='→ —( LAMP )—';handle.setAttribute('aria-label','Move LAMP coil');draggable(handle,()=>({type:'move-coil'}));coil.append(handle)}else coil.textContent='→ Drop the LAMP coil here';dropzone(coil,{type:'coil'});
-  get('ladderundo').disabled=!undo.length;get('ladderredo').disabled=!redo.length;truthTable();lamp(energized);get('plcscanstatus').textContent=program.coil==='LAMP'?'Live preview: green contacts pass the signal. Run scan checks your diagram.':'Connect the LAMP coil to see your output.';
+  const coil=get('laddercoilzone');coil.replaceChildren();coil.classList.toggle('on',energized);if(program.coil==='LAMP'){const handle=document.createElement('button');handle.className='contacthandle';const tag=document.createElement('span');tag.className='contacttag';tag.textContent='LAMP';handle.append(tag,window.PLCStudio.symbol('coil'));handle.setAttribute('aria-label','Move LAMP coil');draggable(handle,()=>({type:'move-coil'}));coil.append(handle)}else{const placeholder=document.createElement('span');placeholder.textContent='Drop LAMP coil';coil.append(window.PLCStudio.symbol('coil'),placeholder)}dropzone(coil,{type:'coil'});
+  if(!program.branches.length){const empty=document.createElement('p');empty.className='studio-empty';empty.textContent='Drag a contact to the new path box below to start your rung.';get('ladderpaths').append(empty)}get('ladderundo').disabled=!undo.length;get('ladderredo').disabled=!redo.length;truthTable();lamp(energized);get('plcscanstatus').textContent=program.coil==='LAMP'?'Live preview: green contacts pass the signal. Run scan checks your diagram.':'Connect the LAMP coil to see your output.';
  }
  function truthTable(){
   if(!lesson)return;
@@ -44,7 +45,7 @@
  get('ladderredo').onclick=()=>{if(!redo.length)return;undo.push(JSON.stringify(program));program=JSON.parse(redo.pop());selected=null;changed();message('Redid your edit.')};
  get('plcsw1').onchange=syncInputs;get('plcsw2').onchange=syncInputs;
  window.plcLab={
-  configure(value){lesson=value;document.querySelector('header > span').textContent='YOUR PLC LEARNING LAB';get('folder').hidden=true;document.querySelector('aside a[href="/playground"]').hidden=true;document.querySelector('.workspacefoot a').hidden=true;document.body.classList.add('plcpage');document.body.classList.toggle('ladderpage',lesson.engine==='plc-ladder');get('plclab').hidden=false;get('ladderbuilder').hidden=lesson.engine!=='plc-ladder';get('editor').hidden=lesson.engine==='plc-ladder';get('editor').setAttribute('aria-label',lesson.engine==='plc-st'?'Structured Text code editor':'Python code editor');get('helpersearch').placeholder='Try contact, coil, AND, IF…';refresh();syncInputs()},
+  configure(value){lesson=value;document.querySelector('header > span').textContent='YOUR PLC LEARNING LAB';get('folder').hidden=true;document.querySelector('aside a[href="/playground"]').hidden=true;document.querySelector('.workspacefoot a').hidden=true;document.body.classList.add('plcpage');document.body.classList.toggle('ladderpage',lesson.engine==='plc-ladder');get('plclab').hidden=false;get('ladderbuilder').hidden=lesson.engine!=='plc-ladder';get('editor').hidden=lesson.engine==='plc-ladder';get('editor').setAttribute('aria-label',lesson.engine==='plc-st'?'Structured Text code editor':'Python code editor');get('helpersearch').placeholder='Try contact, coil, AND, IF…';if(lesson.engine==='plc-ladder')window.PLCStudio.mount({toggle(input){get(input==='SW1'?'plcsw1':'plcsw2').checked=!inputs()[input];syncInputs()}});refresh();syncInputs()},
   refresh,
   sourceChanged(){if(lesson?.engine==='plc-st'){truthTable();get('plclamp').classList.remove('on');get('plclamp').textContent='● LAMP awaiting scan';get('plcscanstatus').textContent='Program changed. Run a scan or choose a test case.'}},
   describe(source){try{const data=JSON.parse(source);return data.branches.map((branch,i)=>'Path '+(i+1)+': '+(branch.length?branch.map(c=>(c.contact==='NC'?'—|/|— ':'—| |— ')+c.input).join(' → '):'bare wire (always passes)')).join('\n')+'\nPaths join → '+(data.coil==='LAMP'?'( LAMP )':'no coil connected')}catch{return 'Diagram could not be read.'}},

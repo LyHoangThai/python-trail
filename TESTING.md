@@ -64,3 +64,10 @@ The setup encountered a transient container-name conflict while another startup 
 - Docker app/worker rebuilt and became healthy with the existing database volume. Browser verification used native drag from the toolbox to a new path, keyboard placement of a second series contact, live AND truth table, coil removal/reconnection, Run scan through the worker, and Undo/Redo.
 - Restored the exact original lesson 47 diagram after testing. No graded PLC turn-ins or completions were created. All lessons navigation retained PLC/ladder context; switching to Structured Text displayed only its four lessons.
 - Subject registry supports additional subjects; C++ curriculum and engine are future work.
+
+## 2026-11-06 — PLC simulator studio layout
+
+- Inspected PLCPractice’s public simulator and implemented an original three-panel layout with tags, a wired ladder canvas and object palette. Python and Structured Text retain their existing workspaces.
+- All 35 Python test methods and frontend/diagram model checks passed. The rebuilt app became healthy against the existing database.
+- Browser checks: native drag into the new canvas, series contacts, live lamp, Split and I/O Panel views, synchronized operator/sidebar inputs, worker scan, modal Description/History, palette filters and canvas zoom. No graded turn-ins were created.
+- Final preview captured in `plc-studio.png`; restored lesson 47’s exact original source after all browser checks. Release archive verified with 53 matching lesson folders and no credentials/caches.

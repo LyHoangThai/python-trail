@@ -72,6 +72,7 @@ async function refreshLessonState(){
  $('nextlesson').classList.toggle('completednext',done);
 }
 function setLessonTab(tab){
+ if(tab==='history'&&typeof window!=='undefined'&&document.body?.classList.contains('ladderpage'))window.PLCStudio?.openLesson();
  const history=tab==='history';
  $('descriptionpanel').hidden=history;$('historypanel').hidden=!history;
  $('descriptiontab').setAttribute('aria-selected',String(!history));$('historytab').setAttribute('aria-selected',String(history));

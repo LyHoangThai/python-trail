@@ -4,6 +4,14 @@ Open http://localhost:8765/learn and choose **PLC** in the subject dropdown. Its
 
 ## Ladder Logic (lessons 46–49)
 
+The full-width studio uses a three-column layout inspired by [PLCPractice’s simulator](https://www.plcpractice.com/simulator): tags and input values on the left, a wired ladder canvas in the center, and draggable objects on the right. Symbols, implementation and teaching material are ours; no external service is required.
+
+- **Ladder / Split / I/O Panel** switches between the diagram, diagram plus operator panel, or the operator panel alone. Its buttons share the same SW1/SW2 tags as the sidebar.
+- **Assignment & history** opens the lesson brief and immutable submitted answers in a dialog. Escape or Close returns to the studio.
+- Palette filters show All, Contacts or Coils. Canvas zoom supports 80–140%; large paths scroll horizontally.
+- **Output & Helper** expands the console. Running a scan or turning in opens it automatically.
+- The current assignment uses fixed BOOL tags SW1, SW2 and LAMP and one output rung. Additional instructions/timers/counters and arbitrary tags are not implemented.
+
 Build one lamp rung with up to four parallel paths and four series contacts per path:
 
 - Choose SW1 or SW2 in the toolbox, then drag a contact to the new parallel path box.
