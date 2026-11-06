@@ -16,26 +16,27 @@ function saveSnapshot(source,version){
  return saveChain;
 }
 async function save(){clearTimeout(saveTimer);if(ready)await saveSnapshot($('editor').value,revision)}
-$('editor').oninput=()=>{revision++;$('savestatus').textContent='Unsaved changes';clearTimeout(saveTimer);saveTimer=setTimeout(()=>save().catch(()=>{}),650)};
+$('editor').oninput=()=>{if(lesson?.engine==='plc-st')window.plcLab.sourceChanged();revision++;$('savestatus').textContent='Unsaved changes';clearTimeout(saveTimer);saveTimer=setTimeout(()=>save().catch(()=>{}),650)};
 $('editor').onkeydown=e=>{if(e.key==='Tab'){e.preventDefault();e.target.setRangeText('    ',e.target.selectionStart,e.target.selectionEnd,'end');e.target.dispatchEvent(new Event('input'))}if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();$('run').click()}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='s'){e.preventDefault();save().catch(()=>{})}};
 $('save').onclick=()=>save().catch(()=>{});
-$('reset').onclick=()=>{if(confirm('Replace this draft with the starter code? Submitted versions will stay in history.')){$('editor').value=playground?'# Try an idea!\nprint("Hello, imagination!")\n':lesson.starter;$('editor').dispatchEvent(new Event('input'))}};
+$('reset').onclick=()=>{if(confirm('Replace this draft with the starter code? Submitted versions will stay in history.')){$('editor').value=playground?'# Try an idea!\nprint("Hello, imagination!")\n':lesson.starter;$('editor').dispatchEvent(new Event('input'));if(window.plcLab)window.plcLab.refresh()}};
 async function execute(submit){
- if(!ready||busy)return;if(window.showPythonOutput)window.showPythonOutput();busy=true;$('run').disabled=true;$('submit').disabled=true;$('feedback').textContent='';$('receipt').textContent='';$('actionstatus').textContent=submit?'Turning in…':'Running…';$('output').textContent='Waiting for the Python worker…';
+ if(!ready||busy)return;if(window.showPythonOutput)window.showPythonOutput();busy=true;$('run').disabled=true;$('submit').disabled=true;$('feedback').textContent='';$('receipt').textContent='';$('actionstatus').textContent=submit?'Turning in…':'Running…';$('output').textContent='Checking your program…';
  const source=$('editor').value,version=revision;
  if(submit){lastSubmissionId=null;showSubmissionBanner('pending','Turning in your assignment…','Saving your answer and checking your code.')} 
  try{
   clearTimeout(saveTimer);await saveSnapshot(source,version);
   const job=await api(submit?'submit':'run',{quest,source,inputs:$('inputs').value});
-  if(submit){lastSubmissionId=job.id;showSubmissionBanner('pending','Assignment turned in','Your answer is saved. The Python worker is checking it.')}
+  if(submit){lastSubmissionId=job.id;showSubmissionBanner('pending','Assignment turned in','Your answer is saved. The lesson worker is checking it.')}
   if(submit)$('receipt').textContent=`Turned in. Submission ${job.id}. A copy of this code is saved for parent review.`;
   const endpoint=(submit?'jobs/':'runs/')+job.id;
   for(let n=0;n<120;n++){
    const result=await api(endpoint);
    if(result.status==='done'){
+    if(result.signals&&window.plcLab&&$('editor').value===source)window.plcLab.showSignals(result.signals);
     $('output').textContent=result.output||'(No output. Use print() to show something.)';
     $('feedback').textContent=result.feedback;
-    $('actionstatus').textContent=submit?(result.passed?'✓ Assignment completed':'Needs revision — attempt saved'):(result.passed?'Run finished — not graded':'Python found a problem');
+    $('actionstatus').textContent=submit?(result.passed?'✓ Assignment completed':'Needs revision — attempt saved'):(result.passed?'Run finished — not graded':'Program needs a fix');
     if(submit)showSubmissionBanner(result.passed?'correct':'incorrect',result.passed?'✓ Nice work — assignment complete!':'Keep going — your answer needs another try',result.feedback+' Your answer is saved in History.');
     if(submit){const updates=await Promise.allSettled([refreshLessonState(),loadLessonHistory(true)]);for(const update of updates)if(update.status==='rejected')error(update.reason)}
     if(submit&&!result.passed)$('feedback').textContent+=' Edit your code and turn it in again when ready.';
@@ -52,12 +53,12 @@ async function execute(submit){
 $('run').onclick=()=>execute(false);$('submit').onclick=()=>execute(true);
 window.addEventListener('beforeunload',e=>{if(ready&&$('savestatus').textContent!=='Saved on this computer'){e.preventDefault();e.returnValue=''}});
 (async()=>{try{
- const data=await api('lessons');lesson=data.lessons.find(q=>q.id===quest);
+ const data=await api('lessons');lesson=data.lessons.find(q=>q.id===quest);window.lessonEngine=lesson?.engine||'python';
  if(!playground&&!lesson)throw Error('Lesson not found. Return to your learning trail.');
  const draft=await api('drafts/'+quest);
  $('editor').value=draft.source;$('editor').disabled=false;$('run').disabled=false;$('submit').disabled=false;ready=true;$('savestatus').textContent='Saved on this computer';
  if(playground){$('lessontabs').hidden=true;$('lessonstate').hidden=true;document.querySelector('.workspacefoot a').hidden=true;$('topic').textContent='YOUR IDEAS LIVE HERE';$('title').textContent='What will you make?';$('explain').innerHTML='<p>Try a silly story, a number game, or your own experiment. This space is yours.</p><p>For input(), enter one answer per line under Program input. Run will read those answers in order.</p>';$('missionsection').hidden=true;$('submit').hidden=true;$('nextlesson').hidden=true;$('editorfile').textContent='playground.py';$('turninnote').textContent='Free play saves your draft. Runs do not create assignment submissions.';$('lessonlabel').textContent='FREE PLAYGROUND';}
- else{$('topic').textContent=lesson.topic;$('title').textContent=lesson.title;$('explain').innerHTML='<p>'+lesson.explain+'</p>';$('mission').textContent=lesson.mission;$('requirements').replaceChildren(...(lesson.checks||[]).map(text=>{const item=document.createElement('li');item.textContent=text;return item}));$('hint').textContent=lesson.hint;$('expected').textContent=lesson.expected;$('folder').textContent='Optional file workspace: '+lesson.assignment_path;$('lessonlabel').textContent=`${(lesson.track||'beginner').replace('data-structures','data structures').toUpperCase()} / LESSON ${String(quest).padStart(2,'0')}`;document.querySelector('.lessonheading a').href='/learn?track='+lesson.track;$('inputsection').hidden=true;const siblings=data.lessons.filter(item=>item.track===lesson.track),next=siblings[siblings.findIndex(item=>item.id===quest)+1];$('nextlesson').href=next?'/lessons/'+next.id:'/learn?track='+lesson.track;$('nextlesson').textContent=next?'Next lesson →':'Back to this learning path →';const solutions=await api('solutions');$('solution').textContent=solutions[quest];await api('start',{quest});await refreshLessonState();await loadLessonHistory(true);}
+ else{$('topic').textContent=lesson.topic;$('title').textContent=lesson.title;$('explain').innerHTML='<p>'+lesson.explain+'</p>';$('mission').textContent=lesson.mission;$('requirements').replaceChildren(...(lesson.checks||[]).map(text=>{const item=document.createElement('li');item.textContent=text;return item}));$('hint').textContent=lesson.hint;$('expected').textContent=lesson.expected;$('folder').textContent='Optional file workspace: '+lesson.assignment_path;$('lessonlabel').textContent=`${(lesson.track||'beginner').replace('data-structures','data structures').toUpperCase()} / LESSON ${String(quest).padStart(2,'0')}`;document.querySelector('.lessonheading a').href='/learn?track='+lesson.track;$('inputsection').hidden=true;const siblings=data.lessons.filter(item=>item.track===lesson.track),next=siblings[siblings.findIndex(item=>item.id===quest)+1];$('nextlesson').href=next?'/lessons/'+next.id:'/learn?track='+lesson.track;$('nextlesson').textContent=next?'Next lesson →':'Back to this learning path →';const solutions=await api('solutions');$('solution').textContent=lesson.engine==='plc-ladder'?window.plcLab.describe(solutions[quest]):solutions[quest];if(lesson.engine?.startsWith('plc-')){window.plcLab.configure(lesson);$('run').textContent='▶ Run scan';$('editorfile').textContent=lesson.engine==='plc-ladder'?'Visual Ladder Logic':'assignment.st';document.querySelector('.editoractions span').textContent='Ctrl+Enter to scan';$('turninnote').textContent='Run scan tries the current switches. Turn in checks every switch combination and saves your answer.';}await api('start',{quest});await refreshLessonState();await loadLessonHistory(true);}
 }catch(e){error(e)}})();
 
 async function refreshLessonState(){
@@ -101,7 +102,7 @@ async function openAttempt(id){
  try{const attempt=await api('submissions/'+id);if(historySelection!==id)return;
   $('attemptdetail').hidden=false;$('attempttitle').textContent=`Attempt ${attempt.attempt}`;
   $('attemptstatus').textContent=`${new Date(attempt.created_at).toLocaleString()} · ${attempt.result?(attempt.result.passed?'Completed':'Needs revision'):'Waiting for grading'}`;
-  $('attemptcode').textContent=attempt.source;$('attemptfeedback').textContent=attempt.result?.feedback||'Still grading. Select this attempt again in a moment.';$('attemptoutput').textContent=attempt.result?.output||'(no output)';
+  $('attemptcode').textContent=lesson?.engine==='plc-ladder'?window.plcLab.describe(attempt.source):attempt.source;$('attemptfeedback').textContent=attempt.result?.feedback||'Still grading. Select this attempt again in a moment.';$('attemptoutput').textContent=attempt.result?.output||'(no output)';
   $('attemptreview').href='/parent/submissions/'+id;
   document.querySelectorAll('.attemptbutton').forEach(button=>button.classList.toggle('selected',button.dataset.id===id));
  }catch(e){error(e)}

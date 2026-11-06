@@ -1,6 +1,6 @@
 # Python Trail — local edition
 
-A free local Python learning lab with 45 lessons. The main experience runs in one browser window: lesson instructions, Python editor, output and assignment turn-in. Docker Desktop runs the worker and PostgreSQL in the background. VS Code is optional.
+A free local Python learning lab with 53 lessons. The main experience runs in one browser window: lesson instructions, Python editor, output and assignment turn-in. Docker Desktop runs the worker and PostgreSQL in the background. VS Code is optional.
 
 ## Setup on Windows
 
@@ -19,20 +19,24 @@ On later visits, start Docker Desktop and run `start.ps1`. Use `stop.ps1` to sto
 | Address | Purpose |
 | --- | --- |
 | http://localhost:8765/learn | Student's learning trail |
-| http://localhost:8765/lessons/1 | Lesson 1, editor, output and assignment turn-in; replace 1 with any lesson number up to 45 |
+| http://localhost:8765/lessons/1 | Lesson 1, editor, output and assignment turn-in; replace 1 with any lesson number up to 53 |
 | http://localhost:8765/playground | Free coding and input experiments |
 | http://localhost:8765/parent | Parent progress and submission history |
 | /parent/submissions/ID | A saved turn-in, full source, feedback, output and changes |
 
 The root URL redirects to /learn. These are separate screens within one local application. They are not separate authenticated accounts; anyone using this computer can access them.
 
-## Five learning paths
+## Six learning paths
 
-The home page has Beginner (25 lessons), Intermediate (5), Advanced (5), Algorithms (5), and Data Structures (5). Begin with the first path, then build confidence. Advanced describes the ideas, not a child's age. Algorithms and Data Structures use concrete examples such as marbles, toy shelves, plate stacks, waiting lines, trees and friendship maps.
+The home page has Beginner (25 lessons), Intermediate (5), Advanced (5), Algorithms (5), Data Structures (5), and PLC (8). Begin with the first path, then build confidence. Advanced describes the ideas, not a child's age. Algorithms and Data Structures use concrete examples such as marbles, toy shelves, plate stacks, waiting lines, trees and friendship maps.
 
 Each lesson has **Description** and **History** tabs. Description includes its assignment and **What this lesson checks**. History shows previous turn-ins for that lesson, with the exact saved answer, result, output and feedback. Viewing history does not replace the editor draft.
 
 Below the editor, **Output** shows run/grade feedback and **Helper** is a searchable local Python reference. Helper has categories for strings, integers, decimals, lists, dictionaries, sets, tuples and booleans, with 46 tested examples. It labels methods, built-in functions, operators and syntax separately. The catalogue is a beginner reference rather than an exhaustive Python manual.
+
+## Interactive PLC lessons
+
+The [PLC path](http://localhost:8765/learn?track=plc) has four visual Ladder Logic lessons and four Structured Text lessons. Build series/parallel paths, choose normally open/closed contacts, toggle SW1/SW2 and observe the lamp. The clickable switch table shows live Ladder results and lets you run individual ST cases. Turn-in checks all four input combinations. PLC has its own contextual Helper. No hardware or additional runtime installation is needed. See [the PLC guide](../PLC.md) for the supported Boolean subset and one-scan model.
 
 ## Student workflow
 

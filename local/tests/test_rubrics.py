@@ -65,11 +65,11 @@ class RubricAudit(unittest.TestCase):
                 self.assertFalse(self.check(quest,'print('+repr(lesson['expected'])+')')['passed'])
 
     def test_tracks_and_lesson_identity_are_complete(self):
-        tracks=['beginner','intermediate','advanced','algorithms','data-structures']
+        tracks=['beginner','intermediate','advanced','algorithms','data-structures','plc']
         self.assertEqual(set(q['track'] for q in LESSONS.values()),set(tracks))
-        self.assertEqual(len(LESSONS),45)
+        self.assertEqual(len(LESSONS),53)
         self.assertEqual(len([q for q in LESSONS.values() if q['track']=='beginner']),25)
-        for track in tracks[1:]:self.assertEqual(len([q for q in LESSONS.values() if q['track']==track]),5)
+        for track in tracks[1:]:self.assertEqual(len([q for q in LESSONS.values() if q['track']==track]),8 if track=='plc' else 5)
         for lesson in LESSONS.values():self.assertTrue(lesson['checks'])
 
     def test_every_helper_example_runs_as_shown(self):

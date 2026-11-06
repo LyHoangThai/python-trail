@@ -26,9 +26,10 @@ def resolve_assignment(path):
     quest=lesson.get('id')
     if type(quest)!=int or not 1<=quest<=9999 or not re.match(rf'^{quest:02d}_[a-z0-9_]+$',folder.name):
         raise ValueError('The lesson folder and lesson.json ID do not match.')
-    if lesson.get('assignment')!='assignment.py': raise ValueError('The assignment must be assignment.py in this lesson folder.')
-    assignment=folder/'assignment.py'
-    if not assignment.is_file(): raise ValueError('This lesson is missing assignment.py.')
+    assignment_name=lesson.get('assignment')
+    if assignment_name not in ('assignment.py','assignment.st','assignment.ladder.json'): raise ValueError('The assignment filename in lesson.json is not supported.')
+    assignment=folder/assignment_name
+    if not assignment.is_file(): raise ValueError('This lesson is missing '+assignment_name+'.')
     return quest,assignment
 
 def main():

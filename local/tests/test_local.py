@@ -14,6 +14,7 @@ sys.path.insert(0,str(ROOT/'tools'))
 sys.path.insert(0,str(ROOT.parent/'tools'))
 import server
 import worker
+from plc import parse_st, ladder
 import trail
 from lesson_layout import create_lesson
 
@@ -112,7 +113,9 @@ class LocalTests(unittest.TestCase):
     def test_all_starter_files_compile(self):
         for lesson in server.LESSONS:
             source=(ROOT/'student'/lesson['assignment_path']).read_text(encoding='utf-8')
-            compile(source,lesson['assignment_path'],'exec')
+            if lesson.get('engine')=='plc-st':parse_st(source)
+            elif lesson.get('engine')=='plc-ladder':ladder(source,{'SW1':False,'SW2':False})
+            else:compile(source,lesson['assignment_path'],'exec')
 
     def test_every_lesson_has_exact_folder_and_submission_identity(self):
         folders=list((ROOT/'student/lessons').glob('*/lesson.json'))

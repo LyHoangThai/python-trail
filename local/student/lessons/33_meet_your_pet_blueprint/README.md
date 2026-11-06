@@ -8,7 +8,7 @@ A class is a blueprint. An object is one thing made from it. A method is a funct
 
 Define class Pet with speak(self) that prints Hi, friend!. Make pet = Pet() and call pet.speak().
 
-Edit **assignment.py** in this folder. The matching lesson number on the website is **33**.
+The matching lesson number on the website is **33**. Its saved file is **assignment.py**. Use the browser simulator for PLC exercises.
 
 ## What this lesson checks
 
@@ -34,7 +34,7 @@ Parents can review the history at http://localhost:8765/parent and open any atte
 
 ## Optional VS Code workflow
 
-Edit assignment.py in this folder, save (**Ctrl+S**), then choose **Tasks: Run Test Task → Trail: Turn in assignment** in the Python Trail dev container. The task works with this README or assignment.py open. **Ctrl+Shift+B** only runs code; it does not turn it in.
+Edit assignment.py in this folder, save (Ctrl+S), then choose Tasks: Run Test Task → Trail: Turn in assignment in the Python Trail dev container. Ctrl+Shift+B only runs Python; it does not turn it in.
 
 Browser drafts and optional assignment.py files are separate workspaces. Both submit to the same lesson history; neither overwrites the other's draft.
 

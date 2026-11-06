@@ -50,12 +50,17 @@ def execute(source, sandbox=True, inputs=''):
             return text,error
 
 from rubric import requirement, cases
+from plc import PLC_LESSONS, grade_plc
+PLC_BY_ID={lesson['id']:lesson for lesson in PLC_LESSONS}
 
 # Kept as a public helper for the regression tests and local diagnostics.
 def technique(source, quest):
     return requirement(source, quest)
 
 def grade(job, sandbox=True):
+    if job['quest'] in PLC_BY_ID:
+        spec=PLC_BY_ID[job['quest']]
+        return grade_plc({**job,**{key:spec[key] for key in ('engine','plc_logic','plc_requires')}})
     source=job['source']
     output,error=execute(source,sandbox,job.get('inputs',''))
     if job.get('mode')=='run':

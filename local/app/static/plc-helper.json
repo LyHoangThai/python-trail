@@ -1,0 +1,196 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "label": "All"
+    },
+    {
+      "id": "contacts",
+      "label": "Contacts & paths"
+    },
+    {
+      "id": "coil",
+      "label": "Output coils"
+    },
+    {
+      "id": "logic",
+      "label": "Boolean logic"
+    },
+    {
+      "id": "st",
+      "label": "Structured Text"
+    }
+  ],
+  "entries": [
+    {
+      "category": "contacts",
+      "name": "Normally open —| |—",
+      "kind": "PLC instruction",
+      "description": "Pass a path when the selected bit is TRUE.",
+      "example": "Path 1: | | SW1\nAll paths join → ( LAMP )",
+      "output": "LAMP ON for the example switch states",
+      "expected_lamp": true,
+      "engine": "plc-ladder",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": "Toggle SW1 ON to close this program contact. It checks a bit, rather than describing a physical switch’s wiring.",
+      "program": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}"
+    },
+    {
+      "category": "contacts",
+      "name": "Normally closed —|/|—",
+      "kind": "PLC instruction",
+      "description": "Pass a path when the selected bit is FALSE.",
+      "example": "Path 1: |/| SW1\nAll paths join → ( LAMP )",
+      "output": "LAMP OFF for the example switch states",
+      "expected_lamp": false,
+      "engine": "plc-ladder",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": "",
+      "program": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NC\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}"
+    },
+    {
+      "category": "contacts",
+      "name": "Series paths = AND",
+      "kind": "PLC instruction",
+      "description": "Require both contacts to pass.",
+      "example": "Path 1: | | SW1 — | | SW2\nAll paths join → ( LAMP )",
+      "output": "LAMP OFF for the example switch states",
+      "expected_lamp": false,
+      "engine": "plc-ladder",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": "",
+      "program": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      },\n      {\n        \"input\": \"SW2\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}"
+    },
+    {
+      "category": "contacts",
+      "name": "Parallel paths = OR",
+      "kind": "PLC instruction",
+      "description": "Let either path pass.",
+      "example": "Path 1: | | SW1\nPath 2: | | SW2\nAll paths join → ( LAMP )",
+      "output": "LAMP ON for the example switch states",
+      "expected_lamp": true,
+      "engine": "plc-ladder",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": "",
+      "program": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      }\n    ],\n    [\n      {\n        \"input\": \"SW2\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}"
+    },
+    {
+      "category": "coil",
+      "name": "LAMP coil —( )—",
+      "kind": "PLC instruction",
+      "description": "Use the combined path result for the output.",
+      "example": "Path 1: | | SW1\nAll paths join → ( LAMP )",
+      "output": "LAMP ON for the example switch states",
+      "expected_lamp": true,
+      "engine": "plc-ladder",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": "Parallel paths join before one output coil. With no paths, this teaching lab keeps the output OFF.",
+      "program": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}"
+    },
+    {
+      "category": "st",
+      "name": "LAMP := SW1;",
+      "kind": "PLC instruction",
+      "description": "Assign a Boolean expression to LAMP.",
+      "example": "LAMP := SW1;",
+      "output": "LAMP ON for the example switch states",
+      "expected_lamp": true,
+      "engine": "plc-st",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": ":= assigns a value. A semicolon finishes the instruction. SW1, SW2 and LAMP are predefined BOOLs here."
+    },
+    {
+      "category": "logic",
+      "name": "AND",
+      "kind": "PLC instruction",
+      "description": "Require both inputs.",
+      "example": "LAMP := SW1 AND SW2;",
+      "output": "LAMP OFF for the example switch states",
+      "expected_lamp": false,
+      "engine": "plc-st",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": ""
+    },
+    {
+      "category": "logic",
+      "name": "OR",
+      "kind": "PLC instruction",
+      "description": "Accept either input.",
+      "example": "LAMP := SW1 OR SW2;",
+      "output": "LAMP ON for the example switch states",
+      "expected_lamp": true,
+      "engine": "plc-st",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": ""
+    },
+    {
+      "category": "logic",
+      "name": "NOT",
+      "kind": "PLC instruction",
+      "description": "Flip a Boolean value.",
+      "example": "LAMP := NOT SW1;",
+      "output": "LAMP OFF for the example switch states",
+      "expected_lamp": false,
+      "engine": "plc-st",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": ""
+    },
+    {
+      "category": "st",
+      "name": "IF / THEN / ELSE / END_IF;",
+      "kind": "PLC instruction",
+      "description": "Choose between two instructions.",
+      "example": "IF SW1 THEN\n    LAMP := TRUE;\nELSE\n    LAMP := FALSE;\nEND_IF;",
+      "output": "LAMP ON for the example switch states",
+      "expected_lamp": true,
+      "engine": "plc-st",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": ""
+    },
+    {
+      "category": "logic",
+      "name": "TRUE and FALSE",
+      "kind": "BOOL literal",
+      "description": "The two BOOL values.",
+      "example": "LAMP := TRUE;",
+      "output": "LAMP ON for the example switch states",
+      "expected_lamp": true,
+      "engine": "plc-st",
+      "test_inputs": {
+        "SW1": true,
+        "SW2": false
+      },
+      "note": "A constant can demonstrate a value, but it will not pass an assignment that must follow a switch."
+    }
+  ]
+}

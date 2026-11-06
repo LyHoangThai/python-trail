@@ -7,6 +7,7 @@ from lesson_layout import create_lesson
 sys.path.insert(0,str(PROJECT/'local/worker'))
 from rubric import CHECKS
 from new_lessons import LESSONS as EXTRA_LESSONS
+from plc import PLC_LESSONS
 root=PROJECT/'local'
 original=json.loads((PROJECT/'curriculum/original-lessons.json').read_text(encoding='utf-8'))
 topics=['Printing','Printing','Arithmetic','Comments','Printing','Variables','Variables','F-strings','Arithmetic','Variables','Conditions','Conditions','Conditions','Boolean logic','Conditions','Loops','Loops','Lists','Functions','Functions']
@@ -31,14 +32,14 @@ for lesson in lessons:
  if lesson['id']==15: lesson['mission']=lesson['mission'].replace('We check three scores.', 'We also check scores at the 50 and 80 boundaries.')
  if lesson['id']==24: lesson['mission']='Use bag.items() in a for loop and print map: 1, then snack: 3, each on its own line.'
  create_lesson(lesson,root/'student')
-for extra in EXTRA_LESSONS:
+for extra in EXTRA_LESSONS+PLC_LESSONS:
  lesson=dict(extra)
  slug=re.sub(r'[^a-z0-9]+','_',lesson['title'].lower()).strip('_')
  lesson['filename']=f"{lesson['id']:02d}_{slug}.py"
  create_lesson(lesson,root/'student')
  lessons.append(lesson)
 (root/'app/lessons.json').write_text(json.dumps(lessons,ensure_ascii=False,indent=2),encoding='utf-8')
-index=['# Lessons','', 'One folder per lesson. Read its README.md and edit assignment.py. Save, then use **Trail: Turn in assignment** in VS Code.', '', '| Lesson | Topic |','| --- | --- |']
+index=['# Lessons','', 'One folder per lesson. Read its README.md and use the matching browser lesson. Python files and optional PLC source files can also be turned in with the VS Code task.', '', '| Lesson | Topic |','| --- | --- |']
 for lesson in lessons:
  index.append(f"| [{lesson['id']:02d} · {lesson['title']}]({Path(lesson['directory']).name}/README.md) | {lesson['track']} · {lesson['topic']} |")
 (root/'student/lessons/README.md').write_text('\n'.join(index)+'\n',encoding='utf-8')
@@ -46,4 +47,4 @@ legacy=root/'student/quests'
 if legacy.exists() and not any(legacy.iterdir()): legacy.rmdir()
 (root/'app/static').mkdir(exist_ok=True)
 (root/'app/static/style.css').write_text((PROJECT/'hosted/dist/style.css').read_text(encoding='utf-8').replace("'Space Grotesk'","'Segoe UI'").replace("'DM Sans'","'Segoe UI'").replace("@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');",''),encoding='utf-8')
-print(f'Generated {len(lessons)} quests, dictionary chapter, and local assets.')
+print(f'Generated {len(lessons)} lessons and local assets.')

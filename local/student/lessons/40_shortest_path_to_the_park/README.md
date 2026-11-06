@@ -8,7 +8,7 @@ Imagine a map of paths between places. Breadth-first search checks places one st
 
 Use a deque queue of (place, steps), a visited set and a while loop to find the shortest route from start to goal. Print the step count, or -1 if there is no route.
 
-Edit **assignment.py** in this folder. The matching lesson number on the website is **40**.
+The matching lesson number on the website is **40**. Its saved file is **assignment.py**. Use the browser simulator for PLC exercises.
 
 ## What this lesson checks
 
@@ -34,7 +34,7 @@ Parents can review the history at http://localhost:8765/parent and open any atte
 
 ## Optional VS Code workflow
 
-Edit assignment.py in this folder, save (**Ctrl+S**), then choose **Tasks: Run Test Task → Trail: Turn in assignment** in the Python Trail dev container. The task works with this README or assignment.py open. **Ctrl+Shift+B** only runs code; it does not turn it in.
+Edit assignment.py in this folder, save (Ctrl+S), then choose Tasks: Run Test Task → Trail: Turn in assignment in the Python Trail dev container. Ctrl+Shift+B only runs Python; it does not turn it in.
 
 Browser drafts and optional assignment.py files are separate workspaces. Both submit to the same lesson history; neither overwrites the other's draft.
 

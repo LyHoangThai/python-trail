@@ -152,7 +152,8 @@ class Service:
         baseline=previous['source'] if previous else BY_ID[row['quest']]['starter']
         row['baseline_label']='Previous submission' if previous else 'Lesson starter'
         row['baseline_source']=baseline
-        row['diff']='\n'.join(difflib.unified_diff(baseline.splitlines(),row['source'].splitlines(),fromfile='previous.py' if previous else 'starter.py',tofile='submitted.py',lineterm=''))
+        suffix=Path(BY_ID[row['quest']]['assignment_path']).suffix
+        row['diff']='\n'.join(difflib.unified_diff(baseline.splitlines(),row['source'].splitlines(),fromfile=('previous' if previous else 'starter')+suffix,tofile='submitted'+suffix,lineterm=''))
         return row
 
 def make_handler(service):
@@ -204,7 +205,7 @@ def make_handler(service):
                 pages={'/learn':'learn.html','/parent':'parent.html','/playground':'lesson.html'}
                 if re.fullmatch(r'/lessons/\d+',route) and int(route.rsplit('/',1)[1]) in BY_ID: pages[route]='lesson.html'
                 if re.fullmatch(r'/parent/submissions/[0-9a-f]{32}',route): pages[route]='submission.html'
-                assets=('/style.css','/app.css','/parent.js','/student.js','/learn.js','/review.js','/helper.js','/helper.json')
+                assets=('/style.css','/app.css','/parent.js','/student.js','/learn.js','/review.js','/helper.js','/helper.json','/plc.js','/plc-helper.json')
                 if route in pages or route in assets:
                     name=pages.get(route,route.lstrip('/'))
                     types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8'}

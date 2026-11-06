@@ -880,5 +880,196 @@
     "filename": "45_a_map_of_friendships.py",
     "directory": "lessons/45_a_map_of_friendships",
     "assignment_path": "lessons/45_a_map_of_friendships/assignment.py"
+  },
+  {
+    "id": 46,
+    "track": "plc",
+    "chapter": 1,
+    "title": "A switch and a lamp",
+    "topic": "Ladder Logic",
+    "engine": "plc-ladder",
+    "plc_logic": "single",
+    "plc_requires": [],
+    "explain": "A PLC reads inputs, follows a program, and updates outputs over and over. In this toy lab, SW1 is an input and LAMP is an output. A normally open contact —| |— passes a true path when its switch is ON. A coil —( )— uses the result.",
+    "mission": "Build one path with a normally open SW1 contact driving the LAMP coil. Toggle SW1 and watch the lamp.",
+    "hint": "Add a path and one SW1 contact. Leave its type as normally open.",
+    "starter": "{\n  \"branches\": [],\n  \"coil\": \"LAMP\"\n}\n",
+    "solution": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}\n",
+    "expected": "SW1 OFF → LAMP OFF\nSW1 ON → LAMP ON",
+    "checks": [
+      "Test all four combinations of SW1 and SW2.",
+      "Use the contact or Structured Text idea described in the assignment."
+    ],
+    "filename": "46_a_switch_and_a_lamp.py",
+    "directory": "lessons/46_a_switch_and_a_lamp",
+    "assignment_path": "lessons/46_a_switch_and_a_lamp/assignment.ladder.json"
+  },
+  {
+    "id": 47,
+    "track": "plc",
+    "chapter": 1,
+    "title": "Two keys for the toy box",
+    "topic": "Ladder Logic",
+    "engine": "plc-ladder",
+    "plc_logic": "and",
+    "plc_requires": [],
+    "explain": "Two contacts in series are like two keys in a row. The path is true only when both contacts pass. This is AND logic.",
+    "mission": "Put normally open SW1 and SW2 contacts on the same path so the lamp turns on only when both switches are ON.",
+    "hint": "Add a second contact to the same path, then select SW2.",
+    "starter": "{\n  \"branches\": [],\n  \"coil\": \"LAMP\"\n}\n",
+    "solution": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      },\n      {\n        \"input\": \"SW2\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}\n",
+    "expected": "Only both switches ON → LAMP ON",
+    "checks": [
+      "Test all four combinations of SW1 and SW2.",
+      "Use the contact or Structured Text idea described in the assignment."
+    ],
+    "filename": "47_two_keys_for_the_toy_box.py",
+    "directory": "lessons/47_two_keys_for_the_toy_box",
+    "assignment_path": "lessons/47_two_keys_for_the_toy_box/assignment.ladder.json"
+  },
+  {
+    "id": 48,
+    "track": "plc",
+    "chapter": 1,
+    "title": "Either doorbell works",
+    "topic": "Ladder Logic",
+    "engine": "plc-ladder",
+    "plc_logic": "or",
+    "plc_requires": [],
+    "explain": "Parallel paths are like two doors into the same room: either path can let the signal through. This is OR logic.",
+    "mission": "Build two parallel paths: SW1 on one, SW2 on the other. Either switch should turn on the lamp.",
+    "hint": "Add a new path instead of adding another contact to the first path.",
+    "starter": "{\n  \"branches\": [],\n  \"coil\": \"LAMP\"\n}\n",
+    "solution": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NO\"\n      }\n    ],\n    [\n      {\n        \"input\": \"SW2\",\n        \"contact\": \"NO\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}\n",
+    "expected": "Either switch ON → LAMP ON",
+    "checks": [
+      "Test all four combinations of SW1 and SW2.",
+      "Use the contact or Structured Text idea described in the assignment."
+    ],
+    "filename": "48_either_doorbell_works.py",
+    "directory": "lessons/48_either_doorbell_works",
+    "assignment_path": "lessons/48_either_doorbell_works/assignment.ladder.json"
+  },
+  {
+    "id": 49,
+    "track": "plc",
+    "chapter": 1,
+    "title": "The opposite-day contact",
+    "topic": "Ladder Logic",
+    "engine": "plc-ladder",
+    "plc_logic": "not",
+    "plc_requires": [],
+    "explain": "A normally closed contact —|/|— checks for FALSE. It passes when its switch is OFF. This is a program instruction checking a bit; it is not a claim about a physical switch’s wiring.",
+    "mission": "Use a normally closed SW1 contact so the lamp is ON when SW1 is OFF, and OFF when SW1 is ON.",
+    "hint": "Select SW1, then change the contact type from normally open to normally closed.",
+    "starter": "{\n  \"branches\": [],\n  \"coil\": \"LAMP\"\n}\n",
+    "solution": "{\n  \"branches\": [\n    [\n      {\n        \"input\": \"SW1\",\n        \"contact\": \"NC\"\n      }\n    ]\n  ],\n  \"coil\": \"LAMP\"\n}\n",
+    "expected": "SW1 OFF → LAMP ON\nSW1 ON → LAMP OFF",
+    "checks": [
+      "Test all four combinations of SW1 and SW2.",
+      "Use the contact or Structured Text idea described in the assignment."
+    ],
+    "filename": "49_the_opposite_day_contact.py",
+    "directory": "lessons/49_the_opposite_day_contact",
+    "assignment_path": "lessons/49_the_opposite_day_contact/assignment.ladder.json"
+  },
+  {
+    "id": 50,
+    "track": "plc",
+    "chapter": 2,
+    "title": "Write a lamp rule",
+    "topic": "Structured Text",
+    "engine": "plc-st",
+    "plc_logic": "single",
+    "plc_requires": [],
+    "explain": "Structured Text is another way to tell a PLC what to do. Use := to assign a value and ; to finish an instruction. Our lab already provides SW1, SW2 and LAMP as BOOL values.",
+    "mission": "Write a Structured Text assignment that makes LAMP follow SW1.",
+    "hint": "Try LAMP := SW1;",
+    "starter": "// SW1 and SW2 are BOOL inputs. LAMP is a BOOL output.\nLAMP := FALSE;\n",
+    "solution": "LAMP := SW1;\n",
+    "expected": "SW1 OFF → LAMP OFF\nSW1 ON → LAMP ON",
+    "checks": [
+      "Test all four combinations of SW1 and SW2.",
+      "Use the contact or Structured Text idea described in the assignment."
+    ],
+    "filename": "50_write_a_lamp_rule.py",
+    "directory": "lessons/50_write_a_lamp_rule",
+    "assignment_path": "lessons/50_write_a_lamp_rule/assignment.st"
+  },
+  {
+    "id": 51,
+    "track": "plc",
+    "chapter": 2,
+    "title": "Both switches, in words",
+    "topic": "Structured Text",
+    "engine": "plc-st",
+    "plc_logic": "and",
+    "plc_requires": [
+      "and"
+    ],
+    "explain": "AND in Structured Text is the same idea as two ladder contacts in series. A BOOL value is TRUE or FALSE.",
+    "mission": "Assign SW1 AND SW2 to LAMP so both switches must be ON.",
+    "hint": "Write the Boolean expression after := and finish with a semicolon.",
+    "starter": "// SW1 and SW2 are BOOL inputs. LAMP is a BOOL output.\nLAMP := FALSE;\n",
+    "solution": "LAMP := SW1 AND SW2;\n",
+    "expected": "Only both switches ON → LAMP ON",
+    "checks": [
+      "Test all four combinations of SW1 and SW2.",
+      "Use the contact or Structured Text idea described in the assignment."
+    ],
+    "filename": "51_both_switches_in_words.py",
+    "directory": "lessons/51_both_switches_in_words",
+    "assignment_path": "lessons/51_both_switches_in_words/assignment.st"
+  },
+  {
+    "id": 52,
+    "track": "plc",
+    "chapter": 2,
+    "title": "Either switch, in words",
+    "topic": "Structured Text",
+    "engine": "plc-st",
+    "plc_logic": "or",
+    "plc_requires": [
+      "or"
+    ],
+    "explain": "OR is the same idea as parallel ladder paths. You can use it to let either of two toy buttons light the same lamp.",
+    "mission": "Use OR to make LAMP turn ON when SW1 or SW2 is ON.",
+    "hint": "Use LAMP := followed by the two switches joined with OR.",
+    "starter": "// SW1 and SW2 are BOOL inputs. LAMP is a BOOL output.\nLAMP := FALSE;\n",
+    "solution": "LAMP := SW1 OR SW2;\n",
+    "expected": "Either switch ON → LAMP ON",
+    "checks": [
+      "Test all four combinations of SW1 and SW2.",
+      "Use the contact or Structured Text idea described in the assignment."
+    ],
+    "filename": "52_either_switch_in_words.py",
+    "directory": "lessons/52_either_switch_in_words",
+    "assignment_path": "lessons/52_either_switch_in_words/assignment.st"
+  },
+  {
+    "id": 53,
+    "track": "plc",
+    "chapter": 2,
+    "title": "An opposite-day decision",
+    "topic": "Structured Text",
+    "engine": "plc-st",
+    "plc_logic": "not",
+    "plc_requires": [
+      "if",
+      "not"
+    ],
+    "explain": "IF checks a condition, THEN chooses the first instructions, and ELSE chooses the other instructions. END_IF; closes the choice. NOT flips a BOOL value. This looks different from Python: there is no colon, and assignments use :=.",
+    "mission": "Use IF NOT SW1 THEN / ELSE / END_IF; to turn the lamp ON when SW1 is OFF and OFF when it is ON.",
+    "hint": "In the THEN branch assign TRUE to LAMP. In ELSE assign FALSE.",
+    "starter": "// SW1 and SW2 are BOOL inputs. LAMP is a BOOL output.\nLAMP := FALSE;\n",
+    "solution": "IF NOT SW1 THEN\n    LAMP := TRUE;\nELSE\n    LAMP := FALSE;\nEND_IF;\n",
+    "expected": "SW1 OFF → LAMP ON\nSW1 ON → LAMP OFF",
+    "checks": [
+      "Test all four combinations of SW1 and SW2.",
+      "Use the contact or Structured Text idea described in the assignment."
+    ],
+    "filename": "53_an_opposite_day_decision.py",
+    "directory": "lessons/53_an_opposite_day_decision",
+    "assignment_path": "lessons/53_an_opposite_day_decision/assignment.st"
   }
 ]

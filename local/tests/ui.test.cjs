@@ -10,13 +10,13 @@ const tick=()=>new Promise(resolve=>setImmediate(resolve));
  const lessons=JSON.parse(fs.readFileSync(path.join(__dirname,'../app/lessons.json'),'utf8'));
  const context={document:{getElementById:id=>dom.get(id),hidden:false,addEventListener:(name,handler)=>documentEvents[name]=handler},window:{addEventListener:(name,handler)=>events[name]=handler,history:{replaceState(){}}},location:{search:''},URLSearchParams,Set,fetch:async(route,options)=>{assert.equal(options.cache,'no-store');fetches++;return{ok:true,json:async()=>route.endsWith('lessons')?{lessons}:state}}};
  vm.runInNewContext(fs.readFileSync(path.join(staticDir,'learn.js'),'utf8'),context);await tick();await tick();
- for(const name of ['Beginner','Intermediate','Advanced','Algorithms','Data Structures'])assert.ok(dom.get('tracktabs').innerHTML.includes(name));
+ for(const name of ['Beginner','Intermediate','Advanced','Algorithms','Data Structures','PLC'])assert.ok(dom.get('tracktabs').innerHTML.includes(name));
  assert.ok(dom.get('chapters').innerHTML.includes('Hello, explorer! · Ready to start'));
  const before=fetches;state={completed:[{quest:1}]};events.pageshow({persisted:true});await tick();await tick();
  assert.ok(fetches>before,'Returning from browser cache must fetch current progress');
  assert.ok(dom.get('chapters').innerHTML.includes('Hello, explorer! · Completed'));
  assert.ok(dom.get('total').textContent.includes('1 / 25'));
- console.log('PASS: five home tabs and completion refresh after back navigation');
+ console.log('PASS: six home tabs and completion refresh after back navigation');
 
  const student=fs.readFileSync(path.join(staticDir,'student.js'),'utf8');
  const banner=student.slice(student.indexOf('function showSubmissionBanner('),student.indexOf("$('bannerclose').onclick"));

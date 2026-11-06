@@ -4,6 +4,8 @@ The current worker checks expected output plus the requirements below. Selected 
 
 Run code executes Python without awarding completion. Turn in assignment saves a source snapshot and grades it. Historical records are preserved; re-submit an older answer to apply the latest checks. These checks guide learning; they are not proof of mastery or a comprehensive adversarial code verifier.
 
+PLC exercises use a separate Boolean simulator and check all four SW1/SW2 combinations. ST exercises also check the language construct named in the mission. See PLC.md for the supported subset.
+
 | Lesson | Path | What is checked |
 | --- | --- | --- |
 | 01 · Hello, explorer! | beginner | Display the required message with print(). |
@@ -51,3 +53,11 @@ Run code executes Python without awarding completion. Turn in assignment saves a
 | 43 · Collect unique colors | data-structures | Use set() to collect unique values. Count and display the actual unique items. |
 | 44 · A branching family tree | data-structures | Read a root node and visit its immediate children. Use dictionary keys and a loop. |
 | 45 · A map of friendships | data-structures | Read the selected person’s neighbor list and loop through it. |
+| 46 · A switch and a lamp | plc | Test all four combinations of SW1 and SW2. Use the contact or Structured Text idea described in the assignment. |
+| 47 · Two keys for the toy box | plc | Test all four combinations of SW1 and SW2. Use the contact or Structured Text idea described in the assignment. |
+| 48 · Either doorbell works | plc | Test all four combinations of SW1 and SW2. Use the contact or Structured Text idea described in the assignment. |
+| 49 · The opposite-day contact | plc | Test all four combinations of SW1 and SW2. Use the contact or Structured Text idea described in the assignment. |
+| 50 · Write a lamp rule | plc | Test all four combinations of SW1 and SW2. Use the contact or Structured Text idea described in the assignment. |
+| 51 · Both switches, in words | plc | Test all four combinations of SW1 and SW2. Use the contact or Structured Text idea described in the assignment. |
+| 52 · Either switch, in words | plc | Test all four combinations of SW1 and SW2. Use the contact or Structured Text idea described in the assignment. |
+| 53 · An opposite-day decision | plc | Test all four combinations of SW1 and SW2. Use the contact or Structured Text idea described in the assignment. |

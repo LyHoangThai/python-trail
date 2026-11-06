@@ -1,6 +1,6 @@
 # Lessons
 
-One folder per lesson. Read its README.md and edit assignment.py. Save, then use **Trail: Turn in assignment** in VS Code.
+One folder per lesson. Read its README.md and use the matching browser lesson. Python files and optional PLC source files can also be turned in with the VS Code task.
 
 | Lesson | Topic |
 | --- | --- |
@@ -49,3 +49,11 @@ One folder per lesson. Read its README.md and edit assignment.py. Save, then use
 | [43 · Collect unique colors](43_collect_unique_colors/README.md) | data-structures · Sets |
 | [44 · A branching family tree](44_a_branching_family_tree/README.md) | data-structures · Trees |
 | [45 · A map of friendships](45_a_map_of_friendships/README.md) | data-structures · Graphs |
+| [46 · A switch and a lamp](46_a_switch_and_a_lamp/README.md) | plc · Ladder Logic |
+| [47 · Two keys for the toy box](47_two_keys_for_the_toy_box/README.md) | plc · Ladder Logic |
+| [48 · Either doorbell works](48_either_doorbell_works/README.md) | plc · Ladder Logic |
+| [49 · The opposite-day contact](49_the_opposite_day_contact/README.md) | plc · Ladder Logic |
+| [50 · Write a lamp rule](50_write_a_lamp_rule/README.md) | plc · Structured Text |
+| [51 · Both switches, in words](51_both_switches_in_words/README.md) | plc · Structured Text |
+| [52 · Either switch, in words](52_either_switch_in_words/README.md) | plc · Structured Text |
+| [53 · An opposite-day decision](53_an_opposite_day_decision/README.md) | plc · Structured Text |
