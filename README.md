@@ -27,7 +27,7 @@ Follow [the local setup guide](local/README.md) for prerequisites, the VS Code w
 - The local edition is the main direction: real VS Code files, containerized worker, persistent PostgreSQL progress, and a parent dashboard.
 - Local curriculum includes variables, arithmetic, f-strings, conditions, boolean logic, loops, lists, functions and dictionaries.
 - Functional tests passed before consolidation, including all 25 reference solutions, failed checks, timeouts, queue recovery and progress updates. The source copies were verified byte-for-byte during consolidation.
-- Docker installation/builds, PostgreSQL integration, Linux resource restrictions and VS Code attachment still need a real-machine smoke test. Run `local/smoke-test.ps1` after setup; it completes quest 1 as part of its check.
+- Live Docker checks passed on 2026-11-06: container builds/startup, PostgreSQL persistence, production-worker grading for all 25 solutions, worker uid/queue isolation, infinite-loop termination, the playground submission CLI and browser dashboard. Interactive VS Code attachment is the remaining manual check. See [testing results](TESTING.md).
 - The hosted website is [Python Trail](https://python-trail-lab.roantortoise1.chatgpt.site). Its browser-local progress is separate from the local edition. Organizing files does not redeploy it.
 
 Run functional tests from `local/`:
