@@ -71,3 +71,11 @@ The setup encountered a transient container-name conflict while another startup 
 - All 35 Python test methods and frontend/diagram model checks passed. The rebuilt app became healthy against the existing database.
 - Browser checks: native drag into the new canvas, series contacts, live lamp, Split and I/O Panel views, synchronized operator/sidebar inputs, worker scan, modal Description/History, palette filters and canvas zoom. No graded turn-ins were created.
 - Final preview captured in `plc-studio.png`; restored lesson 47’s exact original source after all browser checks. Release archive verified with 53 matching lesson folders and no credentials/caches.
+
+## 2026-11-06 — sample product 0.1.0
+
+- Built a standalone 222-file sample distribution with setup/start/stop wrappers, product overview, demo walkthrough, release notes, SHA-256 manifest and ZIP checksum. All 53 assignment files are regenerated from curriculum starters; no .env, database, personal drafts, backups or machine-specific home paths are shipped.
+- Verified all shipped hashes, local overview links, ZIP integrity and PowerShell syntax.
+- Extracted the actual ZIP to a separate test folder. Launch-Sample.ps1 -SkipInstall -NoOpen successfully built/started clean app, worker and database containers using an overridden test-only Compose identity on port 8766. Initial completion state was empty.
+- Tested browser-origin API writes on 8766, Python passing/retry submissions, Ladder and Structured Text grading, saved history and progress. The original app on 8765 remained healthy. Stopped only the temporary test containers afterward; original app and family progress were untouched.
+- Docker Desktop was already installed for this test. Fresh Docker installation, restart prompts and optional VS Code setup remain environment-dependent steps; no offline image bundle is included.

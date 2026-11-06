@@ -47,3 +47,7 @@ The interactive PLC lab adds visual Ladder Logic and a Boolean Structured Text i
 ## Adding future subjects
 
 `local/app/subjects.json` defines the home dropdown and each subject’s learning paths. Lessons carry a stable `subject` ID. To add C++, register its subject/paths, add curriculum and matching lesson folders, and implement a bounded execution/grading engine in the worker. C++ lessons and execution are not implemented yet. See [PLC learning](PLC.md) for the current visual lab.
+
+## Sample product
+
+The shareable evaluation build is [Python Trail sample 0.1.0](releases/python-trail-sample-0.1.0.zip). It uses port 8766 and a separate Docker project, with 53 clean starters, setup launchers, a product overview and demo guide. Packaging source is in `product/`; `tools/build_sample.py` creates a new versioned folder, ZIP, file manifest and checksum without copying student work.
