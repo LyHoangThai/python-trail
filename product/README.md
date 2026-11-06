@@ -1,14 +1,18 @@
 # Python Trail — Python & PLC Sample
 
-**Version 0.1.0 · Local learning lab · Windows + Docker Desktop**
+**Version 0.1.1 · Local learning lab · Windows + Docker Desktop**
 
 A working sample product for families: kids learn Python and PLC logic, submit assignments, and let parents review their progress and every revision. All 53 lessons are included. No paid learning subscription or API key is required.
 
 ## Start here
 
 1. Extract the ZIP fully into a folder you can keep. Do not run scripts inside the ZIP.
-2. Open PowerShell in the extracted folder (the one containing this README).
-3. Run:
+2. Double-click **START HERE.cmd**.
+3. In the window that opens, click **Set up & open Python Trail**. Progress appears in the window; your browser opens when the app is ready.
+
+No terminal commands are needed. Use the same shortcut next time. Windows may hide the `.cmd` extension and show it as **START HERE**. If Windows blocks the downloaded launcher, review its publisher/source and Windows prompt before choosing whether to run it. Installer approvals, Docker's initial prompts, and any required restart still need your action. After a restart, open START HERE again.
+
+For troubleshooting or automation, the PowerShell launcher is still available:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\Launch-Sample.ps1

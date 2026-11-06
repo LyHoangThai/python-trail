@@ -2,7 +2,7 @@
 from pathlib import Path
 import hashlib,json,zipfile
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0'
+VERSION='0.1.1'
 NAME=f'python-trail-sample-{VERSION}'
 OUT=ROOT/'releases'/NAME
 if OUT.exists():raise SystemExit(f'{OUT} already exists; use a new version or output folder.')

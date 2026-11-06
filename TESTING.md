@@ -79,3 +79,7 @@ The setup encountered a transient container-name conflict while another startup 
 - Extracted the actual ZIP to a separate test folder. Launch-Sample.ps1 -SkipInstall -NoOpen successfully built/started clean app, worker and database containers using an overridden test-only Compose identity on port 8766. Initial completion state was empty.
 - Tested browser-origin API writes on 8766, Python passing/retry submissions, Ladder and Structured Text grading, saved history and progress. The original app on 8765 remained healthy. Stopped only the temporary test containers afterward; original app and family progress were untouched.
 - Docker Desktop was already installed for this test. Fresh Docker installation, restart prompts and optional VS Code setup remain environment-dependent steps; no offline image bundle is included.
+
+## 2026-11-06 — sample 0.1.1 setup button
+
+Added a double-click CMD launcher and a Windows Forms setup/start window with asynchronous child setup, progress logs, retries and automatic browser opening. Verified PowerShell syntax, Windows Forms/Drawing assembly loading, launcher presence, all package hashes and ZIP creation. Underlying setup/build workflow was verified by the 0.1.0 clean-extraction test. GUI button interaction and a fresh Docker installer were not exercised automatically.

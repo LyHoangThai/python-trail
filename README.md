@@ -50,4 +50,6 @@ The interactive PLC lab adds visual Ladder Logic and a Boolean Structured Text i
 
 ## Sample product
 
-The shareable evaluation build is [Python Trail sample 0.1.0](releases/python-trail-sample-0.1.0.zip). It uses port 8766 and a separate Docker project, with 53 clean starters, setup launchers, a product overview and demo guide. Packaging source is in `product/`; `tools/build_sample.py` creates a new versioned folder, ZIP, file manifest and checksum without copying student work.
+The shareable evaluation build is [Python Trail sample 0.1.1](releases/python-trail-sample-0.1.1.zip). It uses port 8766 and a separate Docker project, with 53 clean starters, setup launchers, a product overview and demo guide. Packaging source is in `product/`; `tools/build_sample.py` creates a new versioned folder, ZIP, file manifest and checksum without copying student work.
+
+The current sample includes **START HERE.cmd**: double-click it, then press **Set up & open Python Trail** in the Windows setup window. No PowerShell commands are needed.
