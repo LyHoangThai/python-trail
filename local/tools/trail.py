@@ -24,7 +24,7 @@ def resolve_assignment(path):
         raise ValueError('Open assignment.py or README.md inside lessons/NN_lesson_name/. Free play uses playground.py.')
     lesson=json.loads(metadata.read_text(encoding='utf-8'))
     quest=lesson.get('id')
-    if type(quest)!=int or not 1<=quest<=25 or not re.match(rf'^{quest:02d}_[a-z0-9_]+$',folder.name):
+    if type(quest)!=int or not 1<=quest<=9999 or not re.match(rf'^{quest:02d}_[a-z0-9_]+$',folder.name):
         raise ValueError('The lesson folder and lesson.json ID do not match.')
     if lesson.get('assignment')!='assignment.py': raise ValueError('The assignment must be assignment.py in this lesson folder.')
     assignment=folder/'assignment.py'

@@ -10,6 +10,10 @@ Define introduce(hero). Loop through heroes and call introduce to print Pip is l
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **25**.
 
+## What this lesson checks
+
+- Define introduce(hero), read its dictionary values, and call it from a loop over heroes.
+
 Expected output:
 
 ```text

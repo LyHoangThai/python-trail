@@ -10,6 +10,11 @@ Define welcome(name) to print Welcome, NAME! and loop through explorers to welco
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **20**.
 
+## What this lesson checks
+
+- Define welcome(name) and use its parameter in the greeting.
+- Call welcome from a loop over explorers.
+
 Expected output:
 
 ```text

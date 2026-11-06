@@ -10,6 +10,10 @@ Print Hello, explorer! on its own line.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **01**.
 
+## What this lesson checks
+
+- Display the required message with print().
+
 Expected output:
 
 ```text

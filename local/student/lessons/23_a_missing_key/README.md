@@ -10,6 +10,11 @@ Create a hero dictionary without a pet key. Use get() to print No pet yet as a d
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **23**.
 
+## What this lesson checks
+
+- Use hero.get("pet", "No pet yet") in the output.
+- Return a pet value if one is present.
+
 Expected output:
 
 ```text

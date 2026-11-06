@@ -10,6 +10,10 @@ Print 3, 2, 1, and Liftoff! on four separate lines.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **05**.
 
+## What this lesson checks
+
+- Print the launch sequence in order.
+
 Expected output:
 
 ```text

@@ -10,6 +10,10 @@ If has_map and has_key are both true, print Adventure unlocked!.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **14**.
 
+## What this lesson checks
+
+- Use and to require both has_map and has_key.
+
 Expected output:
 
 ```text

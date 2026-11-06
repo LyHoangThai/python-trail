@@ -10,6 +10,10 @@ Start with a hero dictionary containing level 1. Update level to 2 and print it.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **22**.
 
+## What this lesson checks
+
+- Start hero with level 1, update its level entry, and print that entry.
+
 Expected output:
 
 ```text

@@ -10,6 +10,11 @@ Print how many snacks each friend gets (4), then how many are left (1). Use // a
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **09**.
 
+## What this lesson checks
+
+- Calculate shares with // and leftovers with %.
+- Use the snacks and friends variables.
+
 Expected output:
 
 ```text

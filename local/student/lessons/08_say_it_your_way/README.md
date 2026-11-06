@@ -10,6 +10,11 @@ Use name in an f-string to print Hello, Pip!
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **08**.
 
+## What this lesson checks
+
+- Print an f-string that inserts the name variable with {name}.
+- The greeting must work when name changes.
+
 Expected output:
 
 ```text

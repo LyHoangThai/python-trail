@@ -51,7 +51,7 @@ class LocalTests(unittest.TestCase):
     def test_hardcoded_reward_fails_hidden_branches(self):
         source='score = 85\nif score >= 0:\n    print("Gold")'
         result=worker.grade(self.job(server.LESSONS[14],source),sandbox=False)
-        self.assertFalse(result['passed']);self.assertIn('65',result['feedback'])
+        self.assertFalse(result['passed']);self.assertIn('elif',result['feedback'])
 
     def test_printing_list_output_without_loop_does_not_pass(self):
         source='print("map\\nsnack\\ntorch")'
@@ -103,7 +103,7 @@ class LocalTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             service=server.Service(MemoryStore(),Path(tmp))
             self.assertEqual(self.invoke(service,{'quest':True,'source':''})[0],400)
-            self.assertEqual(self.invoke(service,{'quest':26,'source':''})[0],400)
+            self.assertEqual(self.invoke(service,{'quest':9999,'source':''})[0],400)
             self.assertEqual(self.invoke(service,{'quest':1,'source':''},header=False)[0],403)
             self.assertEqual(self.invoke(service,{'quest':1,'source':''},origin='https://example.com')[0],403)
             self.assertEqual(self.invoke(service,{'quest':1,'source':None})[0],400)

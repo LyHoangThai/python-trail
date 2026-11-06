@@ -42,6 +42,10 @@ def create_lesson(lesson, student_root):
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **{lesson['id']:02d}**.
 
+## What this lesson checks
+
+{chr(10).join('- '+item for item in lesson.get('checks', []))}
+
 Expected output:
 
 ```text

@@ -10,6 +10,10 @@ Print the result of 7 multiplied by 8.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **03**.
 
+## What this lesson checks
+
+- Calculate the answer with multiplication, rather than printing 56 directly.
+
 Expected output:
 
 ```text

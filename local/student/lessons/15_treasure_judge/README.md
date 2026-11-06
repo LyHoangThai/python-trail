@@ -6,9 +6,14 @@ Write a reward system. Check the biggest reward first so a score of 90 does not 
 
 ## Your assignment
 
-Use if / elif / else to print Gold for 80+, Silver for 50–79, and Bronze otherwise. We check three scores.
+Use if / elif / else to print Gold for 80+, Silver for 50–79, and Bronze otherwise. We also check scores at the 50 and 80 boundaries.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **15**.
+
+## What this lesson checks
+
+- Use if / elif / else for Gold, Silver and Bronze.
+- Check boundaries at 50 and 80 as well as other scores.
 
 Expected output:
 

@@ -10,6 +10,10 @@ Use a for loop to print 1 through 5, each on its own line.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **17**.
 
+## What this lesson checks
+
+- Print each number from a for loop.
+
 Expected output:
 
 ```text

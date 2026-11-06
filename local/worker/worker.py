@@ -49,22 +49,11 @@ def execute(source, sandbox=True, inputs=''):
             error='Stopped after 5 seconds. Check for a loop that never ends.' if timed_out else ('Python exited with an error. Read the output above.' if process.returncode else '')
             return text,error
 
+from rubric import requirement, cases
+
+# Kept as a public helper for the regression tests and local diagnostics.
 def technique(source, quest):
-    tree=ast.parse(source)
-    nodes=list(ast.walk(tree))
-    required={11:ast.If,12:ast.If,13:ast.If,14:ast.BoolOp,15:ast.If,
-              16:ast.For,17:ast.For,18:ast.For,19:ast.FunctionDef,20:ast.FunctionDef,
-              21:ast.Dict,22:ast.Dict,23:ast.Dict,24:ast.For,25:ast.FunctionDef}
-    kind=required.get(quest)
-    if kind and not any(isinstance(n,kind) for n in nodes):
-        return 'Use the Python technique described in the mission.'
-    if quest in (6,7) and not any(isinstance(n,ast.Assign) for n in nodes):
-        return 'Store the value in a variable before printing.'
-    if quest==4 and '#' not in source: return 'Include a comment starting with #.'
-    if quest==8 and not any(isinstance(n,ast.JoinedStr) for n in nodes): return 'Use an f-string.'
-    if quest==9 and not all(any(isinstance(n,k) for n in nodes) for k in (ast.FloorDiv,ast.Mod)):
-        return 'Use // and % to calculate shares and leftovers.'
-    return ''
+    return requirement(source, quest)
 
 def grade(job, sandbox=True):
     source=job['source']
@@ -78,15 +67,14 @@ def grade(job, sandbox=True):
     if clue: result['feedback']=clue; return result
     if output.strip()!=job['expected'].strip():
         result['feedback']='Keep going! Compare your output with the mission, including spelling and line breaks.'; return result
-    if job['quest']==15:
-        tree=ast.parse(source)
-        assignment=next((n for n in tree.body if isinstance(n,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='score' for t in n.targets)),None)
-        if not assignment: result['feedback']='Start by assigning score = 85.'; return result
-        for score,expected in [(65,'Silver'),(20,'Bronze')]:
-            assignment.value=ast.Constant(score)
-            text,error=execute(ast.unparse(ast.fix_missing_locations(tree)),sandbox)
-            if error or text.strip()!=expected:
-                result['feedback']=f'Try score = {score}. It should print {expected}.'; return result
+    for changed_source,expected,clue in cases(source,job['quest']):
+        if changed_source is None:
+            result['feedback']='Keep and use the lesson variables so we can check changed inputs.'
+            return result
+        changed_output,changed_error=execute(changed_source,sandbox)
+        if changed_error or changed_output.strip()!=expected.strip():
+            result['feedback']=clue
+            return result
     result.update(passed=True,feedback='Quest complete! Your progress is saved. Try your own variation next.')
     return result
 

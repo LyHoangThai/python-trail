@@ -10,6 +10,10 @@ Create hero with name Pip and level 1. Print the name, then the level on separat
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **21**.
 
+## What this lesson checks
+
+- Create the hero dictionary and read its name and level keys.
+
 Expected output:
 
 ```text

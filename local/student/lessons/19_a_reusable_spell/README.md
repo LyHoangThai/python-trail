@@ -10,6 +10,10 @@ Define cheer() to print You can do this!, then call it twice.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **19**.
 
+## What this lesson checks
+
+- Define cheer() with its print instruction, then call it twice.
+
 Expected output:
 
 ```text

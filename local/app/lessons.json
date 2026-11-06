@@ -11,6 +11,10 @@
     "solution": "print(\"Hello, explorer!\")",
     "expected": "Hello, explorer!",
     "filename": "01_hello_explorer.py",
+    "track": "beginner",
+    "checks": [
+      "Display the required message with print()."
+    ],
     "directory": "lessons/01_hello_explorer",
     "assignment_path": "lessons/01_hello_explorer/assignment.py"
   },
@@ -26,6 +30,10 @@
     "solution": "print(\"My name is Python\")\nprint(\"Let's explore!\")",
     "expected": "My name is Python\nLet's explore!",
     "filename": "02_a_tiny_postcard.py",
+    "track": "beginner",
+    "checks": [
+      "Display both lines in the required order."
+    ],
     "directory": "lessons/02_a_tiny_postcard",
     "assignment_path": "lessons/02_a_tiny_postcard/assignment.py"
   },
@@ -41,6 +49,10 @@
     "solution": "print(7 * 8)",
     "expected": "56",
     "filename": "03_pocket_calculator.py",
+    "track": "beginner",
+    "checks": [
+      "Calculate the answer with multiplication, rather than printing 56 directly."
+    ],
     "directory": "lessons/03_pocket_calculator",
     "assignment_path": "lessons/03_pocket_calculator/assignment.py"
   },
@@ -56,6 +68,10 @@
     "solution": "# My adventure starts here\nprint(\"Ready for adventure!\")",
     "expected": "Ready for adventure!",
     "filename": "04_secret_notes.py",
+    "track": "beginner",
+    "checks": [
+      "Include a real Python comment and print the message."
+    ],
     "directory": "lessons/04_secret_notes",
     "assignment_path": "lessons/04_secret_notes/assignment.py"
   },
@@ -71,6 +87,10 @@
     "solution": "print(3)\nprint(2)\nprint(1)\nprint(\"Liftoff!\")",
     "expected": "3\n2\n1\nLiftoff!",
     "filename": "05_launch_countdown.py",
+    "track": "beginner",
+    "checks": [
+      "Print the launch sequence in order."
+    ],
     "directory": "lessons/05_launch_countdown",
     "assignment_path": "lessons/05_launch_countdown/assignment.py"
   },
@@ -86,6 +106,11 @@
     "solution": "name = \"Pip\"\nprint(name)",
     "expected": "Pip",
     "filename": "06_name_your_explorer.py",
+    "track": "beginner",
+    "checks": [
+      "Store Pip in name and print the variable.",
+      "The printed value must follow changes to name."
+    ],
     "directory": "lessons/06_name_your_explorer",
     "assignment_path": "lessons/06_name_your_explorer/assignment.py"
   },
@@ -101,6 +126,10 @@
     "solution": "coins = 10\ncoins = coins + 5\nprint(coins)",
     "expected": "15",
     "filename": "07_treasure_pouch.py",
+    "track": "beginner",
+    "checks": [
+      "Start coins at 10, add 5, and print the updated variable."
+    ],
     "directory": "lessons/07_treasure_pouch",
     "assignment_path": "lessons/07_treasure_pouch/assignment.py"
   },
@@ -116,6 +145,11 @@
     "solution": "name = \"Pip\"\nprint(f\"Hello, {name}!\")",
     "expected": "Hello, Pip!",
     "filename": "08_say_it_your_way.py",
+    "track": "beginner",
+    "checks": [
+      "Print an f-string that inserts the name variable with {name}.",
+      "The greeting must work when name changes."
+    ],
     "directory": "lessons/08_say_it_your_way",
     "assignment_path": "lessons/08_say_it_your_way/assignment.py"
   },
@@ -131,6 +165,11 @@
     "solution": "snacks = 17\nfriends = 4\nprint(snacks // friends)\nprint(snacks % friends)",
     "expected": "4\n1",
     "filename": "09_sharing_snacks.py",
+    "track": "beginner",
+    "checks": [
+      "Calculate shares with // and leftovers with %.",
+      "Use the snacks and friends variables."
+    ],
     "directory": "lessons/09_sharing_snacks",
     "assignment_path": "lessons/09_sharing_snacks/assignment.py"
   },
@@ -146,6 +185,11 @@
     "solution": "name = \"Pip\"\nlevel = 1\nprint(f\"Explorer: {name}\")\nprint(f\"Level: {level}\")",
     "expected": "Explorer: Pip\nLevel: 1",
     "filename": "10_explorer_id.py",
+    "track": "beginner",
+    "checks": [
+      "Use name and level in the printed character card.",
+      "Both values must update when the variables change."
+    ],
     "directory": "lessons/10_explorer_id",
     "assignment_path": "lessons/10_explorer_id/assignment.py"
   },
@@ -161,6 +205,11 @@
     "solution": "coins = 12\nif coins >= 10:\n    print(\"Gate open!\")",
     "expected": "Gate open!",
     "filename": "11_the_forest_gate.py",
+    "track": "beginner",
+    "checks": [
+      "Use an if condition based on coins.",
+      "Open the gate only for 10 or more coins."
+    ],
     "directory": "lessons/11_the_forest_gate",
     "assignment_path": "lessons/11_the_forest_gate/assignment.py"
   },
@@ -176,6 +225,11 @@
     "solution": "raining = False\nif raining:\n    print(\"Bring a coat\")\nelse:\n    print(\"Bring a hat\")",
     "expected": "Bring a hat",
     "filename": "12_rain_or_shine.py",
+    "track": "beginner",
+    "checks": [
+      "Use if / else based on raining.",
+      "Handle both rainy and dry weather."
+    ],
     "directory": "lessons/12_rain_or_shine",
     "assignment_path": "lessons/12_rain_or_shine/assignment.py"
   },
@@ -191,6 +245,11 @@
     "solution": "door = 2\nif door == 1:\n    print(\"A sleepy dragon\")\nelif door == 2:\n    print(\"A treasure chest\")\nelse:\n    print(\"A friendly frog\")",
     "expected": "A treasure chest",
     "filename": "13_three_secret_doors.py",
+    "track": "beginner",
+    "checks": [
+      "Use if / elif with the door variable.",
+      "Keep the door 1 and door 2 messages working."
+    ],
     "directory": "lessons/13_three_secret_doors",
     "assignment_path": "lessons/13_three_secret_doors/assignment.py"
   },
@@ -206,6 +265,10 @@
     "solution": "has_map = True\nhas_key = True\nif has_map and has_key:\n    print(\"Adventure unlocked!\")",
     "expected": "Adventure unlocked!",
     "filename": "14_both_keys.py",
+    "track": "beginner",
+    "checks": [
+      "Use and to require both has_map and has_key."
+    ],
     "directory": "lessons/14_both_keys",
     "assignment_path": "lessons/14_both_keys/assignment.py"
   },
@@ -215,12 +278,17 @@
     "topic": "Conditions",
     "chapter": 3,
     "explain": "Write a reward system. Check the biggest reward first so a score of 90 does not get the lower reward.",
-    "mission": "Use if / elif / else to print Gold for 80+, Silver for 50–79, and Bronze otherwise. We check three scores.",
+    "mission": "Use if / elif / else to print Gold for 80+, Silver for 50–79, and Bronze otherwise. We also check scores at the 50 and 80 boundaries.",
     "hint": "Start with if score >= 80:, then elif score >= 50:.",
     "starter": "score = 85\n# 80 or more: Gold\n# 50 or more: Silver\n# Otherwise: Bronze\n",
     "solution": "score = 85\nif score >= 80:\n    print(\"Gold\")\nelif score >= 50:\n    print(\"Silver\")\nelse:\n    print(\"Bronze\")",
     "expected": "Gold",
     "filename": "15_treasure_judge.py",
+    "track": "beginner",
+    "checks": [
+      "Use if / elif / else for Gold, Silver and Bronze.",
+      "Check boundaries at 50 and 80 as well as other scores."
+    ],
     "directory": "lessons/15_treasure_judge",
     "assignment_path": "lessons/15_treasure_judge/assignment.py"
   },
@@ -236,6 +304,10 @@
     "solution": "for turn in range(3):\n    print(\"Hello!\")",
     "expected": "Hello!\nHello!\nHello!",
     "filename": "16_echo_meadow.py",
+    "track": "beginner",
+    "checks": [
+      "Print the greeting inside a for loop."
+    ],
     "directory": "lessons/16_echo_meadow",
     "assignment_path": "lessons/16_echo_meadow/assignment.py"
   },
@@ -251,6 +323,10 @@
     "solution": "for step in range(1, 6):\n    print(step)",
     "expected": "1\n2\n3\n4\n5",
     "filename": "17_stepping_stones.py",
+    "track": "beginner",
+    "checks": [
+      "Print each number from a for loop."
+    ],
     "directory": "lessons/17_stepping_stones",
     "assignment_path": "lessons/17_stepping_stones/assignment.py"
   },
@@ -266,6 +342,10 @@
     "solution": "backpack = [\"map\", \"snack\", \"torch\"]\nfor item in backpack:\n    print(item)",
     "expected": "map\nsnack\ntorch",
     "filename": "18_backpack_inventory.py",
+    "track": "beginner",
+    "checks": [
+      "Loop through the backpack list and print its actual items."
+    ],
     "directory": "lessons/18_backpack_inventory",
     "assignment_path": "lessons/18_backpack_inventory/assignment.py"
   },
@@ -281,6 +361,10 @@
     "solution": "def cheer():\n    print(\"You can do this!\")\n\ncheer()\ncheer()",
     "expected": "You can do this!\nYou can do this!",
     "filename": "19_a_reusable_spell.py",
+    "track": "beginner",
+    "checks": [
+      "Define cheer() with its print instruction, then call it twice."
+    ],
     "directory": "lessons/19_a_reusable_spell",
     "assignment_path": "lessons/19_a_reusable_spell/assignment.py"
   },
@@ -296,6 +380,11 @@
     "solution": "explorers = [\"Pip\", \"Nova\", \"Ash\"]\n\ndef welcome(name):\n    print(f\"Welcome, {name}!\")\n\nfor explorer in explorers:\n    welcome(explorer)",
     "expected": "Welcome, Pip!\nWelcome, Nova!\nWelcome, Ash!",
     "filename": "20_the_final_campfire.py",
+    "track": "beginner",
+    "checks": [
+      "Define welcome(name) and use its parameter in the greeting.",
+      "Call welcome from a loop over explorers."
+    ],
     "directory": "lessons/20_the_final_campfire",
     "assignment_path": "lessons/20_the_final_campfire/assignment.py"
   },
@@ -311,6 +400,10 @@
     "solution": "hero = {\"name\": \"Pip\", \"level\": 1}\nprint(hero[\"name\"])\nprint(hero[\"level\"])",
     "expected": "Pip\n1",
     "filename": "21_a_character_dictionary.py",
+    "track": "beginner",
+    "checks": [
+      "Create the hero dictionary and read its name and level keys."
+    ],
     "directory": "lessons/21_a_character_dictionary",
     "assignment_path": "lessons/21_a_character_dictionary/assignment.py"
   },
@@ -326,6 +419,10 @@
     "solution": "hero = {\"name\": \"Pip\", \"level\": 1}\nhero[\"level\"] += 1\nprint(hero[\"level\"])",
     "expected": "2",
     "filename": "22_level_up.py",
+    "track": "beginner",
+    "checks": [
+      "Start hero with level 1, update its level entry, and print that entry."
+    ],
     "directory": "lessons/22_level_up",
     "assignment_path": "lessons/22_level_up/assignment.py"
   },
@@ -341,6 +438,11 @@
     "solution": "hero = {\"name\": \"Pip\"}\nprint(hero.get(\"pet\", \"No pet yet\"))",
     "expected": "No pet yet",
     "filename": "23_a_missing_key.py",
+    "track": "beginner",
+    "checks": [
+      "Use hero.get(\"pet\", \"No pet yet\") in the output.",
+      "Return a pet value if one is present."
+    ],
     "directory": "lessons/23_a_missing_key",
     "assignment_path": "lessons/23_a_missing_key/assignment.py"
   },
@@ -350,12 +452,16 @@
     "topic": "Dictionaries",
     "chapter": 5,
     "explain": "Loop through dictionary.items() to get each key and value together: for item, count in bag.items():.",
-    "mission": "Loop through bag and print map: 1, then snack: 3, each on its own line.",
+    "mission": "Use bag.items() in a for loop and print map: 1, then snack: 3, each on its own line.",
     "hint": "Use print(f\"{item}: {count}\") inside the loop.",
     "starter": "bag = {\"map\": 1, \"snack\": 3}\n",
     "solution": "bag = {\"map\": 1, \"snack\": 3}\nfor item, count in bag.items():\n    print(f\"{item}: {count}\")",
     "expected": "map: 1\nsnack: 3",
     "filename": "24_inventory_report.py",
+    "track": "beginner",
+    "checks": [
+      "Loop through bag.items() and print each key and value."
+    ],
     "directory": "lessons/24_inventory_report",
     "assignment_path": "lessons/24_inventory_report/assignment.py"
   },
@@ -371,7 +477,408 @@
     "solution": "heroes = [{\"name\": \"Pip\", \"level\": 1}, {\"name\": \"Nova\", \"level\": 2}]\n\ndef introduce(hero):\n    print(f\"{hero['name']} is level {hero['level']}\")\n\nfor hero in heroes:\n    introduce(hero)",
     "expected": "Pip is level 1\nNova is level 2",
     "filename": "25_your_explorer_registry.py",
+    "track": "beginner",
+    "checks": [
+      "Define introduce(hero), read its dictionary values, and call it from a loop over heroes."
+    ],
     "directory": "lessons/25_your_explorer_registry",
     "assignment_path": "lessons/25_your_explorer_registry/assignment.py"
+  },
+  {
+    "id": 26,
+    "track": "intermediate",
+    "title": "The doubling machine",
+    "topic": "Return values",
+    "chapter": 1,
+    "explain": "Imagine a little machine: a number goes in, and its double comes out. <code>return</code> sends a value back to the code that called your function. Printing shows a value; returning lets other code use it.",
+    "mission": "Define double(number) to return twice its number. Print double(number) with number set to 6.",
+    "hint": "Inside double, return number * 2. Outside, print(double(number)).",
+    "starter": "number = 6\n\ndef double(number):\n    pass\n\n# Print what the machine gives back\n",
+    "solution": "number = 6\n\ndef double(number):\n    return number * 2\n\nprint(double(number))",
+    "expected": "12",
+    "checks": [
+      "Define and call double(number).",
+      "Return a calculated value; it must work for other numbers too."
+    ],
+    "filename": "26_the_doubling_machine.py",
+    "directory": "lessons/26_the_doubling_machine",
+    "assignment_path": "lessons/26_the_doubling_machine/assignment.py"
+  },
+  {
+    "id": 27,
+    "track": "intermediate",
+    "title": "Rocket, keep counting!",
+    "topic": "While loops",
+    "chapter": 1,
+    "explain": "A <code>while</code> loop is like saying “keep going while this is true.” Change the counter each turn, or your rocket will count forever! A for loop visits items; a while loop watches a condition.",
+    "mission": "Start count at 3. Use a while loop to print 3, 2, 1 on separate lines, then print Liftoff!.",
+    "hint": "Use while count > 0:, print count, and subtract 1 inside the loop.",
+    "starter": "count = 3\n# Count down while count is bigger than zero\n",
+    "solution": "count = 3\nwhile count > 0:\n    print(count)\n    count -= 1\nprint(\"Liftoff!\")",
+    "expected": "3\n2\n1\nLiftoff!",
+    "checks": [
+      "Use a while loop with a changing count.",
+      "Start at the given count and stop at zero."
+    ],
+    "filename": "27_rocket_keep_counting.py",
+    "directory": "lessons/27_rocket_keep_counting",
+    "assignment_path": "lessons/27_rocket_keep_counting/assignment.py"
+  },
+  {
+    "id": 28,
+    "track": "intermediate",
+    "title": "Tidy the name tag",
+    "topic": "String methods",
+    "chapter": 1,
+    "explain": "A name tag can arrive with messy spaces and lowercase letters. <code>text.strip()</code> trims its edges, and <code>text.title()</code> gives words capital initials. Each method returns new text; it does not change the old string.",
+    "mission": "Use strip() and title() on label, then print the tidy name tag: Captain Nova.",
+    "hint": "Try label.strip().title(), then print the result.",
+    "starter": "label = \"  captain nova  \"\n# Tidy this name tag\n",
+    "solution": "label = \"  captain nova  \"\nprint(label.strip().title())",
+    "expected": "Captain Nova",
+    "checks": [
+      "Use both strip() and title() in the text you print.",
+      "Work with the label variable."
+    ],
+    "filename": "28_tidy_the_name_tag.py",
+    "directory": "lessons/28_tidy_the_name_tag",
+    "assignment_path": "lessons/28_tidy_the_name_tag/assignment.py"
+  },
+  {
+    "id": 29,
+    "track": "intermediate",
+    "title": "Pack one more snack",
+    "topic": "Growing lists",
+    "chapter": 1,
+    "explain": "Your list is a backpack. <code>backpack.append(item)</code> puts one new item at the end. It changes the list and returns None, so print the backpack afterward rather than printing append() itself.",
+    "mission": "Append snack to backpack, then print every item on its own line. Start with map and add apple.",
+    "hint": "Call backpack.append(snack), then loop through backpack.",
+    "starter": "backpack = [\"map\"]\nsnack = \"apple\"\n",
+    "solution": "backpack = [\"map\"]\nsnack = \"apple\"\nbackpack.append(snack)\nfor item in backpack:\n    print(item)",
+    "expected": "map\napple",
+    "checks": [
+      "Use append() to add snack to backpack.",
+      "Loop over the updated backpack."
+    ],
+    "filename": "29_pack_one_more_snack.py",
+    "directory": "lessons/29_pack_one_more_snack",
+    "assignment_path": "lessons/29_pack_one_more_snack/assignment.py"
+  },
+  {
+    "id": 30,
+    "track": "intermediate",
+    "title": "A tiny treasure grid",
+    "topic": "Nested lists",
+    "chapter": 1,
+    "explain": "A list can hold other lists, like rows in a treasure map. <code>grid[row][column]</code> first chooses a row, then an item in that row. Counting starts at zero.",
+    "mission": "Print grid[row][column]. With row 1 and column 0, the treasure is key.",
+    "hint": "Use two pairs of square brackets: grid[row][column].",
+    "starter": "grid = [[\"rock\", \"coin\"], [\"key\", \"gem\"]]\nrow = 1\ncolumn = 0\n",
+    "solution": "grid = [[\"rock\", \"coin\"], [\"key\", \"gem\"]]\nrow = 1\ncolumn = 0\nprint(grid[row][column])",
+    "expected": "key",
+    "checks": [
+      "Use nested list indexing with row and column."
+    ],
+    "filename": "30_a_tiny_treasure_grid.py",
+    "directory": "lessons/30_a_tiny_treasure_grid",
+    "assignment_path": "lessons/30_a_tiny_treasure_grid/assignment.py"
+  },
+  {
+    "id": 31,
+    "track": "advanced",
+    "title": "The square factory",
+    "topic": "Comprehensions",
+    "chapter": 1,
+    "explain": "A list comprehension is a compact factory: take each item, transform it, and collect the results. <code>[x * 2 for x in numbers]</code> makes a new list without changing numbers.",
+    "mission": "Use a list comprehension to square every item in numbers. Print the new list.",
+    "hint": "A square is a number multiplied by itself: [n * n for n in numbers].",
+    "starter": "numbers = [1, 2, 3, 4]\n",
+    "solution": "numbers = [1, 2, 3, 4]\nsquares = [n * n for n in numbers]\nprint(squares)",
+    "expected": "[1, 4, 9, 16]",
+    "checks": [
+      "Build the printed list with a list comprehension.",
+      "Square the actual input values."
+    ],
+    "filename": "31_the_square_factory.py",
+    "directory": "lessons/31_the_square_factory",
+    "assignment_path": "lessons/31_the_square_factory/assignment.py"
+  },
+  {
+    "id": 32,
+    "track": "advanced",
+    "title": "A friendly safety net",
+    "topic": "Exceptions",
+    "chapter": 1,
+    "explain": "Sometimes a program gets an unexpected value. <code>try</code> attempts a job; <code>except ValueError</code> catches a number-conversion problem. A safety net helps the program explain what happened.",
+    "mission": "Try converting text to an integer and print it. If conversion raises ValueError, print Please use digits. Start with text set to seven.",
+    "hint": "Put int(text) in try, then catch ValueError and print the friendly message.",
+    "starter": "text = \"seven\"\n# Try the conversion and catch ValueError\n",
+    "solution": "text = \"seven\"\ntry:\n    print(int(text))\nexcept ValueError:\n    print(\"Please use digits\")",
+    "expected": "Please use digits",
+    "checks": [
+      "Use try / except for the conversion.",
+      "Handle both numeric text and invalid text."
+    ],
+    "filename": "32_a_friendly_safety_net.py",
+    "directory": "lessons/32_a_friendly_safety_net",
+    "assignment_path": "lessons/32_a_friendly_safety_net/assignment.py"
+  },
+  {
+    "id": 33,
+    "track": "advanced",
+    "title": "Meet your pet blueprint",
+    "topic": "Classes",
+    "chapter": 1,
+    "explain": "A class is a blueprint. An object is one thing made from it. A method is a function on that object; <code>self</code> means “this particular pet.” Calling pet.speak() asks that pet to do its job.",
+    "mission": "Define class Pet with speak(self) that prints Hi, friend!. Make pet = Pet() and call pet.speak().",
+    "hint": "Indent speak inside class Pet. Then create the pet outside the class.",
+    "starter": "class Pet:\n    def speak(self):\n        pass\n\n# Make and greet your pet\n",
+    "solution": "class Pet:\n    def speak(self):\n        print(\"Hi, friend!\")\n\npet = Pet()\npet.speak()",
+    "expected": "Hi, friend!",
+    "checks": [
+      "Define class Pet and its speak method.",
+      "Create a Pet object and call its speak method."
+    ],
+    "filename": "33_meet_your_pet_blueprint.py",
+    "directory": "lessons/33_meet_your_pet_blueprint",
+    "assignment_path": "lessons/33_meet_your_pet_blueprint/assignment.py"
+  },
+  {
+    "id": 34,
+    "track": "advanced",
+    "title": "The echo staircase",
+    "topic": "Recursion",
+    "chapter": 1,
+    "explain": "A recursive function calls itself to solve a smaller version of a problem. Imagine stepping down stairs: each call takes one step. The stopping rule is the ground floor—without it, you never stop.",
+    "mission": "Define countdown(n). If n is greater than 0, print n and call countdown(n - 1). Call countdown(start) with start set to 3.",
+    "hint": "Put the recursive call inside if n > 0:. When n is 0, do nothing.",
+    "starter": "start = 3\n\ndef countdown(n):\n    pass\n\ncountdown(start)\n",
+    "solution": "start = 3\n\ndef countdown(n):\n    if n > 0:\n        print(n)\n        countdown(n - 1)\n\ncountdown(start)",
+    "expected": "3\n2\n1",
+    "checks": [
+      "Use a countdown function that calls itself.",
+      "Stop at zero and handle other starting values."
+    ],
+    "filename": "34_the_echo_staircase.py",
+    "directory": "lessons/34_the_echo_staircase",
+    "assignment_path": "lessons/34_the_echo_staircase/assignment.py"
+  },
+  {
+    "id": 35,
+    "track": "advanced",
+    "title": "One snack at a time",
+    "topic": "Generators",
+    "chapter": 1,
+    "explain": "A generator is a snack dispenser: it gives one item, pauses, then gives the next when asked. <code>yield</code> hands out an item without finishing the whole function. A for loop can collect its items.",
+    "mission": "Define snacks() to yield apple, then pear. Loop over snacks() and print each item.",
+    "hint": "Use two yield lines inside snacks(), then for item in snacks(): print(item).",
+    "starter": "def snacks():\n    pass\n\n# Collect and print each yielded snack\n",
+    "solution": "def snacks():\n    yield \"apple\"\n    yield \"pear\"\n\nfor item in snacks():\n    print(item)",
+    "expected": "apple\npear",
+    "checks": [
+      "Define and call the snacks generator.",
+      "Use yield and a for loop."
+    ],
+    "filename": "35_one_snack_at_a_time.py",
+    "directory": "lessons/35_one_snack_at_a_time",
+    "assignment_path": "lessons/35_one_snack_at_a_time/assignment.py"
+  },
+  {
+    "id": 36,
+    "track": "algorithms",
+    "title": "Find the missing toy",
+    "topic": "Linear search",
+    "chapter": 1,
+    "explain": "An algorithm is a set of steps for a job. Linear search checks items one by one, like looking through a toy shelf. It works even when the items are not sorted.",
+    "mission": "Define find_toy(toys, target). Loop through toys; return True when an item matches target, otherwise return False after the loop. Print its result.",
+    "hint": "Keep return False outside the loop so you check the whole shelf.",
+    "starter": "toys = [\"ball\", \"robot\", \"kite\"]\ntarget = \"robot\"\n\ndef find_toy(toys, target):\n    pass\n\nprint(find_toy(toys, target))\n",
+    "solution": "toys = [\"ball\", \"robot\", \"kite\"]\ntarget = \"robot\"\n\ndef find_toy(toys, target):\n    for toy in toys:\n        if toy == target:\n            return True\n    return False\n\nprint(find_toy(toys, target))",
+    "expected": "True",
+    "checks": [
+      "Search with a loop and comparison inside find_toy.",
+      "Handle a missing toy and an empty shelf."
+    ],
+    "filename": "36_find_the_missing_toy.py",
+    "directory": "lessons/36_find_the_missing_toy",
+    "assignment_path": "lessons/36_find_the_missing_toy/assignment.py"
+  },
+  {
+    "id": 37,
+    "track": "algorithms",
+    "title": "Guess the secret shelf",
+    "topic": "Binary search",
+    "chapter": 1,
+    "explain": "On a sorted shelf, check the middle first. If your target is smaller, keep only the left half; otherwise keep the right half. Binary search keeps cutting the job in half. It needs sorted input.",
+    "mission": "Define binary_find(numbers, target) with low/high bounds, a while loop and a middle index. Return True if target is found, otherwise False. Print the result.",
+    "hint": "Start low = 0 and high = len(numbers) - 1. While low <= high, use middle = (low + high) // 2 and move a bound past the middle.",
+    "starter": "numbers = [2, 4, 6, 8, 10]\ntarget = 8\n\ndef binary_find(numbers, target):\n    pass\n\nprint(binary_find(numbers, target))\n",
+    "solution": "numbers = [2, 4, 6, 8, 10]\ntarget = 8\n\ndef binary_find(numbers, target):\n    low = 0\n    high = len(numbers) - 1\n    while low <= high:\n        middle = (low + high) // 2\n        if numbers[middle] == target:\n            return True\n        elif numbers[middle] < target:\n            low = middle + 1\n        else:\n            high = middle - 1\n    return False\n\nprint(binary_find(numbers, target))",
+    "expected": "True",
+    "checks": [
+      "Use a while loop and a middle index calculated with // inside binary_find.",
+      "Handle targets at both ends and a missing target."
+    ],
+    "filename": "37_guess_the_secret_shelf.py",
+    "directory": "lessons/37_guess_the_secret_shelf",
+    "assignment_path": "lessons/37_guess_the_secret_shelf/assignment.py"
+  },
+  {
+    "id": 38,
+    "track": "algorithms",
+    "title": "Bubble the marbles",
+    "topic": "Bubble sort",
+    "chapter": 1,
+    "explain": "Compare neighboring marbles. If the left one is bigger, swap them. Repeat, and big marbles bubble toward the end. Bubble sort is easy to see but makes many comparisons on long lists.",
+    "mission": "Use nested for loops to bubble-sort marbles in ascending order, swapping neighboring values when needed. Print marbles. Do not use sort() or sorted().",
+    "hint": "For each pass, compare marbles[j] and marbles[j + 1]. Swap them with a, b = b, a.",
+    "starter": "marbles = [3, 1, 2]\n# Compare neighbors over repeated passes\n",
+    "solution": "marbles = [3, 1, 2]\nfor turn in range(len(marbles)):\n    for j in range(len(marbles) - 1):\n        if marbles[j] > marbles[j + 1]:\n            marbles[j], marbles[j + 1] = marbles[j + 1], marbles[j]\nprint(marbles)",
+    "expected": "[1, 2, 3]",
+    "checks": [
+      "Use nested loops, compare neighbors and update marbles.",
+      "Practice the algorithm without sort() or sorted()."
+    ],
+    "filename": "38_bubble_the_marbles.py",
+    "directory": "lessons/38_bubble_the_marbles",
+    "assignment_path": "lessons/38_bubble_the_marbles/assignment.py"
+  },
+  {
+    "id": 39,
+    "track": "algorithms",
+    "title": "Count the color votes",
+    "topic": "Frequency counting",
+    "chapter": 1,
+    "explain": "Give each color a tally. A dictionary stores a color as the key and its count as the value. Each time that color appears, add one to its tally. This is frequency counting.",
+    "mission": "Build counts by looping over votes and increasing counts[color] with get(color, 0) + 1. Print the number of red votes.",
+    "hint": "Start counts = {}. For each color, set counts[color] = counts.get(color, 0) + 1.",
+    "starter": "votes = [\"red\", \"blue\", \"red\"]\ncounts = {}\n",
+    "solution": "votes = [\"red\", \"blue\", \"red\"]\ncounts = {}\nfor color in votes:\n    counts[color] = counts.get(color, 0) + 1\nprint(counts.get(\"red\", 0))",
+    "expected": "2",
+    "checks": [
+      "Loop over votes and maintain dictionary counts.",
+      "Use get() for a missing count."
+    ],
+    "filename": "39_count_the_color_votes.py",
+    "directory": "lessons/39_count_the_color_votes",
+    "assignment_path": "lessons/39_count_the_color_votes/assignment.py"
+  },
+  {
+    "id": 40,
+    "track": "algorithms",
+    "title": "Shortest path to the park",
+    "topic": "Breadth-first search",
+    "chapter": 1,
+    "explain": "Imagine a map of paths between places. Breadth-first search checks places one step away, then two steps away. A queue keeps that order. On this unweighted map, the first time you reach the park gives the fewest steps.",
+    "mission": "Use a deque queue of (place, steps), a visited set and a while loop to find the shortest route from start to goal. Print the step count, or -1 if there is no route.",
+    "hint": "Begin with queue = deque([(start, 0)]). Pop from the left, check the goal, then add unvisited neighbors with one more step.",
+    "starter": "from collections import deque\ngraph = {\"home\": [\"shop\"], \"shop\": [\"park\"], \"park\": []}\nstart = \"home\"\ngoal = \"park\"\n# Explore in queue order\n",
+    "solution": "from collections import deque\ngraph = {\"home\": [\"shop\"], \"shop\": [\"park\"], \"park\": []}\nstart = \"home\"\ngoal = \"park\"\nqueue = deque([(start, 0)])\nvisited = {start}\nanswer = -1\nwhile queue:\n    place, steps = queue.popleft()\n    if place == goal:\n        answer = steps\n        break\n    for neighbor in graph.get(place, []):\n        if neighbor not in visited:\n            visited.add(neighbor)\n            queue.append((neighbor, steps + 1))\nprint(answer)",
+    "expected": "2",
+    "checks": [
+      "Explore a graph using a queue, popleft() and a visited set.",
+      "Return the shortest number of steps or -1 when unreachable."
+    ],
+    "filename": "40_shortest_path_to_the_park.py",
+    "directory": "lessons/40_shortest_path_to_the_park",
+    "assignment_path": "lessons/40_shortest_path_to_the_park/assignment.py"
+  },
+  {
+    "id": 41,
+    "track": "data-structures",
+    "title": "Stack the plates",
+    "topic": "Stacks",
+    "chapter": 1,
+    "explain": "A stack is like a pile of plates: the last plate added is the first one removed. A Python list can be a stack. append() puts an item on top; pop() takes the top item off.",
+    "mission": "Append plate to stack, pop the top plate and print it, then print the remaining stack.",
+    "hint": "Use stack.append(plate), then print(stack.pop()), then print(stack).",
+    "starter": "stack = [\"blue\"]\nplate = \"red\"\n",
+    "solution": "stack = [\"blue\"]\nplate = \"red\"\nstack.append(plate)\nprint(stack.pop())\nprint(stack)",
+    "expected": "red\n['blue']",
+    "checks": [
+      "Use append() and pop() for last-in, first-out behavior."
+    ],
+    "filename": "41_stack_the_plates.py",
+    "directory": "lessons/41_stack_the_plates",
+    "assignment_path": "lessons/41_stack_the_plates/assignment.py"
+  },
+  {
+    "id": 42,
+    "track": "data-structures",
+    "title": "Wait your turn",
+    "topic": "Queues",
+    "chapter": 1,
+    "explain": "A queue is a waiting line: the first person in is served first. collections.deque is a handy Python queue. append() joins the back; popleft() serves the front.",
+    "mission": "Create queue = deque(people), append newcomer, then print each person as you serve the queue with popleft() in a while loop.",
+    "hint": "Import deque from collections. While queue is not empty, print(queue.popleft()).",
+    "starter": "from collections import deque\npeople = [\"Ari\", \"Bo\"]\nnewcomer = \"Cy\"\n",
+    "solution": "from collections import deque\npeople = [\"Ari\", \"Bo\"]\nnewcomer = \"Cy\"\nqueue = deque(people)\nqueue.append(newcomer)\nwhile queue:\n    print(queue.popleft())",
+    "expected": "Ari\nBo\nCy",
+    "checks": [
+      "Build a deque and use append() and popleft().",
+      "Serve people in first-in, first-out order."
+    ],
+    "filename": "42_wait_your_turn.py",
+    "directory": "lessons/42_wait_your_turn",
+    "assignment_path": "lessons/42_wait_your_turn/assignment.py"
+  },
+  {
+    "id": 43,
+    "track": "data-structures",
+    "title": "Collect unique colors",
+    "topic": "Sets",
+    "chapter": 1,
+    "explain": "A set is a collection of unique items, like stickers without duplicates. set(colors) removes repeated values. Sets have no display order, so use sorted() when you want a predictable list to show.",
+    "mission": "Make unique = set(colors). Print its size with len(), then print sorted(unique).",
+    "hint": "Use len(unique) for the count and sorted(unique) for a stable display.",
+    "starter": "colors = [\"red\", \"blue\", \"red\"]\n",
+    "solution": "colors = [\"red\", \"blue\", \"red\"]\nunique = set(colors)\nprint(len(unique))\nprint(sorted(unique))",
+    "expected": "2\n['blue', 'red']",
+    "checks": [
+      "Use set() to collect unique values.",
+      "Count and display the actual unique items."
+    ],
+    "filename": "43_collect_unique_colors.py",
+    "directory": "lessons/43_collect_unique_colors",
+    "assignment_path": "lessons/43_collect_unique_colors/assignment.py"
+  },
+  {
+    "id": 44,
+    "track": "data-structures",
+    "title": "A branching family tree",
+    "topic": "Trees",
+    "chapter": 1,
+    "explain": "A tree branches from a root into children. This tiny tree uses dictionaries: each node has a name and a children list. A for loop can visit the root’s immediate children.",
+    "mission": "Print tree[\"name\"], then loop through tree[\"children\"] and print each child’s name.",
+    "hint": "Use for child in tree[\"children\"]: and print(child[\"name\"]).",
+    "starter": "tree = {\"name\": \"Oak\", \"children\": [{\"name\": \"Leaf A\"}, {\"name\": \"Leaf B\"}]}\n",
+    "solution": "tree = {\"name\": \"Oak\", \"children\": [{\"name\": \"Leaf A\"}, {\"name\": \"Leaf B\"}]}\nprint(tree[\"name\"])\nfor child in tree[\"children\"]:\n    print(child[\"name\"])",
+    "expected": "Oak\nLeaf A\nLeaf B",
+    "checks": [
+      "Read a root node and visit its immediate children.",
+      "Use dictionary keys and a loop."
+    ],
+    "filename": "44_a_branching_family_tree.py",
+    "directory": "lessons/44_a_branching_family_tree",
+    "assignment_path": "lessons/44_a_branching_family_tree/assignment.py"
+  },
+  {
+    "id": 45,
+    "track": "data-structures",
+    "title": "A map of friendships",
+    "topic": "Graphs",
+    "chapter": 1,
+    "explain": "A graph stores things and their connections. In an adjacency list, each dictionary key is a person and its list contains their friends. Unlike a tree, connections can circle back.",
+    "mission": "Loop through graph[person] and print each friend. Start with person Ari, whose friends are Bo and Cy.",
+    "hint": "Use for friend in graph[person]: print(friend).",
+    "starter": "graph = {\"Ari\": [\"Bo\", \"Cy\"], \"Bo\": [\"Ari\"], \"Cy\": [\"Ari\"]}\nperson = \"Ari\"\n",
+    "solution": "graph = {\"Ari\": [\"Bo\", \"Cy\"], \"Bo\": [\"Ari\"], \"Cy\": [\"Ari\"]}\nperson = \"Ari\"\nfor friend in graph[person]:\n    print(friend)",
+    "expected": "Bo\nCy",
+    "checks": [
+      "Read the selected person’s neighbor list and loop through it."
+    ],
+    "filename": "45_a_map_of_friendships.py",
+    "directory": "lessons/45_a_map_of_friendships",
+    "assignment_path": "lessons/45_a_map_of_friendships/assignment.py"
   }
 ]

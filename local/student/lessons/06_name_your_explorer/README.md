@@ -10,6 +10,11 @@ Set name to Pip and print name.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **06**.
 
+## What this lesson checks
+
+- Store Pip in name and print the variable.
+- The printed value must follow changes to name.
+
 Expected output:
 
 ```text

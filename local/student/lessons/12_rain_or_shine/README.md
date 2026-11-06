@@ -10,6 +10,11 @@ Use the else branch to print Bring a hat.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **12**.
 
+## What this lesson checks
+
+- Use if / else based on raining.
+- Handle both rainy and dry weather.
+
 Expected output:
 
 ```text

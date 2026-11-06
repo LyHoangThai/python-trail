@@ -10,6 +10,11 @@ Print Explorer: Pip and Level: 1 on separate lines using the variables.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **10**.
 
+## What this lesson checks
+
+- Use name and level in the printed character card.
+- Both values must update when the variables change.
+
 Expected output:
 
 ```text

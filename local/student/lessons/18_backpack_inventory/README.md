@@ -10,6 +10,10 @@ Loop through backpack and print each item on a separate line.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **18**.
 
+## What this lesson checks
+
+- Loop through the backpack list and print its actual items.
+
 Expected output:
 
 ```text

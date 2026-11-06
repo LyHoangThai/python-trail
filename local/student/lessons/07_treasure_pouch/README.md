@@ -10,6 +10,10 @@ Start with 10 coins, add 5 to coins, then print coins.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **07**.
 
+## What this lesson checks
+
+- Start coins at 10, add 5, and print the updated variable.
+
 Expected output:
 
 ```text

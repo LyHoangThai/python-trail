@@ -204,10 +204,10 @@ def make_handler(service):
                 pages={'/learn':'learn.html','/parent':'parent.html','/playground':'lesson.html'}
                 if re.fullmatch(r'/lessons/\d+',route) and int(route.rsplit('/',1)[1]) in BY_ID: pages[route]='lesson.html'
                 if re.fullmatch(r'/parent/submissions/[0-9a-f]{32}',route): pages[route]='submission.html'
-                assets=('/style.css','/app.css','/parent.js','/student.js','/learn.js','/review.js')
+                assets=('/style.css','/app.css','/parent.js','/student.js','/learn.js','/review.js','/helper.js','/helper.json')
                 if route in pages or route in assets:
                     name=pages.get(route,route.lstrip('/'))
-                    types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8'}
+                    types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8'}
                     return self.response(200,(ROOT/'static'/name).read_bytes(),types[Path(name).suffix])
                 self.response(404,{'error':'Not found'})
             except Exception:

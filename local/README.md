@@ -1,6 +1,6 @@
 # Python Trail — local edition
 
-A free local Python learning lab with 25 lessons. The main experience runs in one browser window: lesson instructions, Python editor, output and assignment turn-in. Docker Desktop runs the worker and PostgreSQL in the background. VS Code is optional.
+A free local Python learning lab with 45 lessons. The main experience runs in one browser window: lesson instructions, Python editor, output and assignment turn-in. Docker Desktop runs the worker and PostgreSQL in the background. VS Code is optional.
 
 ## Setup on Windows
 
@@ -19,12 +19,20 @@ On later visits, start Docker Desktop and run `start.ps1`. Use `stop.ps1` to sto
 | Address | Purpose |
 | --- | --- |
 | http://localhost:8765/learn | Student's learning trail |
-| http://localhost:8765/lessons/1 | Lesson 1, editor, output and assignment turn-in; replace 1 with any lesson number up to 25 |
+| http://localhost:8765/lessons/1 | Lesson 1, editor, output and assignment turn-in; replace 1 with any lesson number up to 45 |
 | http://localhost:8765/playground | Free coding and input experiments |
 | http://localhost:8765/parent | Parent progress and submission history |
 | /parent/submissions/ID | A saved turn-in, full source, feedback, output and changes |
 
 The root URL redirects to /learn. These are separate screens within one local application. They are not separate authenticated accounts; anyone using this computer can access them.
+
+## Five learning paths
+
+The home page has Beginner (25 lessons), Intermediate (5), Advanced (5), Algorithms (5), and Data Structures (5). Begin with the first path, then build confidence. Advanced describes the ideas, not a child's age. Algorithms and Data Structures use concrete examples such as marbles, toy shelves, plate stacks, waiting lines, trees and friendship maps.
+
+Each lesson has **Description** and **History** tabs. Description includes its assignment and **What this lesson checks**. History shows previous turn-ins for that lesson, with the exact saved answer, result, output and feedback. Viewing history does not replace the editor draft.
+
+Below the editor, **Output** shows run/grade feedback and **Helper** is a searchable local Python reference. Helper has categories for strings, integers, decimals, lists, dictionaries, sets, tuples and booleans, with 46 tested examples. It labels methods, built-in functions, operators and syntax separately. The catalogue is a beginner reference rather than an exhaustive Python manual.
 
 ## Student workflow
 
@@ -32,11 +40,19 @@ The root URL redirects to /learn. These are separate screens within one local ap
 2. Read the short explanation and write code in its editor.
 3. Click **Run code** to see what it does. Run does not create a turn-in or mark completion.
 4. Click **Turn in assignment** to save a code snapshot and check the assignment. A submission ID confirms that it is saved.
-5. Read the result. If it needs revision, edit and turn it in again. All attempts are kept.
+5. Read the top banner: green means the assignment passed; a retry banner gives a correction clue. Both link to the saved attempt in History. If it needs revision, edit and turn it in again. All attempts are kept.
+
+Run is explicitly not graded. Completion is awarded by a passing turn-in. The lesson list refreshes on return/back navigation and shows Completed labels and per-path counts. A failed retry keeps its own result but does not erase an earlier passing completion; the lesson status makes that distinction explicit.
 
 Drafts autosave to the local database and are restored when reopening a lesson. Save draft and Ctrl+S also save explicitly. Ctrl+Enter runs the code. Reset to starter asks before replacing a draft and leaves submission history intact.
 
 In /playground, enter one answer per line under Program input when using input(). Playground runs do not complete lessons or enter parent submission history.
+
+## Grading
+
+The worker checks expected output, the technique named in the lesson, and selected changed-input cases. For example, f-string lessons require {name} to contribute to the printed greeting; a plain string, a fixed f-string, or an unused f-string will not pass. Condition boundaries, loop output, function calls and dictionary operations have additional checks. Basic printing lessons intentionally accept direct print statements.
+
+These are learning checks, not an adversarial examination or proof of mastery. Historical submissions keep their recorded results; new rules apply when an answer is turned in again. See [the full grading checklist](../GRADING.md).
 
 ## Parent review
 
@@ -83,6 +99,6 @@ If the browser cannot connect, check Docker Desktop's engine first. If work stay
 
 For Docker without WSL, select Docker VMM under Docker Desktop Settings > General > Virtual Machine Manager if supported. Docker currently marks it Beta. See [Docker's backend guide](https://docs.docker.com/desktop/features/vmm/) and [Windows requirements](https://docs.docker.com/desktop/setup/install/windows-install/). The app needs a supported Linux container engine.
 
-Functional tests: `python -m unittest discover -s tests -v` on a host with Python. Setup regression checks: `powershell -NoProfile -ExecutionPolicy Bypass -File tests/setup.tests.ps1`. The live smoke test, `smoke-test.ps1`, records lesson 1 as completed.
+Functional tests: `python -m unittest discover -s tests -v` on a host with Python. Frontend regression checks: `node tests/ui.test.cjs` on a development machine with Node.js. Setup regression checks: `powershell -NoProfile -ExecutionPolicy Bypass -File tests/setup.tests.ps1`. The live smoke test, `smoke-test.ps1`, records lesson 1 as completed.
 
 See [the project testing record](../TESTING.md) for live Docker, browser, grading and history verification. Desktop VS Code attachment remains optional and has not been fully verified through its UI.

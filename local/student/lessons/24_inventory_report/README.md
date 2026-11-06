@@ -6,9 +6,13 @@ Loop through dictionary.items() to get each key and value together: for item, co
 
 ## Your assignment
 
-Loop through bag and print map: 1, then snack: 3, each on its own line.
+Use bag.items() in a for loop and print map: 1, then snack: 3, each on its own line.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **24**.
+
+## What this lesson checks
+
+- Loop through bag.items() and print each key and value.
 
 Expected output:
 

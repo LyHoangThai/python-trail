@@ -10,6 +10,11 @@ For door 2, print A treasure chest.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **13**.
 
+## What this lesson checks
+
+- Use if / elif with the door variable.
+- Keep the door 1 and door 2 messages working.
+
 Expected output:
 
 ```text

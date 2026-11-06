@@ -10,6 +10,10 @@ Keep a comment in your code, then print Ready for adventure!
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **04**.
 
+## What this lesson checks
+
+- Include a real Python comment and print the message.
+
 Expected output:
 
 ```text

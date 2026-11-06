@@ -10,6 +10,10 @@ Print Hello! three times using a for loop.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **16**.
 
+## What this lesson checks
+
+- Print the greeting inside a for loop.
+
 Expected output:
 
 ```text

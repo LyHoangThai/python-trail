@@ -10,6 +10,11 @@ If coins is at least 10, print Gate open!.
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **11**.
 
+## What this lesson checks
+
+- Use an if condition based on coins.
+- Open the gate only for 10 or more coins.
+
 Expected output:
 
 ```text

@@ -1,0 +1,44 @@
+# 35 · One snack at a time
+
+**Topic:** Generators · **Chapter:** 1
+
+A generator is a snack dispenser: it gives one item, pauses, then gives the next when asked. `yield` hands out an item without finishing the whole function. A for loop can collect its items.
+
+## Your assignment
+
+Define snacks() to yield apple, then pear. Loop over snacks() and print each item.
+
+Edit **assignment.py** in this folder. The matching lesson number on the website is **35**.
+
+## What this lesson checks
+
+- Define and call the snacks generator.
+- Use yield and a for loop.
+
+Expected output:
+
+```text
+apple
+pear
+```
+
+## Learn and turn in through the browser
+
+Open http://localhost:8765/lessons/35 for this lesson's instructions, code editor and output on one screen. Your browser draft saves automatically on this computer.
+
+1. Write code in the browser editor.
+2. Click **Run code** to try it. Running does not create a submission.
+3. Click **Turn in assignment** when ready. It saves the code version, checks it, and gives you a submission ID.
+4. If it needs revision, edit and turn it in again. Every attempt is saved.
+
+Parents can review the history at http://localhost:8765/parent and open any attempt to see its source, result, output and changes from the previous attempt.
+
+## Optional VS Code workflow
+
+Edit assignment.py in this folder, save (**Ctrl+S**), then choose **Tasks: Run Test Task → Trail: Turn in assignment** in the Python Trail dev container. The task works with this README or assignment.py open. **Ctrl+Shift+B** only runs code; it does not turn it in.
+
+Browser drafts and optional assignment.py files are separate workspaces. Both submit to the same lesson history; neither overwrites the other's draft.
+
+## Hint
+
+Use two yield lines inside snacks(), then for item in snacks(): print(item).

@@ -10,6 +10,10 @@ Print My name is Python on the first line and Let’s explore! on the second. Us
 
 Edit **assignment.py** in this folder. The matching lesson number on the website is **02**.
 
+## What this lesson checks
+
+- Display both lines in the required order.
+
 Expected output:
 
 ```text

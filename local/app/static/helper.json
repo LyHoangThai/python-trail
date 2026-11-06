@@ -1,0 +1,456 @@
+{
+  "categories": [
+    {
+      "id": "all",
+      "label": "All"
+    },
+    {
+      "id": "str",
+      "label": "String (str)"
+    },
+    {
+      "id": "int",
+      "label": "Integer (int)"
+    },
+    {
+      "id": "float",
+      "label": "Decimal (float)"
+    },
+    {
+      "id": "list",
+      "label": "List"
+    },
+    {
+      "id": "dict",
+      "label": "Dictionary"
+    },
+    {
+      "id": "set",
+      "label": "Set"
+    },
+    {
+      "id": "tuple",
+      "label": "Tuple"
+    },
+    {
+      "id": "bool",
+      "label": "Boolean"
+    }
+  ],
+  "entries": [
+    {
+      "category": "str",
+      "name": "text.lower()",
+      "kind": "Method",
+      "description": "Make letters lowercase.",
+      "example": "print(\"HELLO\".lower())",
+      "output": "hello",
+      "note": ""
+    },
+    {
+      "category": "str",
+      "name": "text.upper()",
+      "kind": "Method",
+      "description": "Make letters uppercase.",
+      "example": "print(\"hello\".upper())",
+      "output": "HELLO",
+      "note": ""
+    },
+    {
+      "category": "str",
+      "name": "text.title()",
+      "kind": "Method",
+      "description": "Capitalize the start of words.",
+      "example": "print(\"captain nova\".title())",
+      "output": "Captain Nova",
+      "note": ""
+    },
+    {
+      "category": "str",
+      "name": "f\"text {value}\"",
+      "kind": "Syntax",
+      "description": "Insert a value into text.",
+      "example": "name = \"Ari\"\nprint(f\"Hi, {name}!\")",
+      "output": "Hi, Ari!",
+      "note": "The f prefix enables expressions in braces. A plain quoted string does not insert variables."
+    },
+    {
+      "category": "str",
+      "name": "text.strip()",
+      "kind": "Method",
+      "description": "Trim whitespace at both ends.",
+      "example": "print(\"  hello  \".strip())",
+      "output": "hello",
+      "note": ""
+    },
+    {
+      "category": "str",
+      "name": "text.split(separator)",
+      "kind": "Method",
+      "description": "Split text into a list.",
+      "example": "print(\"red,blue\".split(\",\"))",
+      "output": "['red', 'blue']",
+      "note": ""
+    },
+    {
+      "category": "str",
+      "name": "text.replace(old, new)",
+      "kind": "Method",
+      "description": "Replace matching text.",
+      "example": "print(\"red balloon\".replace(\"red\", \"blue\"))",
+      "output": "blue balloon",
+      "note": ""
+    },
+    {
+      "category": "str",
+      "name": "separator.join(words)",
+      "kind": "Method",
+      "description": "Join strings into one.",
+      "example": "print(\"-\".join([\"sun\", \"moon\"]))",
+      "output": "sun-moon",
+      "note": ""
+    },
+    {
+      "category": "str",
+      "name": "text.startswith(prefix)",
+      "kind": "Method",
+      "description": "Check how text begins.",
+      "example": "print(\"sunshine\".startswith(\"sun\"))",
+      "output": "True",
+      "note": ""
+    },
+    {
+      "category": "str",
+      "name": "text.find(part)",
+      "kind": "Method",
+      "description": "Locate matching text.",
+      "example": "print(\"balloon\".find(\"loon\"))",
+      "output": "3",
+      "note": "Returns the starting index, or -1 when not found. Indices begin at 0."
+    },
+    {
+      "category": "int",
+      "name": "number.bit_length()",
+      "kind": "Method",
+      "description": "Count required binary digits.",
+      "example": "number = 8\nprint(number.bit_length())",
+      "output": "4",
+      "note": ""
+    },
+    {
+      "category": "int",
+      "name": "number.bit_count()",
+      "kind": "Method",
+      "description": "Count ones in binary.",
+      "example": "number = 7\nprint(number.bit_count())",
+      "output": "3",
+      "note": ""
+    },
+    {
+      "category": "int",
+      "name": "abs(number)",
+      "kind": "Built-in function",
+      "description": "Find distance from zero.",
+      "example": "print(abs(-7))",
+      "output": "7",
+      "note": ""
+    },
+    {
+      "category": "int",
+      "name": "str(number)",
+      "kind": "Built-in function",
+      "description": "Convert a number to text.",
+      "example": "number = 7\nprint(\"Score: \" + str(number))",
+      "output": "Score: 7",
+      "note": ""
+    },
+    {
+      "category": "float",
+      "name": "number.is_integer()",
+      "kind": "Method",
+      "description": "Check for a whole value.",
+      "example": "print((3.0).is_integer())",
+      "output": "True",
+      "note": ""
+    },
+    {
+      "category": "float",
+      "name": "number.as_integer_ratio()",
+      "kind": "Method",
+      "description": "Express the exact stored ratio.",
+      "example": "print((0.5).as_integer_ratio())",
+      "output": "(1, 2)",
+      "note": ""
+    },
+    {
+      "category": "float",
+      "name": "round(number, places)",
+      "kind": "Built-in function",
+      "description": "Round to decimal places.",
+      "example": "print(round(3.14159, 2))",
+      "output": "3.14",
+      "note": "Floating-point values are approximate; some rounding results can be surprising."
+    },
+    {
+      "category": "float",
+      "name": "int(number)",
+      "kind": "Built-in function",
+      "description": "Convert by truncating toward zero.",
+      "example": "print(int(-3.9))",
+      "output": "-3",
+      "note": ""
+    },
+    {
+      "category": "list",
+      "name": "items.append(value)",
+      "kind": "Method",
+      "description": "Add one item at the end.",
+      "example": "items = [\"apple\"]\nitems.append(\"pear\")\nprint(items)",
+      "output": "['apple', 'pear']",
+      "note": "Changes the list in place and returns None. Print items to see the updated list."
+    },
+    {
+      "category": "list",
+      "name": "items.extend(values)",
+      "kind": "Method",
+      "description": "Add several items.",
+      "example": "items = [1]\nitems.extend([2, 3])\nprint(items)",
+      "output": "[1, 2, 3]",
+      "note": "Changes the list in place; returns None."
+    },
+    {
+      "category": "list",
+      "name": "items.insert(index, value)",
+      "kind": "Method",
+      "description": "Insert at a chosen position.",
+      "example": "items = [\"a\", \"c\"]\nitems.insert(1, \"b\")\nprint(items)",
+      "output": "['a', 'b', 'c']",
+      "note": ""
+    },
+    {
+      "category": "list",
+      "name": "items.remove(value)",
+      "kind": "Method",
+      "description": "Remove the first matching item.",
+      "example": "items = [1, 2, 1]\nitems.remove(1)\nprint(items)",
+      "output": "[2, 1]",
+      "note": "Raises ValueError if the item is missing."
+    },
+    {
+      "category": "list",
+      "name": "items.pop()",
+      "kind": "Method",
+      "description": "Remove and return the last item.",
+      "example": "items = [1, 2, 3]\nprint(items.pop())\nprint(items)",
+      "output": "3\n[1, 2]",
+      "note": "Raises IndexError on an empty list. You can pass an index to pop a different position."
+    },
+    {
+      "category": "list",
+      "name": "items.sort()",
+      "kind": "Method",
+      "description": "Sort the existing list.",
+      "example": "items = [3, 1, 2]\nitems.sort()\nprint(items)",
+      "output": "[1, 2, 3]",
+      "note": "Changes the list in place; returns None. sorted(items) instead creates a new list."
+    },
+    {
+      "category": "list",
+      "name": "items.reverse()",
+      "kind": "Method",
+      "description": "Reverse the existing list.",
+      "example": "items = [1, 2, 3]\nitems.reverse()\nprint(items)",
+      "output": "[3, 2, 1]",
+      "note": ""
+    },
+    {
+      "category": "list",
+      "name": "len(items)",
+      "kind": "Built-in function",
+      "description": "Count the items.",
+      "example": "print(len([\"sun\", \"moon\"]))",
+      "output": "2",
+      "note": ""
+    },
+    {
+      "category": "dict",
+      "name": "data.get(key, default)",
+      "kind": "Method",
+      "description": "Read a key with a fallback.",
+      "example": "data = {\"color\": \"blue\"}\nprint(data.get(\"size\", \"unknown\"))",
+      "output": "unknown",
+      "note": ""
+    },
+    {
+      "category": "dict",
+      "name": "data.keys()",
+      "kind": "Method",
+      "description": "View the keys.",
+      "example": "data = {\"color\": \"blue\", \"size\": 2}\nprint(list(data.keys()))",
+      "output": "['color', 'size']",
+      "note": ""
+    },
+    {
+      "category": "dict",
+      "name": "data.values()",
+      "kind": "Method",
+      "description": "View the values.",
+      "example": "data = {\"color\": \"blue\", \"size\": 2}\nprint(list(data.values()))",
+      "output": "['blue', 2]",
+      "note": ""
+    },
+    {
+      "category": "dict",
+      "name": "data.items()",
+      "kind": "Method",
+      "description": "View key/value pairs.",
+      "example": "data = {\"color\": \"blue\"}\nfor key, value in data.items():\n    print(key, value)",
+      "output": "color blue",
+      "note": ""
+    },
+    {
+      "category": "dict",
+      "name": "data.update(values)",
+      "kind": "Method",
+      "description": "Add or replace entries.",
+      "example": "data = {\"score\": 1}\ndata.update({\"score\": 2})\nprint(data[\"score\"])",
+      "output": "2",
+      "note": "Changes the dictionary in place; returns None."
+    },
+    {
+      "category": "dict",
+      "name": "data.pop(key)",
+      "kind": "Method",
+      "description": "Remove and return a value.",
+      "example": "data = {\"score\": 2}\nprint(data.pop(\"score\"))\nprint(data)",
+      "output": "2\n{}",
+      "note": "A missing key raises KeyError unless you provide a fallback argument."
+    },
+    {
+      "category": "dict",
+      "name": "data.setdefault(key, default)",
+      "kind": "Method",
+      "description": "Read or create an entry.",
+      "example": "data = {}\nprint(data.setdefault(\"score\", 0))\nprint(data)",
+      "output": "0\n{'score': 0}",
+      "note": ""
+    },
+    {
+      "category": "set",
+      "name": "items.add(value)",
+      "kind": "Method",
+      "description": "Add a unique item.",
+      "example": "items = {1, 2}\nitems.add(2)\nitems.add(3)\nprint(sorted(items))",
+      "output": "[1, 2, 3]",
+      "note": "Sets have no guaranteed display order. sorted() makes these examples predictable."
+    },
+    {
+      "category": "set",
+      "name": "items.discard(value)",
+      "kind": "Method",
+      "description": "Remove an item if present.",
+      "example": "items = {1, 2}\nitems.discard(9)\nprint(sorted(items))",
+      "output": "[1, 2]",
+      "note": "Unlike remove(), discard() is safe when the item is missing."
+    },
+    {
+      "category": "set",
+      "name": "items.union(other)",
+      "kind": "Method",
+      "description": "Combine unique items.",
+      "example": "print(sorted({1, 2}.union({2, 3})))",
+      "output": "[1, 2, 3]",
+      "note": "Returns a new set; does not modify the original."
+    },
+    {
+      "category": "set",
+      "name": "items.intersection(other)",
+      "kind": "Method",
+      "description": "Find shared items.",
+      "example": "print(sorted({1, 2}.intersection({2, 3})))",
+      "output": "[2]",
+      "note": ""
+    },
+    {
+      "category": "set",
+      "name": "items.difference(other)",
+      "kind": "Method",
+      "description": "Keep items absent from another set.",
+      "example": "print(sorted({1, 2}.difference({2, 3})))",
+      "output": "[1]",
+      "note": ""
+    },
+    {
+      "category": "set",
+      "name": "len(items)",
+      "kind": "Built-in function",
+      "description": "Count unique items.",
+      "example": "print(len({1, 1, 2}))",
+      "output": "2",
+      "note": ""
+    },
+    {
+      "category": "tuple",
+      "name": "items.count(value)",
+      "kind": "Method",
+      "description": "Count matching values.",
+      "example": "print((1, 2, 1).count(1))",
+      "output": "2",
+      "note": "Tuples cannot be changed in place."
+    },
+    {
+      "category": "tuple",
+      "name": "items.index(value)",
+      "kind": "Method",
+      "description": "Find the first matching index.",
+      "example": "print((\"a\", \"b\").index(\"b\"))",
+      "output": "1",
+      "note": "Indices start at 0. A missing value raises ValueError."
+    },
+    {
+      "category": "tuple",
+      "name": "len(items)",
+      "kind": "Built-in function",
+      "description": "Count the tuple items.",
+      "example": "print(len((\"a\", \"b\")))",
+      "output": "2",
+      "note": ""
+    },
+    {
+      "category": "bool",
+      "name": "not value",
+      "kind": "Operator",
+      "description": "Reverse a truth value.",
+      "example": "print(not True)",
+      "output": "False",
+      "note": ""
+    },
+    {
+      "category": "bool",
+      "name": "left and right",
+      "kind": "Operator",
+      "description": "Require both truth values.",
+      "example": "print(True and False)",
+      "output": "False",
+      "note": "With non-boolean operands, and returns an operand rather than converting it to bool."
+    },
+    {
+      "category": "bool",
+      "name": "left or right",
+      "kind": "Operator",
+      "description": "Accept either truth value.",
+      "example": "print(True or False)",
+      "output": "True",
+      "note": "With non-boolean operands, or returns an operand rather than converting it to bool."
+    },
+    {
+      "category": "bool",
+      "name": "bool(value)",
+      "kind": "Built-in function",
+      "description": "Convert using truth testing.",
+      "example": "print(bool([]))\nprint(bool([1]))",
+      "output": "False\nTrue",
+      "note": ""
+    }
+  ]
+}
