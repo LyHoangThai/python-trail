@@ -83,3 +83,7 @@ The setup encountered a transient container-name conflict while another startup 
 ## 2026-11-06 — sample 0.1.1 setup button
 
 Added a double-click CMD launcher and a Windows Forms setup/start window with asynchronous child setup, progress logs, retries and automatic browser opening. Verified PowerShell syntax, Windows Forms/Drawing assembly loading, launcher presence, all package hashes and ZIP creation. Underlying setup/build workflow was verified by the 0.1.0 clean-extraction test. GUI button interaction and a fresh Docker installer were not exercised automatically.
+
+## 2026-11-06 — single-file GitHub bootstrap
+
+Published the standalone Install-Python-Trail.cmd and sample 0.1.2 to GitHub. Windows PowerShell 5.1 successfully downloaded the channel and ZIP from the published repository into an isolated workspace folder, verified the archive and all packaged files, and extracted the application. A repeat prepare-only run reused the installed version without replacing it. Verified generated CMD payload matches bootstrap.ps1, channel hash matches the shipped ZIP, setup script syntax/dependencies pass, and the package file manifest verifies. Prepare-only validation does not run Docker installation, GUI auto-start, desktop shortcut creation or modify the live app.
