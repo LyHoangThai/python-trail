@@ -1,0 +1,72 @@
+name: python-trail-local
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: trail
+      POSTGRES_PASSWORD: ${TRAIL_DB_PASSWORD:?Run setup.ps1 first}
+      POSTGRES_DB: trail
+    volumes:
+      - progress:/var/lib/postgresql/data
+    networks: [database]
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U trail -d trail]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  app:
+    build: ./app
+    environment:
+      DB_PASSWORD: ${TRAIL_DB_PASSWORD}
+      HOST_STUDENT_DIR: ${HOST_STUDENT_DIR}
+    ports: ["127.0.0.1:8765:8000"]
+    volumes: ["queue:/queue"]
+    networks: [frontend, database]
+    depends_on:
+      db: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  worker:
+    build: ./worker
+    network_mode: none
+    volumes: ["queue:/queue"]
+    read_only: true
+    tmpfs: ["/tmp:size=64m,mode=1777"]
+    cap_drop: [ALL]
+    cap_add: [SETUID, SETGID]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 256m
+    cpus: 1
+    restart: unless-stopped
+  playground:
+    build: ./playground
+    command: sleep infinity
+    user: "1000:1000"
+    working_dir: /workspace
+    environment:
+      TRAIL_API: http://app:8000
+      PYTHONDONTWRITEBYTECODE: "1"
+    volumes:
+      - ./student:/workspace
+      - ./tools:/tools:ro
+    networks: [frontend]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 128
+    mem_limit: 512m
+    cpus: 1
+    depends_on:
+      app: {condition: service_healthy}
+networks:
+  frontend:
+  database:
+    internal: true
+volumes:
+  queue:
+  progress:

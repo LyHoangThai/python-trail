@@ -1,0 +1,15 @@
+{
+  "name": "Python Trail playground",
+  "dockerComposeFile": "../../compose.yml",
+  "service": "playground",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "none",
+  "overrideCommand": false,
+  "remoteUser": "explorer",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"],
+      "settings": {"python.defaultInterpreterPath": "/usr/local/bin/python", "telemetry.telemetryLevel": "off"}
+    }
+  }
+}
